@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:music="http://ogp.me/ns/music#">
+<head>
+	{{> meta.hbs }}
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image:src" content="{{ baseUrl }}media/img/300/{{ image }}" />
+	<meta name="twitter:image:width" content="300" />
+
+	<meta property="og:title" content="{{ title }}" />
+	<meta property="og:description" content="{{string-striptags contents }}" />
+	<meta property="og:image" content="{{ baseUrl }}media/img/{{ image }}" />
+
+	<link rel="canonical" href="{{ baseUrl }}{{ path }}" />
+</head>
+
+<body>
+
+{{> nav.hbs }}
+
+<article>
+	<header>
+		<h1>{{ title }}</h1>
+	</header>
+	<div class="product">
+		<p>Published <time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time></p>
+		<img src="{{ baseUrl }}media/img/300/{{ image }}" alt="{{ title }}" />
+
+		{{{ contents }}}
+
+		<p><a href="{{ play }}">Play {{ title }}</a></p>
+	</div>
+
+	{{> advertising.hbs }}
+</article>
+
+{{> footer.hbs }}

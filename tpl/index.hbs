@@ -1,0 +1,32 @@
+{{> header.hbs }}
+
+<section class="thumbnails">
+	<h1>Books and Albums</h1>
+	<p class="clead"><em>I have self-published a number of <a href="/books">books</a> and <a href="/albums">albums</a>.</em></p>
+
+	{{> advertising.hbs }}
+
+	{{#each Promoted}}
+		<article>
+			<h2><a href="{{ baseUrl }}{{ path }}">{{ title }}</a></h2>
+			{{#if image}}
+				<div class="media">
+					<a href="{{ ../baseUrl }}{{ path }}"><img src="{{ ../basePath }}{{ image.source }}" alt="{{ image.text }}" /></a>
+				</div>
+			{{/if}}
+			<p class="lead">{{{ summary }}}</p>
+			{{{ contents }}}
+		</article>
+	{{/each}}
+</section>
+
+<section class="thumbnails">
+	<h1>Writing</h1>
+	<p class="lead"><em>Occasionally updated <a href="/blog">blog posts</a>.</em></p>
+
+	{{#first Article 5}}
+		{{> thumbnail.hbs baseUrl=../baseUrl }}
+	{{/first}}
+</section>
+
+{{> footer.hbs }}

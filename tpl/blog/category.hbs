@@ -1,0 +1,17 @@
+{{> header.hbs blog=true }}
+
+<section class="thumbnails">
+	<h1>{{ title}}</h1>
+	<p class="lead"><em>Where I write about various things which take my interest.</em></p>
+	{{{ contents }}}
+
+	{{> advertising.hbs }}
+
+	{{#each Article}}
+		{{#is . ../title}}
+			{{> thumbnail.hbs baseUrl=../baseUrl }}
+		{{/is}}
+	{{/each}}
+</section>
+
+{{> footer.hbs }}

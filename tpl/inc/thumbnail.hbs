@@ -1,0 +1,11 @@
+<article>
+	<h2><a href="{{ baseUrl }}{{ path }}">{{ title }}</a></h2>
+	<p><small>Posted in {{ category }} on <time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time>.</small></p>
+
+	{{#if image}}
+		<div class="media">
+			<a href="{{ baseUrl }}{{ path }}"><img src="{{ baseUrl }}{{ image.source }}" alt="{{ image.text }}" /></a>
+		</div>
+	{{/if}}
+	<p>{{{ summary }}}</p>
+</article>

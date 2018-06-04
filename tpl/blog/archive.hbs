@@ -1,0 +1,16 @@
+{{> header.hbs }}
+
+<section class="thumbnails">
+	<h1>{{ title}}</h1>
+	<p class="lead"><em>Everything I’ve written by month and year.</em></p>
+
+	{{> advertising.hbs }}
+
+	<ul>
+		{{#each archive}}
+			<li><a href="{{ ../baeUrl }}{{ path }}">{{ title }}</a></li>
+		{{/each}}
+	</ul>
+</section>
+
+{{> footer.hbs }}

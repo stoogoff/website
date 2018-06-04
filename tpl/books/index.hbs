@@ -1,0 +1,17 @@
+{{> header.hbs }}
+
+<section class="thumbnails">
+	<h1>{{ title}}</h1>
+
+	<p class="lead"><em>So far I've released {{ Book.length }} short stories, which you can find on my <a href="http://author.to/stoo-goff">Amazon</a> page.</em></p>
+
+	{{> advertising.hbs }}
+
+	<div class="media">
+		{{#each Book}}
+			<a href="{{ ../baseUrl }}{{ path }}"><img src="{{ ../baseUrl }}{{ image.source }}" alt="{{ image.text }} " /></a>
+		{{/each}}
+	</div>
+</section>
+
+{{> footer.hbs }}
