@@ -5,8 +5,6 @@
 
 	<p class="lead"><em>So far I've released {{ Album.length }} albums, which you can find on my <a href="http://stoogoff.bandcamp.com/">Bandcamp</a> page. I also have a few songs on my <a href="https://soundcloud.com/stoogoff">Soundcloud</a> page.</em></p>
 
-	{{> advertising.hbs }}
-
 	<div class="media">
 		{{#each Album}}
 			<a href="{{ ../baseUrl }}{{ path }}"><img src="{{ ../baseUrl }}{{ image.source }}" alt="{{ image.text }}" /></a>

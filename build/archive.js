@@ -1,6 +1,7 @@
 "use strict";
 
 const moment = require("moment");
+const { sortByProperty } = require("./utils");
 
 module.exports = () => {
 	return (files, metalsmith, next) => {
@@ -44,13 +45,7 @@ module.exports = () => {
 		Object.keys(archive).forEach(key => {
 			let url = "blog/date/" + key + "/index.html";
 
-			archive[key].archive.sort((a, b) => {
-				a = a.publish_date.valueOf();
-				b = b.publish_date.valueOf();
-
-				return a == b ? 0 : (a < b ? 1: -1);
-			});
-
+			archive[key].archive.sort(sortByProperty("publish_date", true));
 			files[url] = archive[key];
 
 			page.archive.push({
@@ -60,12 +55,7 @@ module.exports = () => {
 			});
 		});
 
-		page.archive.sort(function(a, b) {
-			a = a.date;
-			b = b.date;
-
-			return a == b ? 0 : (a < b ? 1 : -1);
-		});
+		page.archive.sort(sortByProperty("date", true));
 
 		files["blog/archive/index.html"] = page;
 

@@ -10,9 +10,11 @@
 	<p class="lead">{{{ summary }}}</p>
 	{{{ contents }}}
 
-	{{> advertising.hbs }}
+	<aside>
+		{{> tags.hbs }}
 
-	<p><small>Posted in <a href="/blog/category/{{ lower category }}/"><strong>{{ category }}</strong></a> on <a href="/blog/date/{{moment publish_date "YYYY" }}/{{moment publish_date "MM" }}/"><time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time></a></small></p>
+		<p>Posted in <a href="/blog/category/{{ lower category }}/"><strong>{{ category }}</strong></a> on <a href="/blog/date/{{moment publish_date 'YYYY' }}/{{moment publish_date 'MM' }}/"><time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time></a></p>
+	</aside>
 </article>
 
 {{> footer.hbs }}

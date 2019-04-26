@@ -4,6 +4,8 @@
   "description": "The website for stoogoff.com",
   "main": "index.js",
   "scripts": {
+    "start": "node ./build/base staging", 
+    "server": "pushd staging; python -m SimpleHTTPServer; popd",
     "live": "node ./build/base live",
     "staging": "node ./build/base staging",
     "publish": "node ./build/publish",

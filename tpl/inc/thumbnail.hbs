@@ -1,6 +1,9 @@
 <article>
 	<h2><a href="{{ baseUrl }}{{ path }}">{{ title }}</a></h2>
-	<p><small>Posted in {{ category }} on <time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time>.</small></p>
+
+	<aside>
+		<p>Posted in {{ category }} on <time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time>.</p>
+	</aside>
 
 	{{#if image}}
 		<div class="media">

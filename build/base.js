@@ -12,6 +12,8 @@ const marked = require("marked");
 const collections = require("./collections");
 const archive = require("./archive");
 const each = require("./each");
+const tags = require("./tags");
+const utils = require("./utils");
 
 
 // get the file we're building
@@ -23,7 +25,7 @@ if(args.length === 0) {
 }
 
 const LIVE = args[0] === "live";
-const BASE_URL = LIVE ? "http://www.stoogoff.com/" : "http://localhost:8000/";
+const BASE_URL = LIVE ? "https://www.stoogoff.com/" : "http://localhost:8000/";
 const OUTPUT = LIVE ? "../live" : "../staging"
 
 
@@ -79,6 +81,9 @@ let helpers = {
 		property = property.split(":").map(m => parseInt(m, 10));
 
 		return property[0] * 60 + property[1];
+	},
+	"makeId": context => {
+		return utils.id(context);
 	}
 };
 
@@ -113,6 +118,7 @@ Metalsmith(__dirname)
 		sort: "publish_date",
 		reverse: true
 	}))
+	.use(tags())
 	.use(mmMoment(["publish_date"]))
 	.use(archive())
 	.use(sass({
@@ -154,6 +160,6 @@ Metalsmith(__dirname)
 	}, ".html"))
 
 	// log
-	.use(each((f, k) => console.log(k)))
+	//.use(each((f, k) => console.log(k)))
 
 	.build(err => console.log(err || "\n\t...Fin...\n"));

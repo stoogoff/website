@@ -7,11 +7,9 @@
 
 	<p>I like the challenge of having a restricted deadline as it forces you to focus on building the game to the exclusion of all else. There's no time worry about how to anything, you just <em>do</em>.</p>
 
-	{{> advertising.hbs }}
-
 	<div class="media">
-		{{#each games}}
-			<a href="/{{ path }}/"><img src="{{ ../cdn }}/media/img/300/{{ image }}" alt="{{ title}}" /></a>
+		{{#each Game}}
+			<a href="{{ ../baseUrl }}{{ path }}"><img src="{{ ../baseUrl }}{{ image.source }}" alt="{{ image.text }} " /></a>
 		{{/each}}
 	</div>
 </section>

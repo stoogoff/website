@@ -1,11 +1,6 @@
 "use strict";
 
-const path = require("path");
-
-
-function ext(filePath, extension) {
-	return path.extname(filePath) == extension;
-}
+const ext = require("./utils").ext;
 
 
 module.exports = (callback, filter) => {

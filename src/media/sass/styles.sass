@@ -1,0 +1,546 @@
+
+// ------------------------------------
+// Imports
+// ------------------------------------
+@import "_colours.sass"
+
+
+// ------------------------------------
+// Screen sizes
+// ------------------------------------
+$screen-xsmall:  0em
+$screen-small:  25em
+$screen-medium: 36em
+$screen-large:  55em
+$screen-xlarge: 75em
+
+
+// ------------------------------------
+// Colours
+// ------------------------------------
+$dark: #3d3d3d
+$mid: rgb(120,120,120)
+$light: #fff
+$dark-light: lighten($dark, 20%)
+$dark-dark: darken($dark, 20%)
+$mid-light: lighten($mid, 20%)
+$mid-dark: darken($mid, 20%)
+$light-dark: darken($light, 10%)
+$blue-light: lighten($blue, 20%)
+
+
+// ------------------------------------
+// Other vars
+// ------------------------------------
+$corners: .2em
+
+
+// ------------------------------------
+// Helper mixins
+// ------------------------------------
+@mixin cover
+	-webkit-background-size: cover
+	-moz-background-size: cover
+	-o-background-size: cover
+	background-size: cover
+
+@mixin shadow($colour)
+	-webkit-box-shadow: 0 1px 4px $colour
+	-moz-box-shadow: 0 1px 4px $colour
+	box-shadow: 0 1px 4px $colour
+
+@mixin media-image
+	float: left
+	width: auto
+	margin: 0 0.5em 0.5em 0
+
+@mixin text-shadow($colour)
+	text-shadow: 1px 1px 1px $colour
+
+@mixin column
+	max-width: 60rem
+	display: block
+	margin-left: auto
+	margin-right: auto
+
+@mixin hover()
+	transition: all .2s ease-in-out
+	transition-property: color, background-color, border-color, box-shadow
+
+
+// ------------------------------------
+// General tag styles
+// ------------------------------------
+html, body
+	height: 100%
+	padding: 0
+	margin: 0
+
+body
+	background-color: $light
+	color: $dark
+	font-size: 1.1em
+	font-family: 'Lora', serif
+
+img
+	@include shadow($mid)
+	max-width: 100%
+	border: 1px solid $mid-light
+	border-radius: $corners
+	padding: 1px
+
+a
+	@include hover
+	color: $blue
+	text-decoration: none
+	border-bottom: 3px solid $blue-light
+	line-height: 1em
+
+	&:hover
+		color: $blue-light
+		border-color: transparent
+
+	&:visited
+		color: darken($gray, 20%)
+		border-bottom-color: $gray
+
+		&:hover
+			color: $gray
+			border-color: transparent
+
+time
+	border-bottom: 1px dotted
+
+ul
+	list-style-type: none
+	padding: 0 1em
+	margin: 1em 0
+
+	li
+		padding: 0.1em 0.5em 0.2em 1.2em
+		margin-left: .5em
+		text-indent: -.5em
+
+		&:before
+			content: "· "
+
+
+// ------------------------------------
+// Typography
+// ------------------------------------
+h1, h2, h3, h4, h5, h6
+	font-family: 'Open Sans', "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
+	font-weight: normal
+
+p
+	line-height: 1.6em
+
+	&.lead
+		font-size: 1.2em
+
+h1 + p, h2 + p, h3 + p
+	margin-top: 0
+
+code
+	display: inline-block
+	border: 1px solid $mid-light
+	background-color: $light-dark
+	font-size: 0.9em
+	padding: 0 .1em
+
+blockquote > p
+	font-style: italic
+	color: $dark-light
+
+	&:before, &:after
+		position: relative
+		top: .22em
+		font-size: 1.6em
+
+	&:before
+		content: "\201c"
+		margin-left: -.5em
+		left: -.2em
+
+	&:after
+		content: "\201d"
+
+time
+	cursor: default
+
+
+// ------------------------------------
+// Layout
+// ------------------------------------
+section
+	overflow: hidden
+
+iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, body > article > .advertising, form, #profile div, div.product, footer, section.thumbnails, body > article > aside
+	@include column
+
+section > p, article > p, h1, article > h2, article > h3, article > blockquote > p, div.product, div.media, footer, aside
+	padding-right: 1rem
+	padding-left: 1rem
+
+div.warning
+	background-color: lighten($red, 20%)
+	border: solid $red
+	border-width: 1px 0
+	color: darken($red, 20%)
+	padding: 1em
+	line-height: 1.5em
+
+.clear
+	clear: both
+
+.media a
+	border: 0
+	display: inline
+
+.advertising
+	margin-top: 1rem !important
+	margin-bottom: 2rem !important
+
+// ------------------------------------
+// Footer
+// ------------------------------------
+footer
+	margin-bottom: 2em
+
+
+// ------------------------------------
+// Articles
+// ------------------------------------
+article
+	header.image
+		@include cover()
+		@include shadow($mid)
+		height: 25em
+		color: $light
+		border-bottom: 1px solid $mid-light
+		background-position: center center
+		background-repeat: no-repeat
+
+		div
+			width: 100%
+			height: 100%
+			background-color: rgba(0,0,0,0.3)
+
+		h1
+			@include text-shadow($dark)
+			margin-top: 0
+			padding-top: 3em
+
+	header
+		text-align: center
+
+	h1
+		font-size: 2em
+		letter-spacing: 0.05em
+		margin-bottom: 0
+		margin-top: 0
+		line-height: 1.5em
+
+	h2
+		margin-bottom: .2em
+
+	hr
+		max-width: 10em
+		color: $mid-light
+		background-color: $mid-light
+		border: solid $mid-light
+		border-width: 1px 0 0
+
+aside
+	overflow: hidden
+
+	p
+		color: $mid
+		font-size: 0.9em
+
+
+
+// ------------------------------------
+// Products
+// ------------------------------------
+.product
+	overflow: hidden
+
+	img
+		width: 100%
+
+	ul, ol
+		padding-left: 0
+
+		li
+			margin: .4em 0
+
+
+// ------------------------------------
+// Category thumbnails
+// ------------------------------------
+.thumbnails
+	h1
+		margin-bottom: .2em
+
+	article
+		overflow: hidden
+
+		h2
+			font-weight: normal
+			margin-bottom: 0
+
+			a
+				line-height: 1.3em
+				border-bottom: 0
+				color: $navy
+
+				&:hover
+					color: $gray
+
+		p
+			margin-top: 0
+			margin-bottom: 0.5em
+
+		small
+			font-size: 0.7em
+			line-height: 1em
+
+		img
+			width: 100%
+
+.tags
+	list-style-type: none
+	margin: 0
+	padding: 0
+
+	li
+		display: inline-block
+		padding: 0.2em 0.4em
+		border-radius: $corners
+		background-color: $blue-light
+		text-indent: 0
+		margin: 0
+		@include shadow($mid)
+		@include hover
+
+		&:hover
+			background-color: $blue
+
+		&:before
+			content: ""
+
+		a
+			color: white
+			border-bottom: 0
+			font-size: 0.8em
+
+
+// ------------------------------------
+// Profile
+// ------------------------------------
+#profile
+	padding: 1em
+	background-color: $light-dark
+	margin: 1em 0 2em
+	border: solid $mid-light
+	border-width: 0 0 1px
+
+	img
+		width: 26%
+		max-width: 10em
+		float: left
+		margin: .5em .5em .5em 1em
+
+	p:first-of-type
+		margin-top: 0
+
+	p:last-of-type
+		margin-bottom: 0
+
+
+// ------------------------------------
+// Sign up form
+// ------------------------------------
+form
+	margin-top: 2em
+	margin-bottom: 3em
+	padding-right: 1rem
+	padding-left: 1rem
+
+	& > div
+		margin-bottom: .5em
+
+.btn
+	border-radius: $corners
+	@include shadow($mid)
+	@include hover
+	background-color: $blue
+	border: 0
+	padding: .5em 1em
+	color: $white
+	letter-spacing: 0.01em
+	font-weight: bold
+
+	&:hover
+		background-color: $blue-light
+
+.input, input[type=text], input[type=password], textarea
+	border-radius: $corners
+	@include hover
+	padding: .5em 1em
+	border: 1px solid $mid
+	width: 90%
+
+	&:focus
+		border-color: $blue
+		outline: 0
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba($aqua,.6)
+
+.input
+	max-width: 20em
+
+
+// ------------------------------------
+// Navigation
+// ------------------------------------
+nav
+	padding: 1em 0
+	background-color: $white
+	@include shadow($light-dark)
+	border-bottom: 1px solid $light-dark
+
+	ul
+		margin: 0
+		padding: 0
+		position: relative
+
+		&.social
+			font-size: .8em
+
+		&>li
+			text-indent: 0
+			margin-left: 0
+			padding: .1em 0
+
+			&:before
+				content: ""
+
+			a
+				border-bottom: 0
+				color: $dark-light
+				display: block
+				padding: .3em 1em
+
+				&:visited
+					color: $dark-light
+
+					&:hover
+						color: $blue
+
+				&:hover
+					background-color: $light-dark
+					color: $navy
+
+		li.logo
+			font-size: 1.1em
+
+			a, a:visited
+				color: $blue
+
+		ul
+			font-size: .7em
+			margin-left: .5em
+
+			a:before
+				content: "· "
+
+
+
+// ------------------------------------
+// Screen size overrides
+// ------------------------------------
+@media screen and (max-width: $screen-medium)
+	nav ul.social
+		border-top: 1px solid $light-dark
+		padding-top: 1em
+		margin-top: 1em
+
+
+@media screen and (min-width: $screen-medium)
+	article header h1
+		font-size: 2.5em
+
+	article
+		header.image h1
+			padding-top: 2em
+
+		aside .tags
+			float: right
+			margin-top: 0.75em
+
+	#profile img
+		margin-left: 0
+		margin-right: 1em
+
+	body
+		padding-top: 3em
+
+	nav
+		background-color: rgba($white, .9)
+		position: fixed
+		padding-top: .5em
+		padding-bottom: .5em
+		top: 0
+		left: 0
+		right: 0
+
+		li
+			display: inline-block
+
+			a
+				border-radius: $corners
+
+		ul.social
+			float: right
+			margin-top: -2.3em
+			margin-right: .5em
+
+			a
+				border-radius: 100%
+				width: 1em
+				height: 1em
+				padding: .5em
+				text-align: center
+
+			i.fa-fw
+				width: auto
+
+			span
+				display: none
+
+		ul ul
+			position: absolute
+			background-color: rgba($white, .9)
+			@include shadow($light-dark)
+			border: 1px solid $light-dark
+			background-color: $white
+			border-radius: $corners
+
+
+@media screen and (min-width: $screen-large)
+	article header h1
+		font-size: 3em
+
+	.product img
+		width: auto
+		margin: 0 1em 1em 0
+		float: left
+
+	.thumbnails article img
+		float: right
+		margin: 0 0 1em 1em
+		width: 300px
+
+	.media img, .product img
+		width: 300px

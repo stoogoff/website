@@ -9,7 +9,9 @@
 		{{/if}}
 	</header>
 	<div class="product">
-		<p>Published <time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time></p>
+		<aside>
+			<p>Published <time datetime="{{ publish_date }}">{{moment publish_date "Do MMM YYYY" }}</time></p>
+		</aside>
 
 		<img src="{{ baseUrl }}{{ image.source }}" alt="{{ image.text }}" />
 
@@ -25,9 +27,10 @@
 				{{/kv}}
 			</ul>
 		{{/if}}
+		<aside>
+			{{> tags.hbs }}
+		</aside>
 	</div>
-
-	{{> advertising.hbs }}
 </article>
 
 {{> footer.hbs }}

@@ -1,5 +1,7 @@
 "use strict";
 
+const { sortByProperty } = require("./utils");
+
 module.exports = function collections(options) {
 	let sort = options.sort || "sort";
 	let reverse = options.reverse || false;
@@ -16,7 +18,7 @@ module.exports = function collections(options) {
 			let collections = files[path].collection;
 
 			if(!Array.isArray(collections)) {
-				collections = [collections];
+				files[path].collection = collections = [collections];
 			}
 
 			collections.forEach(collection => {
@@ -28,11 +30,7 @@ module.exports = function collections(options) {
 		});
 
 		keys.forEach((key) => {
-			data[key].sort((a, b) => {
-				let sorted = a[sort] == b[sort] ? 0 : (a[sort] > b[sort] ? 1 : -1);
-
-				return reverse ? sorted * -1 : sorted;
-			});
+			data[key].sort(sortByProperty(sort, reverse));
 		});
 
 		next();

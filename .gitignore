@@ -1,5 +1,8 @@
 **/node_modules
-dist/*
+live/*
+staging/*
+stuff/*
 .DS_Store
 aws.json
+package-lock.json
 *~

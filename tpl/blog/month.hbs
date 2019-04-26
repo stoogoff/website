@@ -4,8 +4,6 @@
 	<h1>{{ title}}</h1>
 	<p class="lead"><em>Everything I’ve written by month and year.</em></p>
 
-	{{> advertising.hbs }}
-
 	{{#each archive}}
 		{{> thumbnail.hbs baseUrl=../baseUrl }}
 	{{/each}}
