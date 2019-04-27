@@ -19,6 +19,6 @@ I’m pleased with the way it’s turned out (although I have just discovered a 
 
 ![Trollhammer Game Play](/media/image/trollhammer-smash.png)
 
-[Play Trollhammer!](http://www.stoogoff.com/games/ld33/)
+[Play Trollhammer!](http:///games.stoogoff.com/ld33/)
 
 Or take a look at the Ludum Dare [contest page](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=11088).

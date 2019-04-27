@@ -39,7 +39,7 @@ Pet peeves aside, I had a lot of fun doing Ludum Dare and have plans to improve 
 [ld]: http://www.ludumdare.com/
 [spelunk]: http://www.spelunkyworld.com/
 [ph]: http://phaser.io/
-[drown]: http://www.stoogoff.com/games/ld29/
+[drown]: http://games.stoogoff.com/ld29/
 [unity]: http://unity3d.com/
 [flash]: https://get.adobe.com/flashplayer/
 [bs]: /notes/view/no-ludum-idea

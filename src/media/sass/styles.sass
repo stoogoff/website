@@ -50,9 +50,11 @@ $corners: .2em
 	box-shadow: 0 1px 4px $colour
 
 @mixin media-image
-	float: left
-	width: auto
-	margin: 0 0.5em 0.5em 0
+	display: inline-block
+	@include shadow($mid)
+	border: 1px solid $mid-light
+	border-radius: $corners
+	padding: 0.2em
 
 @mixin text-shadow($colour)
 	text-shadow: 1px 1px 1px $colour
@@ -66,6 +68,8 @@ $corners: .2em
 @mixin hover()
 	transition: all .2s ease-in-out
 	transition-property: color, background-color, border-color, box-shadow
+
+
 
 
 // ------------------------------------
@@ -83,11 +87,8 @@ body
 	font-family: 'Lora', serif
 
 img
-	@include shadow($mid)
 	max-width: 100%
-	border: 1px solid $mid-light
-	border-radius: $corners
-	padding: 1px
+	width: 100%
 
 a
 	@include hover
@@ -138,6 +139,9 @@ p
 	&.lead
 		font-size: 1.2em
 
+section>p.lead
+	font-style: italic
+
 h1 + p, h2 + p, h3 + p
 	margin-top: 0
 
@@ -175,7 +179,7 @@ time
 section
 	overflow: hidden
 
-iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, body > article > .advertising, form, #profile div, div.product, footer, section.thumbnails, body > article > aside
+iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, form, #profile div, div.product, footer, section.thumbnails, section.products, body > article > aside
 	@include column
 
 section > p, article > p, h1, article > h2, article > h3, article > blockquote > p, div.product, div.media, footer, aside
@@ -193,13 +197,12 @@ div.warning
 .clear
 	clear: both
 
-.media a
-	border: 0
-	display: inline
+.media>a
+	@include media-image
+	width: 100%
+	margin-bottom: 1em
+	box-sizing: border-box
 
-.advertising
-	margin-top: 1rem !important
-	margin-bottom: 2rem !important
 
 // ------------------------------------
 // Footer
@@ -268,6 +271,7 @@ aside
 
 	img
 		width: 100%
+		@include media-image
 
 	ul, ol
 		padding-left: 0
@@ -311,7 +315,7 @@ aside
 
 .tags
 	list-style-type: none
-	margin: 0
+	margin: 1em 0 0
 	padding: 0
 
 	li
@@ -350,7 +354,8 @@ aside
 		width: 26%
 		max-width: 10em
 		float: left
-		margin: .5em .5em .5em 1em
+		@include media-image
+		margin: .2em .5em .2em 0
 
 	p:first-of-type
 		margin-top: 0
@@ -533,14 +538,20 @@ nav
 		font-size: 3em
 
 	.product img
-		width: auto
+		width: 500px
 		margin: 0 1em 1em 0
 		float: left
 
-	.thumbnails article img
+	.products .media>a
+		width: 300px
+
+	.thumbnails .media>a
 		float: right
 		margin: 0 0 1em 1em
 		width: 300px
 
-	.media img, .product img
-		width: 300px
+	.games .media>a
+		display: inline-block
+		overflow: hidden
+		max-height: 225px
+

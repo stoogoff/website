@@ -1,9 +1,11 @@
 ---
+draft: true
 title: Mixle
 collection: Game
 publish_date: 2012-08-28T00:00
 urls:
   Play: http://games.stoogoff.com/ld35/
+  Source: https://github.com/stoogoff/ld35
 image:
   source: media/img/games/mixle.png
   type: image/png

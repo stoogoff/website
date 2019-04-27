@@ -1,9 +1,11 @@
 ---
+draft: true
 title: Drowning Man
 collection: Game
 publish_date: 2012-08-28T00:00
 urls:
   Play: http://games.stoogoff.com/ld29/
+  Source: https://github.com/stoogoff/ld29
 image:
   source: media/img/games/drowning-man.png
   type: image/png

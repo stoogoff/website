@@ -15,7 +15,7 @@ Mixle is a game of merging different coloured blocks together to create new bloc
 
 There are twenty levels in total and you can play it here:
 
-[Mixle](http://www.stoogoff.com/games/ld35/)
+[Mixle](http:///games.stoogoff.comld35/)
 
 ![Home Screen](/media/img/ld35-home.png)
 ![Level One](/media/img/ld35-level-one.png)

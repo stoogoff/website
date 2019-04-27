@@ -13,12 +13,12 @@
 		{{{ contents }}}
 
 		{{#if urls}}
-			<p>More information, including purchasing options, is available at the following sites:</p>
-			<ul>
-				{{#kv urls}}
-					<li><a href="{{ value }}">{{ key }}</a></li>
-				{{/kv}}
-			</ul>
+			{{#if urls.Play}}
+				<p>Click here to <a href="{{ urls.Play }}">play {{ title }}</a>.</p>
+			{{/if}}
+			{{#if urls.Source}}
+				<p>Click here to <a href="{{ urls.Source }}">view the source code</a>.</p>
+			{{/if}}
 		{{/if}}
 
 		<aside>

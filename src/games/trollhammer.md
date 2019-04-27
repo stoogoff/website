@@ -1,9 +1,11 @@
 ---
+draft: true
 title: Trollhammer
 collection: Game
 publish_date: 2012-08-28T00:00
 urls:
   Play: http://games.stoogoff.com/ld33/
+  Source: https://github.com/stoogoff/ld33
 image:
   source: media/img/games/trollhammer.png
   type: image/png

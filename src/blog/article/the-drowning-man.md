@@ -13,4 +13,4 @@ layout: blog/article.hbs
 
 [Click to play!][ld29]
 
-[ld29]: http://www.stoogoff.com/games/ld29/
+[ld29]: http:///games.stoogoff.com/ld29/
