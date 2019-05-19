@@ -125,6 +125,9 @@ ul
 		&:before
 			content: "· "
 
+		ul
+			margin: 0
+
 
 // ------------------------------------
 // Typography
@@ -483,6 +486,15 @@ nav
 		aside .tags
 			float: right
 			margin-top: 0.75em
+
+		&.image-left img, &.image-right img
+			max-width: 400px
+
+		&.image-left img
+			float: left
+
+		&.image-right img
+			float: right
 
 	#profile img
 		margin-left: 0

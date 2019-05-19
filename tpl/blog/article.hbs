@@ -1,6 +1,6 @@
 {{> header.hbs blog=true }}
 
-<article>
+<article{{#if imageLayout}} class="image-{{imageLayout}}"{{/if}}>
 	<header{{#if image}} class="image"{{/if}}>
 		<div>
 			<h1>{{ title }}</h1>

@@ -1,30 +1,30 @@
 {
-  "name": "stoogoff.com",
-  "version": "1.0.0",
-  "description": "The website for stoogoff.com",
-  "main": "index.js",
-  "scripts": {
-    "start": "node ./build/base staging", 
-    "server": "pushd staging; python -m SimpleHTTPServer; popd",
-    "live": "node ./build/base live",
-    "staging": "node ./build/base staging",
-    "publish": "node ./build/publish",
-    "clean-live": "rm -rf ./live",
-    "clean-staging": "rm -rf ./staging"
-  },
-  "author": "Stoo Goff",
-  "license": "SEE LICENSE IN LICENSE.md",
-  "dependencies": {
-    "jstransformer-handlebars": "^1.1.0",
-    "marked": "^0.4.0",
-    "metalsmith": "^2.3.0",
-    "metalsmith-drafts": "0.0.1",
-    "metalsmith-layouts": "^2.1.0",
-    "metalsmith-markdown": "^0.2.2",
-    "metalsmith-moment": "^1.1.0",
-    "metalsmith-permalinks": "^0.5.0",
-    "metalsmith-sass": "^1.5.1",
-    "moment": "^2.22.1",
-    "s3": "^4.4.0"
-  }
+	"name": "stoogoff.com",
+	"version": "1.0.0",
+	"description": "The website for stoogoff.com",
+	"main": "index.js",
+	"scripts": {
+		"start": "node ./build/base staging", 
+		"server": "pushd staging; python -m SimpleHTTPServer; popd",
+		"live": "node ./build/base live",
+		"staging": "node ./build/base staging",
+		"publish": "node ./build/publish",
+		"clean-live": "rm -rf ./live",
+		"clean-staging": "rm -rf ./staging"
+	},
+	"author": "Stoo Goff",
+	"license": "SEE LICENSE IN LICENSE.md",
+	"dependencies": {
+		"jstransformer-handlebars": "^1.1.0",
+		"marked": "^0.4.0",
+		"metalsmith": "^2.3.0",
+		"metalsmith-drafts": "0.0.1",
+		"metalsmith-layouts": "^2.1.0",
+		"metalsmith-markdown": "^0.2.2",
+		"metalsmith-moment": "^1.1.0",
+		"metalsmith-permalinks": "^0.5.0",
+		"metalsmith-sass": "^1.5.1",
+		"moment": "^2.22.1",
+		"s3": "^4.4.0"
+	}
 }
