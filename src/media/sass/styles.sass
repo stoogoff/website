@@ -257,6 +257,9 @@ article
 		border: solid $mid-light
 		border-width: 1px 0 0
 
+	&.image-media img
+		@include media-image
+
 aside
 	overflow: hidden
 
@@ -476,25 +479,31 @@ nav
 
 
 @media screen and (min-width: $screen-medium)
-	article header h1
-		font-size: 2.5em
-
 	article
+		header h1
+			font-size: 2.5em
+
 		header.image h1
 			padding-top: 2em
 
-		aside .tags
-			float: right
-			margin-top: 0.75em
+		aside
+			clear: both
+
+			.tags
+				float: right
+				margin-top: 0.75em
 
 		&.image-left img, &.image-right img
 			max-width: 400px
 
 		&.image-left img
 			float: left
+			margin: 0 1em 1em 0
 
 		&.image-right img
 			float: right
+			margin: 0 0 1em 1em
+
 
 	#profile img
 		margin-left: 0

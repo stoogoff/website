@@ -15,7 +15,8 @@ image:
   width: 750
   height: 393
 layout: blog/article.hbs
-imageLayout: right
+layoutClasses: 
+  - image-right
 ---
 
 Unfortunately the game petered out after around thirty years of in game time. It was long enough for all of the players to be playing their original character's children but still only scratched the surface of the entire 60-ish year campaign.
