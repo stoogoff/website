@@ -11,8 +11,8 @@ publish_date: 2015-08-23T12:50
 layout: blog/article.hbs
 ---
 
-![Troll Lives!](/media/img/troll.png)
+![Troll Lives!]($media/img/troll.png)
 
 And a *very* rough idle animation:
 
-![Troll Moves!](/media/img/troll-idle.gif)
+![Troll Moves!]($media/img/troll-idle.gif)

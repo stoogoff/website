@@ -21,11 +21,11 @@ layoutClasses:
 
 Unfortunately the game petered out after around thirty years of in game time. It was long enough for all of the players to be playing their original character's children but still only scratched the surface of the entire 60-ish year campaign.
 
-![King Arthur's Coat of Arms](/media/img/blog/king-arthur-coat-of-arms.png)
+![King Arthur's Coat of Arms]($media/img/blog/king-arthur-coat-of-arms.png)
 
 I created a lot of maps and coats of arms to go with the campaign, which I'm making available for download. Hopefully they'll be useful to other GMs.
 
-- [Pendragon Maps and Coats of Arms (115.7MB)](/media/dl/Pendragon.zip)
+- [Pendragon Maps and Coats of Arms (115.7MB)]($media/dl/Pendragon.zip)
 - [View files on Google Drive](https://drive.google.com/drive/folders/1nxbNaBloZMiazg1970YH5vNkPmJKMpl5?fbclid=IwAR1r_V5-jjP4B19vVU7aO6xm3ZccZYG0ydViLUhM8M7cs5n1_NduWewjpuI)
 
 The maps are all of Britain and start from 488 through to 517. The coats of arms are a mix of characters from legends, the Great Pendragon Campaign (including some characters who aren't given devices in the GPC) and my own campaign.

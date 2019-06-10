@@ -11,4 +11,4 @@ publish_date: 2015-04-18T07:30
 layout: blog/article.hbs
 ---
 
-![Coffee](/media/img/fuel.jpg)
+![Coffee]($media/img/fuel.jpg)

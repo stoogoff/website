@@ -27,4 +27,4 @@ tags:
 layout: albums/view.hbs
 ---
 
-It's based on the novel I wrote of the same name for Nanowrimo 2012 (currently unavailable). An advanced, space-faring people collides with a primitive people. This album tells the story of that collision. 
+It's based on the novel I wrote of the same name for Nanowrimo 2012 (currently unavailable). An advanced, space-faring people collides with a primitive people. This album tells the story of that collision.

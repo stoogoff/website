@@ -12,7 +12,7 @@ publish_date: 2013-12-12T12:00
 layout: blog/article.hbs
 ---
 
-![Writing Stats November 2013](/media/img/stats-2013.jpg)
+![Writing Stats November 2013]($media/img/stats-2013.jpg)
 
 The big green bar is when I imported [Farmer, Sailor...][farmer] into [Storytella][storytella] and that sudden row of red lines and zeroes marks the end of [Nanowrimo][nano]. I really must pick up the pace!
 

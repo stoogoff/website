@@ -16,10 +16,10 @@ layout: blog/article.hbs
 3. The blocks merge together and change colour,
 4. Repeat until you have the final shape.
 
-![Stage One](/media/img/ld35-gameplay-1.png)
-![Stage Two](/media/img/ld35-gameplay-2.png)
-![Stage Three](/media/img/ld35-gameplay-3.png)
-![Stage Four](/media/img/ld35-gameplay-4.png)
+![Stage One]($media/img/ld35-gameplay-1.png)
+![Stage Two]($media/img/ld35-gameplay-2.png)
+![Stage Three]($media/img/ld35-gameplay-3.png)
+![Stage Four]($media/img/ld35-gameplay-4.png)
 
 There's a colour chain of e.g. red -> green -> blue, which informs how the blocks change colour.
 

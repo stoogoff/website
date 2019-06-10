@@ -17,8 +17,8 @@ There are twenty levels in total and you can play it here:
 
 [Mixle](http:///games.stoogoff.comld35/)
 
-![Home Screen](/media/img/ld35-home.png)
-![Level One](/media/img/ld35-level-one.png)
-![Level Three A](/media/img/ld35-level-three-a.png)
-![Level Three B](/media/img/ld35-level-three-b.png)
-![Level Three C](/media/img/ld35-level-three-c.png)
+![Home Screen]($media/img/ld35-home.png)
+![Level One]($media/img/ld35-level-one.png)
+![Level Three A]($media/img/ld35-level-three-a.png)
+![Level Three B]($media/img/ld35-level-three-b.png)
+![Level Three C]($media/img/ld35-level-three-c.png)

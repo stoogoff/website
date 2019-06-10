@@ -11,4 +11,4 @@ publish_date: 2014-04-27T21:00
 layout: blog/article.hbs
 ---
 
-![The fish](/media/img/fish-large.png)
+![The fish]($media/img/fish-large.png)

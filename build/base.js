@@ -145,9 +145,12 @@ Metalsmith(__dirname)
 	}, ".html"))
 	.use(each(file => {
 		if(file.summary) {
-			file.summary = marked(file.summary, MARKDOWN).replace("<p>", "").replace("</p>", "");
+			file.summary = absolutePath(marked(file.summary, MARKDOWN).replace("<p>", "").replace("</p>", ""));
 		}
 	}))
+	.use(each(file => {
+		file.contents = Buffer.from(absolutePath(file.contents.toString()), "utf8");
+	}, ".html"))
 	.use(layouts({
 		directory: "../tpl",
 		engineOptions: {
@@ -155,11 +158,12 @@ Metalsmith(__dirname)
 			helpers: helpers
 		}
 	}))
-	.use(each(file => {
-		file.contents = file.contents.toString().replace('href="$', `href="${BASE_URL}`);
-	}, ".html"))
-
 	// log
 	//.use(each((f, k) => console.log(k)))
 
 	.build(err => console.log(err || "\n\t...Fin...\n"));
+
+
+function absolutePath(contents) {
+	return contents.replace(/href="\$/g, `href="${BASE_URL}`).replace('src="$', `src="${BASE_URL}`);
+}

@@ -15,6 +15,6 @@ Tomorrow will be spent animating Troll and the Humans and working on some suitab
 
 Screen grab of the game so far:
 
-![Trollhammer](/media/img/ld33-screengrab-day1.png)
+![Trollhammer]($media/img/ld33-screengrab-day1.png)
 
 The big green square is Troll. The small white rectangles are humans.
