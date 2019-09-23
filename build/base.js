@@ -165,5 +165,5 @@ Metalsmith(__dirname)
 
 
 function absolutePath(contents) {
-	return contents.replace(/href="\$/g, `href="${BASE_URL}`).replace('src="$', `src="${BASE_URL}`);
+	return contents.replace(/href="\$/g, `href="${BASE_URL}`).replace(/src="\$/g, `src="${BASE_URL}`);
 }
