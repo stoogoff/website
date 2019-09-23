@@ -155,6 +155,14 @@ code
 	font-size: 0.9em
 	padding: 0 .1em
 
+pre
+	border: 1px solid $mid-light
+	background-color: $light-dark
+	padding: .1em
+
+	code
+		border: 0
+
 blockquote > p
 	font-style: italic
 	color: $dark-light
@@ -182,10 +190,10 @@ time
 section
 	overflow: hidden
 
-iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, form, #profile div, div.product, footer, section.thumbnails, section.products, body > article > aside
+iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, form, #profile div, div.product, footer, section.thumbnails, section.products, body > article > aside, pre
 	@include column
 
-section > p, article > p, h1, article > h2, article > h3, article > blockquote > p, div.product, div.media, footer, aside
+section > p, article > p, h1, article > h2, article > h3, article > blockquote > p, div.product, div.media, footer, aside, pre
 	padding-right: 1rem
 	padding-left: 1rem
 
