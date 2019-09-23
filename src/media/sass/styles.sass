@@ -60,7 +60,7 @@ $corners: .2em
 	text-shadow: 1px 1px 1px $colour
 
 @mixin column
-	max-width: 60rem
+	max-width: 46rem
 	display: block
 	margin-left: auto
 	margin-right: auto
@@ -190,10 +190,10 @@ time
 section
 	overflow: hidden
 
-iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, form, #profile div, div.product, footer, section.thumbnails, section.products, body > article > aside, pre
+iframe, body > article > p, body > article > ul, body > article > ol, body > article > h2, body > article > blockquote > p, body > article > figure, form, #profile div, div.product, footer, section.thumbnails, section.products, body > article > aside, pre
 	@include column
 
-section > p, article > p, h1, article > h2, article > h3, article > blockquote > p, div.product, div.media, footer, aside, pre
+section > p, article > p, h1, article > h2, article > h3, article > blockquote > p, article > figure, div.product, div.media, footer, aside, pre
 	padding-right: 1rem
 	padding-left: 1rem
 
@@ -511,6 +511,11 @@ nav
 		&.image-right img
 			float: right
 			margin: 0 0 1em 1em
+
+		figure img
+			float: none !important
+			margin: 0 !important
+			max-width: 100% !important
 
 
 	#profile img
