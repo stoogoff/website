@@ -26,7 +26,7 @@ if(args.length === 0) {
 
 const LIVE = args[0] === "live";
 const BASE_URL = LIVE ? "https://www.stoogoff.com/" : "http://localhost:8000/";
-const OUTPUT = LIVE ? "../live" : "../staging"
+const OUTPUT = LIVE ? "../live" : "../staging";
 
 
 // get the handlebars partials and register them
