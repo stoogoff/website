@@ -16,7 +16,7 @@
 	"license": "SEE LICENSE IN LICENSE.md",
 	"dependencies": {
 		"jstransformer-handlebars": "^1.1.0",
-		"marked": "^0.4.0",
+		"marked": "^1.1.1",
 		"metalsmith": "^2.3.0",
 		"metalsmith-drafts": "0.0.1",
 		"metalsmith-layouts": "^2.1.0",
