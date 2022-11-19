@@ -1,5 +1,5 @@
 
-export const SUMMARY_FIELDS = ['title', 'publish_date', 'image', 'summary']
+export const SUMMARY_FIELDS = ['title', 'publish_date', 'image', 'summary', 'category']
 
 export const CONTENT_ALBUMS = '/albums'
 export const CONTENT_ARTICLES = '/blog/articles'

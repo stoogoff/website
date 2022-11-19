@@ -3,11 +3,12 @@
 		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
 			<h1>Tagged: {{ tag }}</h1>
-			<p>Everything&mdash;article, book, album and game&mdash;tagged with <strong>{{ tag }}</strong>.</p>
+			<p>Everything — article, book, album and game — tagged with <strong>{{ tag }}</strong>.</p>
 
 			<ul>
-				<li v-for="(item, idx) in items" :key="`item_${idx}`">
-					<nuxt-link :to="item.path">{{ item.title }}</nuxt-link>
+				<li v-for="(item, idx) in items" :key="`item_${idx}`" class="flex mb-2 ">
+					<icon-view v-if="item.type" :icon="item.type" />
+					<nuxt-link :to="item.path" class="link ml-2">{{ item.title }}</nuxt-link>
 				</li>
 			</ul>
 		</section>	
@@ -32,11 +33,11 @@ export default {
 		this.tag = unslug(params.tag)
 
 		try {
-			let keyTypeMap = {
-				[CONTENT_ALBUMS]: 'Album',
-				[CONTENT_ARTICLES]: 'Article',
-				[CONTENT_BOOKS]: 'Book',
-				[CONTENT_GAMES]: 'Game',
+			const keyTypeMap = {
+				[CONTENT_ALBUMS]: 'music',
+				[CONTENT_ARTICLES]: 'document',
+				[CONTENT_BOOKS]: 'book',
+				[CONTENT_GAMES]: 'controller',
 			}
 
 			const items = await Promise.all(Object.keys(keyTypeMap).map(key => 
@@ -49,16 +50,11 @@ export default {
 				.flat()
 				.filter(({ tags }) => (tags || []).includes(this.tag))
 				.map(item => {
-					let title = item.title
 					const key = item.path.substring(0, item.path.lastIndexOf('/'))
-
-					if(key in keyTypeMap) {
-						title = `${keyTypeMap[key]}: ${title}`
-					}
 
 					return {
 						...item,
-						title
+						type: keyTypeMap[key] || false
 					}
 				}), ({ title }) => title)
 		}

@@ -11,13 +11,15 @@
 				:article="article"
 			/>
 
-			<div>
-				<nuxt-link to="/blog/archive/">More &raquo;</nuxt-link>
+			<div class="flex justify-end">
+				<nuxt-link to="/blog/archive/" class="inline-block border-2 border-blue-800 px-4 py-2 rounded uppercase text-sm font-semibold text-blue-800 hover:border-white hover:bg-blue-800 hover:text-white transition-color duration-500">More &raquo;</nuxt-link>
 			</div>
 		</section>
 	</div>
 </template>
 <script>
+import { SUMMARY_FIELDS } from '~/utils/config'
+
 export default {
 	name: 'BlogIndexPage',
 
@@ -26,7 +28,7 @@ export default {
 			this.blog = await this.$content('blog/index').fetch()
 			this.articles = await this
 				.$content('blog/articles')
-				.only(['title', 'publish_date', 'image', 'summary'])
+				.only(SUMMARY_FIELDS)
 				.sortBy('publish_date', 'desc')
 				.limit(10)
 				.fetch()

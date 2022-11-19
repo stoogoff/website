@@ -13,4 +13,4 @@ export const slugify = content =>
 		.replace(/\s{1,}/g, "-")
 		.toLowerCase()
 
-export const unslug = content => (content || '').replace('-', ' ')
+export const unslug = content => (content || '').replace(/-/g, ' ')

@@ -3,7 +3,7 @@
 		<loading-spinner v-if="blog == null" />
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
-			<nuxt-content :document="blog" />
+			<nuxt-content class="text-xl" :document="blog" />
 			<ul>
 				<li
 					v-for="(date, idx) in dates"

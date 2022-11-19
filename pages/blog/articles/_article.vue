@@ -4,20 +4,11 @@
 		<article v-else>
 			<tag-list :tags="article.tags" />
 			<header>
-				<div>
-					<h1>{{ article.title }}</h1>
-				</div>
+				<h1>{{ article.title }}</h1>
 			</header>
+			<article-publish-date :article="article" />
 
 			<prose-block :doc="article" />
-
-			<aside>
-				<p>Posted in {{ article.category }} on
-					<nuxt-link :to="dateLink">
-						<time :datetime="article.publish_date">{{ article.publish_date | date }}</time>
-					</nuxt-link>
-				</p>
-			</aside>
 		</article>
 	</div>
 </template>
@@ -43,20 +34,6 @@ export default {
 		return {
 			article: null
 		}
-	},
-
-	computed: {
-		summary() {
-			if(!this.article) return ''
-
-			return markdown(this.article.summary)
-		},
-
-		dateLink() {
-			if(!this.article) return '/'
-
-			return `/blog/archive/${this.article.publish_date.substring(0, 7)}`
-		},
 	},
 }
 </script>

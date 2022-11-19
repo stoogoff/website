@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<nav-section />
-		<main class="max-w-2xl mx-auto mt-20 mb-10">
+		<main class="max-w-2xl mx-auto mt-32 mb-10 px-4 md:px-0">
 			<Nuxt />
 		</main>
 		<footer-section />

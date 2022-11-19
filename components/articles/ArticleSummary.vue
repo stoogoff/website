@@ -1,18 +1,9 @@
 <template>
-	<article>
+	<article class="overflow-hidden mb-6 pb-4 border-b border-gray-200">
 		<h2><nuxt-link :to="article.path">{{ article.title }}</nuxt-link></h2>
 
-		<aside>
-			<p>Posted in {{ article.category }} on
-				<time :datetime="article.publish_date">{{ article.publish_date | date }}</time>.
-			</p>
-		</aside>
-
-		<picture v-if="article.image">
-			<nuxt-link :to="article.path">
-				<img :src="article.image.source" :alt="article.image.text" />
-			</nuxt-link>
-		</picture>
+		<article-publish-date :article="article" />
+		<article-image v-if="article.image" :image="article.image" />	
 		<render-markdown :content="article.summary" />
 	</article>
 </template>

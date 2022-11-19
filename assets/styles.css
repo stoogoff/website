@@ -12,19 +12,40 @@ h1 {
 	@apply leading-tight sm:leading-tight lg:leading-tight xl:leading-tight font-bold mb-5 text-4xl sm:text-5xl lg:text-4xl xl:text-5xl;
 }
 h2 {
-	@apply text-3xl mb-2;	
+	@apply text-3xl font-semibold tracking-wide my-4 text-gray-900;
 }
 h2 a {
-	@apply text-gray-800 no-underline;	
+	@apply text-gray-900 no-underline;
 }
 
 p {
 	@apply mb-4 leading-normal;
 }
 
-.prose a {
-	@apply text-blue-700 underline;
+.prose a, a.link {
+	@apply text-blue-700 no-underline transition-colors duration-500 hover:text-blue-500 hover:underline;
 }
-.prose a:hover {
-	@apply text-blue-500 no-underline;
+.prose ul, ul.bullet {
+	@apply mb-4;
+}
+.prose ul ul {
+	@apply mb-1;
+}
+.prose ul li, ul.bullet li {
+	@apply ml-4;
+}
+.prose ul li:before, ul.bullet li:before {
+	content: "· ";
+}
+.prose img {
+	@apply mt-1 mb-2 w-1/2 border-2 border-white hover:border-blue-500;
+}
+.prose img:nth-of-type(odd) {
+	@apply float-left mr-4;
+}
+.prose img:nth-of-type(even) {
+	@apply float-right ml-4;
+}
+.prose h2 {
+	@apply mt-8;
 }

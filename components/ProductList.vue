@@ -4,10 +4,14 @@
 		<section v-else>
 			<h1>{{ article.title }}</h1>
 
-			<nuxt-content class="prose" :document="article" />
+			<nuxt-content class="text-xl" :document="article" />
 
 			<aside class="grid grid-cols-3 gap-4">
-				<picture v-for="(product, idx) in products" :key="`product_${idx}`">
+				<picture
+					v-for="(product, idx) in products"
+					:key="`product_${idx}`"
+					class="p-1 border-2 border-gray-200 hover:border-blue-400"
+				>
 					<nuxt-link :to="product.path">
 						<img :src="product.image.source" :alt="product.image.text" />
 					</nuxt-link>

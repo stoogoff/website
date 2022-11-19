@@ -18,9 +18,7 @@ image:
 
 Unfortunately the game petered out after around thirty years of in game time. It was long enough for all of the players to be playing their original character's children but still only scratched the surface of the entire 60-ish year campaign.
 
-![King Arthur's Coat of Arms](/img/blog/king-arthur-coat-of-arms.png)
-
-I created a lot of maps and coats of arms to go with the campaign, which I'm making available for download. Hopefully they'll be useful to other GMs.
+![King Arthur's Coat of Arms](/img/blog/king-arthur-coat-of-arms.png) I created a lot of maps and coats of arms to go with the campaign, which I'm making available for download. Hopefully they'll be useful to other GMs.
 
 - [Pendragon Maps and Coats of Arms (125.1MB)](/dl/Pendragon.zip)
 - [View files on Google Drive](https://drive.google.com/drive/folders/1nxbNaBloZMiazg1970YH5vNkPmJKMpl5?fbclid=IwAR1r_V5-jjP4B19vVU7aO6xm3ZccZYG0ydViLUhM8M7cs5n1_NduWewjpuI)

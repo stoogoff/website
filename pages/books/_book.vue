@@ -2,6 +2,7 @@
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
 		<article v-else>
+			<tag-list :tags="book.tags" />
 			<header>
 				<h1>{{ book.title }}</h1>
 				<p v-if="book.series" class="italic">
@@ -10,17 +11,18 @@
 			</header>
 			<div>
 				<publish-date :item="book" />
-				<article-image v-if="book.image" :image="book.image" />
-				<prose-block :doc="book" />
-				<aside v-if="book.urls">
-					<p>More information, including purchasing options, is available at the following sites:</p>
-					<ul>
+				<div class="overflow-hidden">
+					<article-image v-if="book.image" :image="book.image" />
+					<prose-block :doc="book" />
+				</div>
+				<aside v-if="book.urls" class="border-t border-gray-200 mt-6 pt-4 px-2">
+					<p class="text-xl">More information, including purchasing options, is available at the following sites:</p>
+					<ul class="bullet">
 						<li v-for="(value, key) in book.urls">
-							<a :href="value">{{ key }}</a>
+							<a :href="value" class="link">{{ key }}</a>
 						</li>
 					</ul>
 				</aside>
-				<tag-list :tags="book.tags" />
 			</div>
 		</article>
 	</div>
