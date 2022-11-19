@@ -1,5 +1,5 @@
 <template>
-	<picture class="w-1/2 float-left mr-4 mb-2 p-1 border-2 border-gray-200">
+	<picture class="inline-block md:w-1/2 md:float-left md:mr-4 mb-2 p-1 border-2 border-gray-200">
 		<img :src="image.source" :alt="image.text" />
 	</picture>
 </template>
