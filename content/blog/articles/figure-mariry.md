@@ -1,6 +1,6 @@
 ---
 category: Music
-title: Figure: Mariry
+title: "Figure: Mariry"
 summary: |
   At this rate my [Nasoalmo](http://www.nasoalmo.org/) album for this year is going to be made entirely of snippets from Figure.
 tags: 

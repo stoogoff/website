@@ -8,9 +8,7 @@
 			<div>
 				<publish-date :item="album" />
 				<article-image v-if="album.image" :image="album.image" />
-				<div v-html="summary" class="text-xl" />
-				<nuxt-content :document="album" />
-
+				<prose-block :doc="album" />
 				<h3>Track Listing</h3>
 				<ul>
 					<li
@@ -33,7 +31,6 @@
 	</div>
 </template>
 <script>
-import { markdown } from '~/utils/string'
 import { CONTENT_ALBUMS } from '~/utils/config'
 
 export default {
@@ -54,14 +51,6 @@ export default {
 		return {
 			album: null
 		}
-	},
-
-	computed: {
-		summary() {
-			if(!this.album) return ''
-
-			return markdown(this.album.summary)
-		},
 	},
 }
 </script>

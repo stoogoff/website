@@ -10,6 +10,6 @@ tags:
 publish_date: 2014-04-26T10:50
 ---
 
-![Ludum Dare 29 Early Graphics]($media/img/ld29-early-graphics.png)
+![Ludum Dare 29 Early Graphics](/img/ld29-early-graphics.png)
 
 The mole is quite cute but the player is shocking!

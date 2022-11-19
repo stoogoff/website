@@ -2,16 +2,15 @@
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
 		<article v-else>
+			<tag-list :tags="article.tags" />
 			<header>
 				<div>
 					<h1>{{ article.title }}</h1>
 				</div>
 			</header>
 
-			<div v-html="summary" class="text-xl" />
-			<nuxt-content :document="article" />
+			<prose-block :doc="article" />
 
-			<tag-list :tags="article.tags" />
 			<aside>
 				<p>Posted in {{ article.category }} on
 					<nuxt-link :to="dateLink">

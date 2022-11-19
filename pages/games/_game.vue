@@ -8,7 +8,7 @@
 			<div>
 				<publish-date :item="game" />
 				<article-image v-if="game.image" :image="game.image" />
-				<nuxt-content :document="game" />
+				<nuxt-content class="prose" :document="game" />
 				<aside v-if="game.urls">
 					<p v-if="game.urls.Play">
 						Click here to <a :href="game.urls.Play">play {{ game.title }}</a>.

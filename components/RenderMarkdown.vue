@@ -1,5 +1,5 @@
 <template>
-	<div v-html="parsedContent" />
+	<div class="prose" v-html="parsedContent" />
 </template>
 <script>
 import Vue from 'vue'

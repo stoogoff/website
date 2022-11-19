@@ -11,8 +11,7 @@
 			<div>
 				<publish-date :item="book" />
 				<article-image v-if="book.image" :image="book.image" />
-				<div v-html="summary" class="text-xl" />
-				<nuxt-content :document="book" />
+				<prose-block :doc="book" />
 				<aside v-if="book.urls">
 					<p>More information, including purchasing options, is available at the following sites:</p>
 					<ul>

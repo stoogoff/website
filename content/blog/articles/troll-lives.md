@@ -10,8 +10,8 @@ tags:
 publish_date: 2015-08-23T12:50
 ---
 
-![Troll Lives!]($media/img/troll.png)
+![Troll Lives!](/img/troll.png)
 
 And a *very* rough idle animation:
 
-![Troll Moves!]($media/img/troll-idle.gif)
+![Troll Moves!](/img/troll-idle.gif)

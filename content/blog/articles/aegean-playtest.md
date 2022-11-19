@@ -18,7 +18,7 @@ image:
 
 One of the key features I want for Aegean to distinguish it from other RPGs, is the city management rules. There should be a home base which the characters are invested in and have to invest in as players---it should grow and develop as the PCs grow and develop.
 
-![Aegean Playtest Table]($media/img/blog/aegean-playtest.jpg)
+![Aegean Playtest Table](/img/blog/aegean-playtest.jpg)
 
 I had two playtesters with me for around two hours. We went through city creation and several turns of the city management rules. This section of the game is much closer to a board game in approach than a traditional RPG and focusses heavily on resource management and usage.
 

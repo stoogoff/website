@@ -12,6 +12,6 @@ tags:
 publish_date: 2015-08-21T09:30
 ---
 
-![Ludum Dare 33 Vote]($media/img/ludum-dare-33.png)
+![Ludum Dare 33 Vote](/img/ludum-dare-33.png)
     
 Nothing in there particularly inspires me but I guess I'll see what comes to mind at 2am.

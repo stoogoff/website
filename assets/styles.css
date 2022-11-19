@@ -4,18 +4,12 @@
 @tailwind utilities;
 
 body {
-	@apply text-gray-800;
-}
-
-a {
-	@apply text-blue-700 underline;
-}
-a:hover {
-	@apply text-blue-500 no-underline;
+	@apply bg-white leading-normal text-gray-700;
+	font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
-	@apply text-4xl mb-2;
+	@apply leading-tight sm:leading-tight lg:leading-tight xl:leading-tight font-bold mb-5 text-4xl sm:text-5xl lg:text-4xl xl:text-5xl;
 }
 h2 {
 	@apply text-3xl mb-2;	
@@ -25,8 +19,12 @@ h2 a {
 }
 
 p {
-	@apply mb-4;
+	@apply mb-4 leading-normal;
 }
-/*p:first-of-type {
-	@apply text-xl;
-}*/
+
+.prose a {
+	@apply text-blue-700 underline;
+}
+.prose a:hover {
+	@apply text-blue-500 no-underline;
+}

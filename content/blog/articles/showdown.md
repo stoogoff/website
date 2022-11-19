@@ -3,7 +3,6 @@ category: Writing
 title: Showdown
 summary: |
   Another snippet of writing before I start editing the novel.
-category: Writing
 tags: 
   - short stories
   - wild west

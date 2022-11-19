@@ -1,11 +1,15 @@
 <template>
-	<aside>
-		<ul>
-			<li v-for="(tag, idx) in tags" :key="`tag_${idx}`">
+	<div class="mb-5">
+		<ul class="flex items-center flex-wrap -m-2">
+			<li
+				v-for="(tag, idx) in tags"
+				:key="`tag_${idx}`"
+				class="inline-block mr-2"
+			>
 				<nuxt-link :to="url(tag)">{{ tag }}</nuxt-link>
 			</li>
 		</ul>
-	</aside>
+	</div>
 </template>
 <script>
 import Vue from 'vue'
@@ -26,3 +30,10 @@ export default Vue.component('TagList', {
 	},
 })
 </script>
+<style scoped>
+
+a {
+	@apply px-3 py-1 rounded-lg bg-gray-100 uppercase text-xs tracking-widest font-semibold hover:bg-blue-700 hover:text-white m-2 no-underline;
+}
+
+</style>

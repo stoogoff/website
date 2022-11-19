@@ -16,4 +16,4 @@ I've got about four hours to get ready --- it starts at <time datetime="2016-04-
 
 I've made my vote for the final round and as usual I'm not overly inspired by the options. I'll see what gets picked as some ideas will likely flow from that. Here's my vote:
 
-![Ludum Dare 35 Vote]($media/img/ludum-dare-35-voting.jpg)
+![Ludum Dare 35 Vote](/img/ludum-dare-35-voting.jpg)

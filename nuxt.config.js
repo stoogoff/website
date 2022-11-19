@@ -37,6 +37,7 @@ export default {
 	buildModules: [
 		// https://go.nuxtjs.dev/tailwindcss
 		'@nuxtjs/tailwindcss',
+		'@nuxtjs/google-fonts'
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
@@ -51,6 +52,18 @@ export default {
 	axios: {
 		// Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
 		baseURL: '/',
+	},
+
+	googleFonts: {
+		families: {
+			Montserrat: {
+				wght: [100, 400, 600, 700],
+				ital: [400]
+			},
+		},
+		prefetch: true,
+		preconnect: true,
+		useStylesheet: true,
 	},
 
 	// Content module configuration: https://go.nuxtjs.dev/config-content

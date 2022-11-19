@@ -4,7 +4,7 @@
 		<section v-else>
 			<h1>{{ article.title }}</h1>
 
-			<nuxt-content :document="article" />
+			<nuxt-content class="prose" :document="article" />
 
 			<aside class="grid grid-cols-3 gap-4">
 				<picture v-for="(product, idx) in products" :key="`product_${idx}`">

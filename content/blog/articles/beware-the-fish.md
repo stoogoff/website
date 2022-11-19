@@ -10,4 +10,4 @@ tags:
 publish_date: 2014-04-27T21:00
 ---
 
-![The fish]($media/img/fish-large.png)
+![The fish](/img/fish-large.png)

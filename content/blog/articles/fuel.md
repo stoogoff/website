@@ -10,4 +10,4 @@ tags:
 publish_date: 2015-04-18T07:30
 ---
 
-![Coffee]($media/img/fuel.jpg)
+![Coffee](/img/fuel.jpg)

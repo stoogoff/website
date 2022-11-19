@@ -1,6 +1,6 @@
 ---
 category: Music
-title: Figure: Lyjufu
+title: "Figure: Lyjufu"
 summary: |
   Another quick composition using [Figure](http://www.propellerheads.se/products/figure/).
 tags: 

@@ -10,13 +10,13 @@ tags:
 publish_date: 2019-09-23T12:00
 ---
 
-![Aegean Printed Books]($media/img/blog/aegean-books.jpg) I had a number of goals for the book. I wanted to have both a PDF and a short (possibly one-off) print run and with printing costs I knew it was going to be black and white interior with a colour cover and around 100 pages in length. I was originally thinking around 60 pages, but [Inky Little Fingers](https://www.inkylittlefingers.co.uk/) are amazing and increasing the page count to 100 B&W didn't have that big an impact on the price.
+![Aegean Printed Books](/img/blog/aegean-books.jpg) I had a number of goals for the book. I wanted to have both a PDF and a short (possibly one-off) print run and with printing costs I knew it was going to be black and white interior with a colour cover and around 100 pages in length. I was originally thinking around 60 pages, but [Inky Little Fingers](https://www.inkylittlefingers.co.uk/) are amazing and increasing the page count to 100 B&W didn't have that big an impact on the price.
 
 ## Design
 
 Despite planning a print-run, my main focus was for a digital product, so most of the design decisions revolved around that. My first decision was to have a single column of text. A double column of text is great for a physical book but on a screen I find I can't fit the whole height of the page at a comfortable reading size. Which means I'm constantly scrolling down a little to read the end of a column then up again to read the top of the next column. There are no shortcut keys available for that and it hinders my attention.
 
-<figure>![Aegean PDF Pages]($media/img/blog/aegean-pdf-pages.png)</figure>
+<figure>![Aegean PDF Pages](/img/blog/aegean-pdf-pages.png)</figure>
 
 That first choice informed a lot of the remaining decisions and, eventually, had a big impact on the writing. It meant the book had to be small scale as a line length beyond around 50em (60--70-ish characters) is hard to follow. I'm also so over massive weighty RPG tomes (but that's another article) and a huge fan of [Blades in the Dark](https://bladesinthedark.com/) and its ilk. I love the smaller scale books that [Evil Hat](https://www.evilhat.com/home/) produces and I wanted something of a similar scale. In Europe, that would be A5 rather than the 6" by 9" that Evil Hat uses.
 
@@ -24,7 +24,7 @@ The digital version had to be easy to navigate. Chapter headings must be bookmar
 
 Following on from this, if the text mentions a page number for more information, *e.g. Resolve (pg. 21)*, that text should look different and link to the correct section in the digital version. It doesn't need to look different in the print copy, just having the page number in place is enough. The page number in the corner of the page must match the page number the PDF viewer is on. If I use a shortcut key to go to page 15 of the PDF that should be page 15 of the book which (obviously) should be the same as page 15 in the print version.
 
-![Aegean Page Numbering]($media/img/blog/aegean-wounds.jpg) There are some other small stylistic differences between the print and digital version of the book. The print version has page numbers in the bottom outer corners of the book spread and has the name of the game in the top left and the chapter title in the top right. So the facing pages have a different header and footer, just like in 90% of every book ever printed. On a screen there's no real concept of a page spread, just a continuous page scroll (though your PDF viewing software can probably display as a spread if you want). In the digital version the page numbers always appear in the bottom right corner and the top right corner always has the chapter name.
+![Aegean Page Numbering](/img/blog/aegean-wounds.jpg) There are some other small stylistic differences between the print and digital version of the book. The print version has page numbers in the bottom outer corners of the book spread and has the name of the game in the top left and the chapter title in the top right. So the facing pages have a different header and footer, just like in 90% of every book ever printed. On a screen there's no real concept of a page spread, just a continuous page scroll (though your PDF viewing software can probably display as a spread if you want). In the digital version the page numbers always appear in the bottom right corner and the top right corner always has the chapter name.
 
 ## Technology
 
