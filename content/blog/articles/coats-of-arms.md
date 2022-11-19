@@ -2,7 +2,7 @@
 category: Gaming
 title: Pendragon Coats of Arms
 summary: |
-  A few years ago I started a long running campaign of the [Pendragon RPG](https://www.chaosium.com/pendragon/). It's a great game, following the life and death of King Arthur, Queen Guenevere, and the Knights of the Round Table. It focuses heavily on the medieval romance aspect of the legend---[Le Morte d'Arthur](https://en.wikipedia.org/wiki/Le_Morte_d%27Arthur) and [Chretien](https://en.wikipedia.org/wiki/Chr%C3%A9tien_de_Troyes)---and follows your character's family through the generations.
+  A few years ago I started a long running campaign of the [Pendragon RPG](https://www.chaosium.com/pendragon/). It's a great game, following the life and death of King Arthur, Queen Guenevere, and the Knights of the Round Table. It focuses heavily on the medieval romance aspect of the legend — [Le Morte d'Arthur](https://en.wikipedia.org/wiki/Le_Morte_d%27Arthur) and [Chretien](https://en.wikipedia.org/wiki/Chr%C3%A9tien_de_Troyes) — and follows your character's family through the generations.
 tags: 
   - role-playing
   - pendragon

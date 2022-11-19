@@ -17,7 +17,7 @@ image:
   height: 2304
 ---
 
-Barbara walked into the darkened room as quiet as she could, the only light available was the warm glow of the sixteen candles on the cake she was carrying. She tiptoed into the room as four of the five children --- teenagers, really --- sitting in a semi-circle watched her. The candlelight flickered as she moved, casting odd shadows over the faces of the children --- lengthened and strengthened their features. To the casual observer it would appear is if they were wearing masks, or were deformed in some fashion --- their thick brows and broad faces didn't seem quite human in the flickering, orange light.
+Barbara walked into the darkened room as quiet as she could, the only light available was the warm glow of the sixteen candles on the cake she was carrying. She tiptoed into the room as four of the five children — teenagers, really — sitting in a semi-circle watched her. The candlelight flickered as she moved, casting odd shadows over the faces of the children — lengthened and strengthened their features. To the casual observer it would appear is if they were wearing masks, or were deformed in some fashion — their thick brows and broad faces didn't seem quite human in the flickering, orange light.
 
 Except for Alice, sitting in the centre of the line of children with her delicate hands covering her eyes. Compared to the coarse and stocky features of the other children she was *too* thin, *too* delicate. Just a little too fragile.
 
@@ -35,13 +35,13 @@ Alice took a deep breath, her mouth opening wide in a pantomime of the task ahea
 
 "Get the lights, please, Ben," said Barbara as she placed the cake on an empty stool.
 
-Ben got up from his stool and walked over to the wall. He found it with ease, despite the all encompassing darkness. He knew every inch of the room with his eyes closed --- most of the building, in fact --- and had no problems finding his way through the chairs, desks, bean bags and other detritus of the room. He flicked the light switch with one thick-nailed finger, flooding the room with a harsh white light.
+Ben got up from his stool and walked over to the wall. He found it with ease, despite the all encompassing darkness. He knew every inch of the room with his eyes closed — most of the building, in fact — and had no problems finding his way through the chairs, desks, bean bags and other detritus of the room. He flicked the light switch with one thick-nailed finger, flooding the room with a harsh white light.
 
 "Happy birthday, darling," said Barbara as she picked up the long knife and started to cut the cake into slices.
 
 The children watched the cake cutting with glee, their broad mouths smiling, eager; thick brows creased; coarse, dark hair falling over their faces. Except for Alice. Her hair was fine, straight and the whitest of blondes; her smile the most delicate of things. Even though they were dressed the same, in white plain t-shirts and blue jeans, even though Doctor Ward treated them the same, insisted they were siblings, Alice knew she was different.
 
-Later that evening, after the children had finished eating and were left to their own devices, Alice walked through the corridors of the institution --- her home --- to Doctor Ward's office. The long corridors, all painted a stark white, with light grey floor tiles and lit with harsh, electronic light echoed at her step but were otherwise silent. When she reached Barbara's office she took paused to take a deep breath. She read the inscription on the door "Doctor Barbara Ward, Chief of Staff" before knocking quickly, twice. The sound of the rap of her knuckles surprised her, it was far louder than she had expected in the silence of the corridor.
+Later that evening, after the children had finished eating and were left to their own devices, Alice walked through the corridors of the institution — her home — to Doctor Ward's office. The long corridors, all painted a stark white, with light grey floor tiles and lit with harsh, electronic light echoed at her step but were otherwise silent. When she reached Barbara's office she took paused to take a deep breath. She read the inscription on the door "Doctor Barbara Ward, Chief of Staff" before knocking quickly, twice. The sound of the rap of her knuckles surprised her, it was far louder than she had expected in the silence of the corridor.
 
 "Come in," said Barbara, her voice muffled by the door.
 
@@ -57,7 +57,7 @@ Alice sat quietly, staring at her hands, which rested in her lap, tightly claspe
 
 "Ben and Carah and the others. I'm not like them, am I?"
 
-Barbara took her glasses off and placed them on the desk. She brushed her mousey brown hair --- flecked with grey at the temples --- behind her eyes and sighed.
+Barbara took her glasses off and placed them on the desk. She brushed her mousey brown hair — flecked with grey at the temples — behind her eyes and sighed.
 
 "No, you're not," she said, her voice almost a whisper.
 
@@ -105,4 +105,4 @@ For an instant Barbara thought she looked like a dear in the headlights. She was
 
 "Yes," whispered Alice as she opened the door.
 
-Alice pulled the door shut behind her and ran down the corridor as fast as she could. She didn't stop until she got to her room --- her new room, on her own, away from the dormitory she had shared with the others. She slammed the door behind her and collapsed to the floor, her back resting against the door. With the manilla folder still clutched to her chest, she began to sob.
+Alice pulled the door shut behind her and ran down the corridor as fast as she could. She didn't stop until she got to her room — her new room, on her own, away from the dormitory she had shared with the others. She slammed the door behind her and collapsed to the floor, her back resting against the door. With the manilla folder still clutched to her chest, she began to sob.

@@ -8,7 +8,6 @@ tags:
   - stats
   - 2014-01
 publish_date: 2014-01-31T12:00
-
 ---
 
 ![Writing Stats January 2014](/img/stats-2014-01.jpg)

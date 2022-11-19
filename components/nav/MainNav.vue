@@ -61,10 +61,10 @@ export default Vue.component('MainNav', {
 					href: '/blog',
 					menuItems: [
 						{ title: 'Archive', href: '/blog/archive' },
-						{ title: 'General', href: '/blog/archive' },
-						{ title: 'Gaming', href: '/blog/archive' },
-						{ title: 'Music', href: '/blog/archive' },
-						{ title: 'Writing', href: '/blog/archive' },
+						{ title: 'General', href: '/blog/category/general' },
+						{ title: 'Gaming', href: '/blog/category/gaming' },
+						{ title: 'Music', href: '/blog/category/music' },
+						{ title: 'Writing', href: '/blog/category/writing' },
 					],
 				},
 				{

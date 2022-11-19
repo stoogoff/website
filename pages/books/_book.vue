@@ -5,7 +5,7 @@
 			<tag-list :tags="book.tags" />
 			<header>
 				<h1>{{ book.title }}</h1>
-				<p v-if="book.series" class="italic">
+				<p v-if="book.series" class="uppercase text-sm">
 					Part {{ book.part }} of the <strong>{{ book.series }}</strong> series.
 				</p>
 			</header>

@@ -8,7 +8,7 @@
 			</header>
 			<article-publish-date :article="article" />
 
-			<prose-block :doc="article" />
+			<prose-block class="overflow-hidden" :doc="article" />
 		</article>
 	</div>
 </template>

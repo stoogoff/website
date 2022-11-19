@@ -2,7 +2,7 @@
 category: Writing
 title: The Knight of the White Fountain
 summary: |
-  The Knight of the White Fountain was originally written as a final short story for a writing course I took around 2008. This piece is about sacrifice and using the tools you're given --- no matter what they are.
+  The Knight of the White Fountain was originally written as a final short story for a writing course I took around 2008. This piece is about sacrifice and using the tools you're given — no matter what they are.
 tags:
   - black knight
   - short stories
@@ -17,11 +17,11 @@ image:
 
 The Knight of the White Fountain rode at the head of his personal guard, a company of the Infinite Legion following. They rode in silence for the most part. The clip-clop of their horses' hooves on the path, the song of birds in the trees, the occasional barked command from the serjeant-at-arms were the only noises to accompany them. Normally the knight bristled at his guards' silence, their indifference to him, but today he welcomed it. Today they rode to join the First Imperial Army where he would take charge of the third battalion. He dwelt on this, amongst other things, as they rode through the forest to the camp on the hills above.
 
-When the reinforcements rode into the camp there was uproar. The men, women and children of the camp --- soldiers, servants, wives --- all of the camp, cheered their arrival. The standards of the different companies were unfurled proudly; the musicians of the camp --- drummers, pipers, trumpeters --- began to play in their honour. It was a cacophony, but no-one seemed to care.
+When the reinforcements rode into the camp there was uproar. The men, women and children of the camp — soldiers, servants, wives — all of the camp, cheered their arrival. The standards of the different companies were unfurled proudly; the musicians of the camp — drummers, pipers, trumpeters — began to play in their honour. It was a cacophony, but no-one seemed to care.
 
 It was an unusual sight.
 
-No-one ever, ever, cheered for the Infinite Legion. The atrocities they performed in the name of the emperor were legend --- the stuff they tell grown men to put the fear of God into them. But at their head rode a knight out of the other kind of stories.
+No-one ever, ever, cheered for the Infinite Legion. The atrocities they performed in the name of the emperor were legend — the stuff they tell grown men to put the fear of God into them. But at their head rode a knight out of the other kind of stories.
 
 He sat proud, resplendent in silver armour that gleamed in the afternoon sunlight. Siegfried swore the sun rose twice that day and the rumour spread quickly. He rode a silver dapple destrier, some eighteen hands, which forced its own path through the throng. A blue surcoat covered his armour with a white fountain emblazoned upon it. Nestor said he counted the Starlight Prince and the Swan Knight amongst his ancestors and that rumour spread like wildfire. He dismounted before the Council Pavilion, removed his helm and presented himself to the Lord High Constable. His shock of golden hair shone like his armour, he stood half a foot taller than the Constable and saluted. Carlo declared him the hero Errolan returned and that rumour followed the others. After presenting himself he lead his destrier through the crowds to the pavilion set aside for him. That's when Geric spoke up.
 

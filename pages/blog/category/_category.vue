@@ -4,13 +4,14 @@
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
 			<nuxt-content class="prose text-xl" :document="blog" />
+			<icon-text icon="bookmark">
+				{{ articles.length }} Articles
+			</icon-text>
 			<article-summary
 				v-for="(article, idx) in articles"
 				:key="`article_${idx}`"
 				:article="article"
 			/>
-
-			<more-button url="/blog/archive" />
 		</section>
 	</div>
 </template>
@@ -18,17 +19,22 @@
 import { SUMMARY_FIELDS, CONTENT_ARTICLES } from '~/utils/config'
 
 export default {
-	name: 'BlogIndexPage',
+	name: 'CategoryPage',
 
 	async fetch() {
+		const { params } = this.$nuxt.context
+
 		try {
-			this.blog = await this.$content('blog/index').fetch()
-			this.articles = await this
+			this.blog = await this.$content('blog/category', params.category).fetch()
+			
+			const articles = await this
 				.$content(CONTENT_ARTICLES)
 				.only(SUMMARY_FIELDS)
 				.sortBy('publish_date', 'desc')
-				.limit(10)
 				.fetch()
+
+			this.articles = articles
+				.filter(({ category }) => (category || '').toLowerCase() === params.category)
 		}
 		catch(ex) {
 			console.error(ex)

@@ -1,13 +1,10 @@
 <template>
-	<aside class="uppercase text-xs flex mb-8">
-		<icon-view icon="calendar" />
-		<p class="mb-0 mt-1 ml-2">
-			Posted in <strong class="font-semibold">{{ article.category }}</strong> on
-			<nuxt-link :to="dateLink">
-				<time :datetime="article.publish_date">{{ article.publish_date | date }}</time>
-			</nuxt-link>
-		</p>
-	</aside>
+	<icon-text icon="calendar">
+		Posted in <strong class="font-semibold">{{ article.category }}</strong> on
+		<nuxt-link :to="dateLink">
+			<time :datetime="article.publish_date">{{ article.publish_date | date }}</time>
+		</nuxt-link>
+	</icon-text>
 </template>
 <script>
 import Vue from 'vue'

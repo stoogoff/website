@@ -16,7 +16,7 @@ image:
   height: 2263
 ---
 
-One of the key features I want for Aegean to distinguish it from other RPGs, is the city management rules. There should be a home base which the characters are invested in and have to invest in as players---it should grow and develop as the PCs grow and develop.
+One of the key features I want for Aegean to distinguish it from other RPGs, is the city management rules. There should be a home base which the characters are invested in and have to invest in as players — it should grow and develop as the PCs grow and develop.
 
 ![Aegean Playtest Table](/img/blog/aegean-playtest.jpg)
 

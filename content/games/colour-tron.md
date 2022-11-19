@@ -17,4 +17,4 @@ tags:
 
 **ColourTron** was my second ever [Ludum Dare](http://ludumdare.com/compo/) attempt and the first time I completed it. I'm sure it made sense when I made it but now I'm not entirely sure what you have to do to complete each level. I know the idea behind it was hacking the turrets to change the colour of the missile they fire.
 
-Different colours interacted with each other in different ways---the RGB values of the target were adjusted by the missile but similar values could pass through each other---but I can't remember how changing the colours effected everything exactly.
+Different colours interacted with each other in different ways — the RGB values of the target were adjusted by the missile but similar values could pass through each other — but I can't remember how changing the colours effected everything exactly.

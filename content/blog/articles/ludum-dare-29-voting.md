@@ -2,7 +2,7 @@
 category: Gaming
 title: Ludum Dare 29 Voting
 summary: |
-  I think I'm just about ready for [Ludum Dare][ld], which starts in a couple of hours --- <time datetime="2014-04-26T02:00">2am</time> in the UK.
+  I think I'm just about ready for [Ludum Dare][ld], which starts in a couple of hours — <time datetime="2014-04-26T02:00">2am</time> in the UK.
 
   [ld]: http://www.ludumdare.com/
 tags: 

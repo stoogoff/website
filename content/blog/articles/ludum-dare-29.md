@@ -15,7 +15,7 @@ image:
   height: 773
 ---
 
-[Ludum Dare][ld] is two contests rolled into one big game development challenge. The compo is a 48 hour contest where a single game developer attempts to build a game --- including all code, graphics and audio --- within 48 hours. The jam is the same thing with slightly more relaxed rules. Teams are allowed and you get an extra day.
+[Ludum Dare][ld] is two contests rolled into one big game development challenge. The compo is a 48 hour contest where a single game developer attempts to build a game — including all code, graphics and audio — within 48 hours. The jam is the same thing with slightly more relaxed rules. Teams are allowed and you get an extra day.
 
 The theme was announced at 2am <abbr title="British Summer Time">BST</abbr>, which I stayed up for. This time it was *Beneath the Surface* which immediately made me think of someone trapped beneath ice. I figured that ice and underwater themes would be quite popular so I spent an hour brainstorming. My *next* thought was [Spelunky][spelunk], which perfectly fits the theme! Of course, I wouldn't want to try and recreate Spelunky in 48 hours and I certainly wouldn't want to copy a game for the competition.
 
@@ -25,7 +25,7 @@ So I scrapped that and started with my original idea.
 
 [The Drowning Man][drown] is an endless swimmer where you are trapped in a fast flowing river under ice. You must swim as far as you can, using holes in the ice to catch your breath, while avoiding floating logs and psychotic fish.
 
-I completed the game with an hour to spare. Completed may be a bit of a strong term as there's no polish to it at all --- destroyed enemies just disappear, no destroyed animations or sound effects. But it's good enough for Ludum Dare and I've had a lot of positive comments.
+I completed the game with an hour to spare. Completed may be a bit of a strong term as there's no polish to it at all — destroyed enemies just disappear, no destroyed animations or sound effects. But it's good enough for Ludum Dare and I've had a lot of positive comments.
 
 Since the competition I've spent the past week playing games. The sheer number and quality of the other entries has been astounding! Obviously, the jam entries, with their extra day and team approach, are amazing, polished finished games. For me it's the compo games that really stand out. While some don't have the polish of the jam entries some of the games and, especially, the ideas are amazing.
 

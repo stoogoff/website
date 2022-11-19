@@ -38,6 +38,9 @@ export default Vue.component('IconView', {
 
 				case 'document':
 					return '<svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="currentColor" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z" /></svg>'
+
+				case 'bookmark':
+					return '<svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="currentColor" d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" /></svg>'
 			}
 
 			throw `Icon '${this.icon}' not found.`
