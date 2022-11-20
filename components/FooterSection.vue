@@ -1,6 +1,6 @@
 <template>
 	<footer class="bg-gray-200 py-4 border-gray-300 border-t-2">
-		<section class="max-w-2xl mx-auto md:flex md:space-x-4 px-4 md:px-0">
+		<section class="max-w-2xl mx-auto md:flex md:space-x-4 px-4 md:px-0 mb-6">
 			<div class="hidden md:block md:w-1/4 md:flex-none">
 				<img src="/img/stoo-goff.jpg" alt="Stoo Goff" class="border-white border-2 w-full" />
 			</div>
@@ -9,18 +9,33 @@
 				<p>He is heavily influenced by a number of writers and musicians, including: Tom Waits, Ursula Le Guin, Trent Reznor, Neil Gaiman, Amanda Palmer, Gene Wolfe, Frank Miller and a host of Finnish Folk Metal.</p>
 			</div>
 		</section>
-		<p class="text-center text-xs mb-0">&copy; Copyright 2013&ndash;{{ now }} Stoo Goff</p>
+		<ul class="mb-8 px-4 flex max-w-2xl mx-auto">
+			<li
+				v-for="(link, idx) in links"
+				:key="`link_${idx}`"
+				class="flex text-sm"
+			>
+				<icon-view :icon="link.icon" />
+				<a :href="link.href" class="mb-0 mt-1 ml-2 hover:text-black">{{ link.text }}</a>
+			</li>
+		</ul>
+		<p class="text-center text-xs mb-0 pb-4">&copy; Copyright 2013&ndash;{{ now }} Stoo Goff</p>
 	</footer>
 </template>
 <script>
 import Vue from 'vue'
+import { url } from '~/utils/meta'
 
 export default Vue.component('FooterSection', {
 	data() {
 		return {
 			links: [
-				// url, icon, text
-				// GitHub, Soundcloud, Bandcamp, Twitter, RSS, mastodon equivalent
+				{ icon: 'github', text: 'Github', href: 'https://github.com/stoogoff' },
+				{ icon: 'soundcloud', text: 'SoundCloud', href: 'https://soundcloud.com/stoogoff' },
+				{ icon: 'bandcamp', text: 'Bandcamp', href: 'https://stoogoff.bandcamp.com/' },
+				{ icon: 'twitter', text: 'Twitter', href: 'https://twitter.com/stoogoff' },
+				{ icon: 'rss', text: 'RSS', href: url({ url: '/feed.rss' }) },
+				{ icon: 'atom', text: 'Atom', href: url({ url: '/feed.atom' }) },
 			],
 		}
 	},
@@ -32,3 +47,13 @@ export default Vue.component('FooterSection', {
 	},
 })
 </script>
+<style scoped>
+li:after {
+	content: "·";
+	@apply inline-block px-2;
+}
+li:last-child:after {
+	content: "";
+	@apply px-0;
+}
+</style>

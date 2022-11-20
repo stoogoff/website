@@ -1,6 +1,4 @@
 import { meta, title, url, description } from './utils/meta'
-import { CONTENT_ARTICLES } from './utils/config'
-import { markdown } from './utils/string'
 import { createFeed } from './utils/feed'
 
 export default {
@@ -14,7 +12,7 @@ export default {
 			...meta(),
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: '' },
+			{ hid: 'description', name: 'description', content: description() },
 			{ name: 'format-detection', content: 'telephone=no' }
 		],
 		link: [
@@ -45,9 +43,7 @@ export default {
 
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
-		// https://go.nuxtjs.dev/axios
 		'@nuxtjs/axios',
-		// https://go.nuxtjs.dev/content
 		'@nuxt/content',
 		'@nuxtjs/feed',
 	],
@@ -80,7 +76,7 @@ export default {
 	googleFonts: {
 		families: {
 			Montserrat: {
-				wght: [100, 400, 600, 700],
+				wght: [400, 600, 700],
 				ital: [400]
 			},
 		},
