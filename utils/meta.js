@@ -10,12 +10,14 @@ export const title = meta => meta && meta.title ? `${meta.title} | ${BASE_TITLE}
 export const url = meta => meta && meta.url ? `${BASE_URL}${meta.url}` : `${BASE_URL}/`
 
 export const image = meta => meta && meta.image ? `${BASE_URL}${meta.image}` : BASE_IMAGE
- 
+
+export const description = meta => (meta && meta.description) || BASE_DESCRIPTION
+
 export const meta = meta => {
 	const newTitle = title(meta)
 	const combinedUrl = url(meta)
 	const newImage = image(meta)
-	const newDescription = (meta && meta.description) || BASE_DESCRIPTION
+	const newDescription = description(meta)
 
 	return [
 		{

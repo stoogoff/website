@@ -1,4 +1,7 @@
-import { meta, title, url } from './utils/meta'
+import { meta, title, url, description } from './utils/meta'
+import { CONTENT_ARTICLES } from './utils/config'
+import { markdown } from './utils/string'
+import { createFeed } from './utils/feed'
 
 export default {
 	// Target: https://go.nuxtjs.dev/config-target
@@ -46,6 +49,26 @@ export default {
 		'@nuxtjs/axios',
 		// https://go.nuxtjs.dev/content
 		'@nuxt/content',
+		'@nuxtjs/feed',
+	],
+
+	feed: [
+		{
+			path: '/feed.rss',
+			async create(feed) {
+				await createFeed(feed)
+			},
+			cacheTime: process.env.NODE_ENV !== 'production' ? 0 : 1000 * 60 * 24,
+			type: 'rss2', // Can be: rss2, atom1, json1
+		},
+		{
+			path: '/feed.atom',
+			async create(feed) {
+				await createFeed(feed)
+			},
+			cacheTime: process.env.NODE_ENV !== 'production' ? 0 : 1000 * 60 * 24,
+			type: 'atom1',
+		},
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
