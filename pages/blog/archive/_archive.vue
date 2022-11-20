@@ -14,8 +14,8 @@
 	</div>
 </template>
 <script>
-import uniq from 'lodash/uniq'
 import { SUMMARY_FIELDS } from '~/utils/config'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'ArchiveDatePage',
@@ -44,6 +44,21 @@ export default {
 		return {
 			blog: null,
 			articles: [],
+		}
+	},
+
+	head() {
+		const metadata = {
+			title: `Archive for ${this.$route.params.archive}`,
+			url: `/blog/archive/${this.$route.params.archive}`,
+		}
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }

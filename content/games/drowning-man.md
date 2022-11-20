@@ -10,13 +10,13 @@ image:
   text: Drowning Man
   width: 1200
   height: 1596
+summary: |
+  **Drowning Man** was a [Ludum Dare](http://ludumdare.com/compo/) idea I initially swithered on. It seemed just a bit too depressing but the theme was *Beneath the Surface* and I kept going back to an endless "runner" game where the character is swimming for their life beneath the surface of the ice. It seemed fitting.
 tags:
   - ludum dare
   - ld29
   - drowning man
 ---
-
-**Drowning Man** was a [Ludum Dare](http://ludumdare.com/compo/) idea I initially swithered on. It seemed just a bit too depressing but the theme was *Beneath the Surface* and I kept going back to an endless "runner" game where the character is swimming for their life beneath the surface of the ice. It seemed fitting.
 
 It was the first time I used a third party library for development, rather than writing everything myself. Drowning Man was written using the [Phaser](http://phaser.io/) library which is an incredible, and incredibly well documented, game development library covering everything you need.
 

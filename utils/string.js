@@ -1,7 +1,7 @@
 
 import { marked } from 'marked'
 
-export const stripTags = content => (content || '' ).replace(/<^>+>/g, '')
+export const stripTags = content => (content || '' ).replace(/<[^>]+>/g, '')
 
 export const markdown = content => marked(content || '', { smartypants: true })
 

@@ -17,6 +17,7 @@
 </template>
 <script>
 import uniq from 'lodash/uniq'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'ArchiveIndexPage',
@@ -42,6 +43,21 @@ export default {
 		return {
 			blog: null,
 			dates: [],
+		}
+	},
+
+	head() {
+		const metadata = {
+			title: 'Archive',
+			url: `/blog/archive`,
+		}
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }

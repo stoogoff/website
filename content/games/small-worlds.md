@@ -10,12 +10,12 @@ image:
   text: Mixle
   width: 2062
   height: 1549
+summary: |
+  **Small Worlds** is another [Ludum Dare](http://ludumdare.com/compo/) entry. It's a totally retro space ship shooter with some funky synth music to back it. The *Eater of Worlds* is devouring planets and you must pilot your spacecraft through the solar system and shoot it down!
 tags:
   - ludum dare
   - ld38
   - small worlds
 ---
-
-**Small Worlds** is another [Ludum Dare](http://ludumdare.com/compo/) entry. It's a totally retro space ship shooter with some funky synth music to back it. The *Eater of Worlds* is devouring planets and you must pilot your spacecraft through the solar system and shoot it down!
 
 I played this so many times during the development that I got really good at it. Which means it's insanely difficult to play and I can no longer complete it.

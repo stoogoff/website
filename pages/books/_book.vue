@@ -28,8 +28,9 @@
 	</div>
 </template>
 <script>
-import { markdown } from '~/utils/string'
 import { CONTENT_BOOKS } from '~/utils/config'
+import { markdown, stripTags } from '~/utils/string'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'BookPage',
@@ -57,6 +58,39 @@ export default {
 
 			return markdown(this.book.summary)
 		},
+	},
+
+	head() {
+		if(!this.book) return {}
+
+		const metadata = {
+			type: 'book',
+			title: this.book.title,
+			description: stripTags(markdown(this.book.summary)),
+			url: this.book.path,
+			image: this.book.image.source,
+		}
+
+		const additional = [
+			{
+				hid: 'book:release_date',
+				name: 'book:release_date',
+				content: this.book.publish_date.substring(0, 10),
+			},
+			{
+				hid: 'book:author',
+				name: 'book:author',
+				content: 'Stoo Goff',
+			},
+		]
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata, additional),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
+		}
 	},
 }
 </script>

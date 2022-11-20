@@ -12,7 +12,6 @@
 					<article-image v-if="album.image" :image="album.image" />
 					<prose-block :doc="album" />
 				</div>
-
 				<aside class="border-t border-gray-200 mt-2 md:mt-6 pt-4 px-2">
 					<div class="flex mb-2">
 						<icon-view icon="music" />
@@ -41,6 +40,8 @@
 </template>
 <script>
 import { CONTENT_ALBUMS } from '~/utils/config'
+import { markdown, stripTags } from '~/utils/string'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'AlbumPage',
@@ -59,6 +60,34 @@ export default {
 	data() {
 		return {
 			album: null
+		}
+	},
+
+	head() {
+		if(!this.album) return {}
+
+		const metadata = {
+			type: 'music.album',
+			title: this.album.title,
+			description: stripTags(markdown(this.album.summary)),
+			url: this.album.path,
+			image: this.album.image.source,
+		}
+
+		const additional = [
+			{
+				hid: 'music:release_date',
+				name: 'music:release_date',
+				content: this.album.publish_date.substring(0, 10),
+			}
+		]
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata, additional),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }

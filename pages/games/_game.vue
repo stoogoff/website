@@ -8,8 +8,10 @@
 			</header>
 			<div>
 				<publish-date :item="game" />
-				<article-image v-if="game.image" :image="game.image" />
-				<nuxt-content class="prose" :document="game" />
+				<div class="overflow-hidden">
+					<article-image v-if="game.image" :image="game.image" />
+					<prose-block :doc="game" />
+				</div>
 				<aside v-if="game.urls">
 					<div v-if="game.urls.Play" class="flex mb-4">
 						<icon-view icon="controller" />
@@ -26,6 +28,8 @@
 </template>
 <script>
 import { CONTENT_GAMES } from '~/utils/config'
+import { markdown, stripTags } from '~/utils/string'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'GamePage',
@@ -44,6 +48,25 @@ export default {
 	data() {
 		return {
 			game: null
+		}
+	},
+
+	head() {
+		if(!this.game) return {}
+
+		const metadata = {
+			title: this.game.title,
+			url: this.game.path,
+			description: stripTags(markdown(this.game.summary)),
+			image: this.game.image.source,
+		}
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }

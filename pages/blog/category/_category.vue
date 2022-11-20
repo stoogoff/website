@@ -17,6 +17,7 @@
 </template>
 <script>
 import { SUMMARY_FIELDS, CONTENT_ARTICLES } from '~/utils/config'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'CategoryPage',
@@ -45,6 +46,23 @@ export default {
 		return {
 			blog: null,
 			articles: [],
+		}
+	},
+
+	head() {
+		if(!this.blog) return {}
+
+		const metadata = {
+			title: this.blog.title,
+			url: `/blog/category/${this.$route.params.category}`,
+		}
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }

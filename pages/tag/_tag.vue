@@ -23,6 +23,7 @@ import {
 	CONTENT_BOOKS,
 	CONTENT_GAMES,
 } from '~/utils/config'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'TagPage',
@@ -67,6 +68,23 @@ export default {
 		return {
 			tag: null,
 			items: [],
+		}
+	},
+
+	head() {
+		if(!this.tag) return {}
+
+		const metadata = {
+			title: this.tag,
+			url: `/tags/${this.$route.params.tag}`,
+		}
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }

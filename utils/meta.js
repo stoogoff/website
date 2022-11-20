@@ -13,13 +13,13 @@ export const image = meta => meta && meta.image ? `${BASE_URL}${meta.image}` : B
 
 export const description = meta => (meta && meta.description) || BASE_DESCRIPTION
 
-export const meta = meta => {
+export const meta = (meta, additional = null) => {
 	const newTitle = title(meta)
 	const combinedUrl = url(meta)
 	const newImage = image(meta)
 	const newDescription = description(meta)
 
-	return [
+	let tags = [
 		{
 			hid: 'description',
 			name: 'description',
@@ -71,4 +71,10 @@ export const meta = meta => {
 			content: newImage,
 		},
 	]
+
+	if(additional) {
+		tags = [...tags, ...additional]
+	}
+
+	return tags
 }

@@ -3,6 +3,7 @@
 </template>
 <script>
 import { CONTENT_ALBUMS } from '~/utils/config'
+import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'AlbumIndexPage',
@@ -28,6 +29,23 @@ export default {
 		return {
 			article: null,
 			products: [],
+		}
+	},
+
+	head() {
+		if(!this.article) return {}
+
+		const metadata = {
+			title: this.article.title,
+			url: '/albums',
+		}
+
+		return {
+			title: title(metadata),
+			meta: meta(metadata),
+			link: [
+				{ hid: 'canonical', rel: 'canonical', href: url(metadata) },
+			]
 		}
 	},
 }
