@@ -1,8 +1,8 @@
 <template>
 	<icon-text icon="calendar">
-		Posted in <strong class="font-semibold">{{ article.category }}</strong> on
+		Posted in <nuxt-link :to="`/blog/category/${article.category.toLowerCase()}`" class="font-semibold">{{ article.category }}</nuxt-link> on
 		<nuxt-link :to="dateLink">
-			<time :datetime="article.publish_date">{{ article.publish_date | date }}</time>
+			<time :datetime="article.publish_date" itemprop="datePublished">{{ article.publish_date | date }}</time>
 		</nuxt-link>
 	</icon-text>
 </template>

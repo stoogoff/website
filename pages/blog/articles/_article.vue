@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
-		<article v-else>
+		<article v-else itemscope itemtype="https://schema.org/Article">
 			<header
 				class="pt-32 mb-10"
 				:class="{ image }"
@@ -9,7 +9,7 @@
 			>
 				<div class="main">
 					<tag-list :tags="article.tags" v-if="image === null" />
-					<h1>{{ article.title }}</h1>
+					<h1 itemprop="name">{{ article.title }}</h1>
 				</div>
 			</header>
 			<div class="main">

@@ -1,5 +1,5 @@
 <template>
-	<div class="prose">
+	<div class="prose" itemprop="text">
 		<div v-html="summary" class="text-xl" />
 		<nuxt-content :document="doc" />
 	</div>

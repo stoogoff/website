@@ -5,7 +5,7 @@
 				v-for="(tag, idx) in tags"
 				:key="`tag_${idx}`"
 				class="inline-block mr-2"
-			><nuxt-link :to="url(tag)">{{ tag }}</nuxt-link></li>
+			><nuxt-link :to="url(tag)" itemprop="keywords">{{ tag }}</nuxt-link></li>
 		</ul>
 	</div>
 </template>

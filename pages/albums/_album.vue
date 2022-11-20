@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
-		<article v-else>
+		<article v-else itemscope itemtype="https://schema.org/MusicAlbum">
 			<tag-list :tags="album.tags" />
 			<header>
 				<h1>{{ album.title }}</h1>
@@ -22,6 +22,7 @@
 							v-for="(track, idx) in album.track_listing"
 							:key="`track_${idx}`"
 							class="mb-1"
+							itemprop="track"
 						>{{ track }}</li>
 					</ul>
 				</aside>
@@ -30,7 +31,7 @@
 					<p class="text-xl">More information, including purchasing options, is available at the following sites:</p>
 					<ul class="bullet">
 						<li v-for="(value, key) in album.urls">
-							<a :href="value" class="link">{{ key }}</a>
+							<a :href="value" class="link" itemprop="url">{{ key }}</a>
 						</li>
 					</ul>
 				</aside>

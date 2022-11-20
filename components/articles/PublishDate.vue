@@ -1,6 +1,6 @@
 <template>
 	<icon-text icon="calendar">
-		Published <time :datetime="item.publish_date">{{ item.publish_date | date }}</time>
+		Published <time :datetime="item.publish_date" itemprop="datePublished">{{ item.publish_date | date }}</time>
 	</icon-text>
 </template>
 <script>

@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
-		<article v-else>
+		<article v-else itemscope itemtype="https://schema.org/Book">
 			<tag-list :tags="book.tags" />
 			<header>
-				<h1>{{ book.title }}</h1>
+				<h1 itemprop="name">{{ book.title }}</h1>
 				<p v-if="book.series" class="uppercase text-sm">
 					Part {{ book.part }} of the <strong>{{ book.series }}</strong> series.
 				</p>
@@ -19,7 +19,7 @@
 					<p class="text-xl">More information, including purchasing options, is available at the following sites:</p>
 					<ul class="bullet">
 						<li v-for="(value, key) in book.urls">
-							<a :href="value" class="link">{{ key }}</a>
+							<a :href="value" class="link" itemprop="url">{{ key }}</a>
 						</li>
 					</ul>
 				</aside>
