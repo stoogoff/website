@@ -4,7 +4,7 @@ title: Aegean Layout
 summary: |
   The layout for the [Aegean Quick Start](https://www.drivethrurpg.com/product/278997/Aegean-Quick-Start) book wasn't created using [InDesign](https://www.adobe.com/uk/products/indesign.html) or [Scribus](https://www.scribus.net/) or any standard design tools. I don't have any experience with either so I found them difficult to get started with. I do have a background in programming, web development and UX, so I made use of the skills and tools I already had.
 tags: 
-  - role-playing
+  - role playing
   - aegean
   - design
 publish_date: 2019-09-23T12:00

@@ -1,16 +1,14 @@
 <template>
 	<div>
-		<main-nav />
-		<main class="main pt-32">
-			<Nuxt />
-		</main>
+		<main-nav transparent />
+		<Nuxt />
 		<footer-section />
 	</div>
 </template>
 <script>
 
 export default {
-	name: 'DefaultLayout',
+	name: 'ArticleLayout',
 }
 
 </script>

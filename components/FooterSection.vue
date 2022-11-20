@@ -1,5 +1,5 @@
 <template>
-	<footer class="bg-gray-200 py-4 border-gray-300 border-t-2">
+	<footer class="bg-gray-200 py-4 border-gray-300 border-t-2 mt-20">
 		<section class="max-w-2xl mx-auto md:flex md:space-x-4 px-4 md:px-0 mb-6">
 			<div class="hidden md:block md:w-1/4 md:flex-none">
 				<img src="/img/stoo-goff.jpg" alt="Stoo Goff" class="border-white border-2 w-full" />
@@ -9,11 +9,11 @@
 				<p>He is heavily influenced by a number of writers and musicians, including: Tom Waits, Ursula Le Guin, Trent Reznor, Neil Gaiman, Amanda Palmer, Gene Wolfe, Frank Miller and a host of Finnish Folk Metal.</p>
 			</div>
 		</section>
-		<ul class="mb-8 px-4 flex max-w-2xl mx-auto">
+		<ul class="mb-8 px-4 md:flex md:gap-x-2 max-w-2xl mx-auto">
 			<li
 				v-for="(link, idx) in links"
 				:key="`link_${idx}`"
-				class="flex text-sm"
+				class="flex text-sm mb-2 px-2"
 			>
 				<icon-view :icon="link.icon" />
 				<a :href="link.href" class="mb-0 mt-1 ml-2 hover:text-black">{{ link.text }}</a>
@@ -47,13 +47,3 @@ export default Vue.component('FooterSection', {
 	},
 })
 </script>
-<style scoped>
-li:after {
-	content: "·";
-	@apply inline-block px-2;
-}
-li:last-child:after {
-	content: "";
-	@apply px-0;
-}
-</style>

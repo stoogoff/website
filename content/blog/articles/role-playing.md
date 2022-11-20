@@ -4,7 +4,7 @@ title: Role-Playing
 summary: |
   One hobby I've resurrected over the past couple of years is playing role-playing games. I hadn't played properly since my mid-20's when I was living in Cambridge but being in Glasgow for the past couple of years and meeting lots of role-players up here has given me a chance to get involved in a lot of games, which I've been thoroughly enjoying!
 tags: 
-  - role-playing
+  - role playing
   - rpgaday
   - fate
   - sunstone

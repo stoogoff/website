@@ -2,13 +2,21 @@
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
 		<article v-else>
-			<tag-list :tags="article.tags" />
-			<header>
-				<h1>{{ article.title }}</h1>
+			<header
+				class="pt-32 mb-10"
+				:class="{ image }"
+				:style="{ backgroundImage: `url(${image})` }"
+			>
+				<div class="main">
+					<tag-list :tags="article.tags" v-if="image === null" />
+					<h1>{{ article.title }}</h1>
+				</div>
 			</header>
-			<article-publish-date :article="article" />
-
-			<prose-block class="overflow-hidden" :doc="article" />
+			<div class="main">
+				<tag-list :tags="article.tags" v-if="image !== null" />
+				<article-publish-date :article="article" />
+				<prose-block class="overflow-hidden" :doc="article" />
+			</div>
 		</article>
 	</div>
 </template>
@@ -19,12 +27,17 @@ import { title, meta, url } from '~/utils/meta'
 
 export default {
 	name: 'ArticlePage',
+	layout: 'article',
 
 	async fetch() {
 		const { params } = this.$nuxt.context
 
 		try {
 			this.article = await this.$content(CONTENT_ARTICLES, params.article).fetch()
+			
+			if(this.article.image) {
+				this.image = this.article.image.source
+			}
 		}
 		catch(ex) {
 			console.error(ex)
@@ -33,7 +46,8 @@ export default {
 
 	data() {
 		return {
-			article: null
+			article: null,
+			image: null,
 		}
 	},
 
@@ -64,7 +78,7 @@ export default {
 				name: 'article:section',
 				content: this.article.category,
 			},
-			...this.article.tags.map((tag, idx) => ({
+			...(this.article.tags || []).map((tag, idx) => ({
 				hid: `article:tag_${idx}`,
 				name: 'article:tag',
 				content: tag,
@@ -81,3 +95,15 @@ export default {
 	},
 }
 </script>
+<style scoped>
+.image {
+	@apply bg-cover bg-center h-96 relative z-0;
+}
+.image h1 {
+	@apply text-center text-white relative z-20;
+}
+.image:after {
+	content: " ";
+	@apply block bg-black h-96 absolute z-10 inset-0 bg-opacity-30;
+}
+</style>

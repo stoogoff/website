@@ -4,7 +4,7 @@ title: Aegean Playtest
 summary: |
   Last weekend was [UKGamesExpo](https://www.ukgamesexpo.co.uk/) in Birmingham. It was my first time there and I dove in head-first with a playtest of [Aegean](http://www.aegeanrpg.com/), the Greek myth inspired role-playing game which I've been working on for the past couple of years.
 tags: 
-  - role-playing
+  - role playing
   - aegean
   - playtest
 publish_date: 2019-06-06T12:00
