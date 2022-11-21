@@ -5,34 +5,20 @@ import { meta, title, url, description } from './meta'
 import { CONTENT_ARTICLES } from './config'
 import { markdown } from './string'
 
-export const createFeed  = async feed => {
-	const BASE_URL = url()
-	const author = {
-		name: 'Stoo Goff',
-		email: 'stoo.goff@gmail.com',
-		link: BASE_URL,
-	}
+const BASE_URL = url()
+const author = {
+	name: 'Stoo Goff',
+	email: 'stoo.goff@gmail.com',
+	link: BASE_URL,
+}
 
-	feed.options = {
-		title: title(),
-		link: BASE_URL,
-		id: BASE_URL,
-		description: description(),
-		language: 'en',
-		copyright: `2013–${ (new Date()).getFullYear() } Stoo Goff`,
-		feedLinks: {
-			atom: url({ url: '/feed.atom'}),
-			rss: url({ url: '/feed.rss'}),
-		},
-		author,
-	}
-
+export const getFeedPosts = async (limit) => {
 	const posts = await $content(CONTENT_ARTICLES)
 		.sortBy('publish_date', 'desc')
-		.limit(20)
+		.limit(limit)
 		.fetch()
 
-	posts.forEach(post => {
+	return posts.map(post => {
 		const postUrl = url({ url: post.path })
 		let image = null
 
@@ -58,7 +44,7 @@ export const createFeed  = async feed => {
 
 		const date = new Date(Date.parse(post.publish_date))
 
-		feed.addItem({
+		return {
 			title: post.title,
 			id: postUrl,
 			link: postUrl,
@@ -69,6 +55,26 @@ export const createFeed  = async feed => {
 			author,
 			image,
 			date,
-		})
+		}
 	})
+}
+
+export const createFeed  = async feed => {
+	feed.options = {
+		title: title(),
+		link: BASE_URL,
+		id: BASE_URL,
+		description: description(),
+		language: 'en',
+		copyright: `2013–${ (new Date()).getFullYear() } Stoo Goff`,
+		feedLinks: {
+			atom: url({ url: '/feed.atom'}),
+			rss: url({ url: '/feed.rss'}),
+		},
+		author,
+	}
+
+	const posts = await getFeedPosts(20)
+
+	posts.forEach(feed.addItem)
 }
