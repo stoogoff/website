@@ -19,6 +19,8 @@ export default {
 				.fetch()
 
 			this.products = products.filter(product => !!product.image)
+
+			//this.products = await this.$axios.get('/album:monkeys-in-space')
 		}
 		catch(ex) {
 			console.error(ex)

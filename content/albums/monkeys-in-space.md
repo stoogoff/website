@@ -1,4 +1,6 @@
 ---
+_id: album:monkeys-in-space
+type: Album
 title: Monkeys in Space
 summary: Monkeys in Space is a concept album written for Nasoalmo 2012.
 publish_date: 2013-09-22T12:00

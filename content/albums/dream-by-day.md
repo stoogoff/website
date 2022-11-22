@@ -1,4 +1,6 @@
 ---
+_id: album:dream-by-day
+type: Album
 title: Dream by Day
 summary: Dream by Day is an instrumental album written as a four guitar orchestra.
 publish_date: 2013-12-01T12:00
