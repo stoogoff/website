@@ -11,16 +11,7 @@ export default {
 	async fetch() {
 		try {
 			this.article = await this.$content(CONTENT_ALBUMS, 'index').fetch()
-			
-			const products = await this
-				.$content(CONTENT_ALBUMS)
-				.only(['image'])
-				.sortBy('publish_date', 'desc')
-				.fetch()
-
-			this.products = products.filter(product => !!product.image)
-
-			//this.products = await this.$axios.get('/album:monkeys-in-space')
+			this.products = await this.$api.$get('/api/albums')
 		}
 		catch(ex) {
 			console.error(ex)

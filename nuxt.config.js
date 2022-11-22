@@ -28,7 +28,8 @@ export default {
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
-		'~/plugins/filters.js'
+		'~/plugins/filters.js',
+		'~/plugins/api.js',
 	],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,23 +70,25 @@ export default {
 
 	serverMiddleware: [
 		'~/server/activitypub.js',
+		{ path: '/api', handler: '~/api/index' },
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
 	axios: {
 		// Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+		baseURL: '/',
 		//baseURL: process.env.API_URL,
-		proxy: true,
+		/*proxy: true,
 		headers: {
 			common: {
 				Authorization: 'Basic ' + Buffer.from(`${process.env.API_USER}:${process.env.API_PASSWORD}`, 'ascii').toString('base64'),
 			},
-		},
+		},*/
 	},
 
-	proxy: {
+	/*proxy: {
 		'/stoogoff/': process.env.API_URL,
-	},
+	},*/
 
 	googleFonts: {
 		families: {

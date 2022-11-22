@@ -11,14 +11,7 @@ export default {
 	async fetch() {
 		try {
 			this.article = await this.$content(CONTENT_BOOKS, 'index').fetch()
-			
-			const products = await this
-				.$content(CONTENT_BOOKS)
-				.only(['image'])
-				.sortBy('publish_date', 'desc')
-				.fetch()
-
-			this.products = products.filter(product => !!product.image)
+			this.products = await this.$api.$get('/api/books')
 		}
 		catch(ex) {
 			console.error(ex)

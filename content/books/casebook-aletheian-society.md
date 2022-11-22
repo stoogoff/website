@@ -1,4 +1,6 @@
 ---
+_id: book:casebook-aletheian-society
+type: Book
 title: The Casebook of the Aletheian Society
 summary: Her Majesty Queen Victoria sits on the throne of the United Kingdom of Great Britain and Ireland, but beneath the genteel veneer of society, dark forces are at work.
 publish_date: 2019-11-20T12:00
