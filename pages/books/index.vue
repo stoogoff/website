@@ -11,7 +11,7 @@ export default {
 	async fetch() {
 		try {
 			this.article = await this.$content(CONTENT_BOOKS, 'index').fetch()
-			this.products = await this.$api.$get('/api/books')
+			this.products = await this.$axios.$get('/api/books')
 		}
 		catch(ex) {
 			console.error(ex)

@@ -1,4 +1,6 @@
 ---
+_id: article:Music:hollow
+type: Article
 category: Music
 title: Hollow
 summary: |
@@ -8,4 +10,4 @@ tags:
   - release
   - music
 publish_date: 2015-03-20T11:20
----
+

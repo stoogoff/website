@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:ludum-dare-tech
+type: Article
 category: Gaming
 title: Ludum Dare Tech
 summary: |
@@ -17,6 +19,5 @@ tags:
   - phaser
   - ld29
 publish_date: 2014-04-26T01:45
----
-
-Fifteen minutes to go, plenty of time to get everything set up!
+content: |
+  Fifteen minutes to go, plenty of time to get everything set up!

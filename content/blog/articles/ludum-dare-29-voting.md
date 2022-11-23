@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:ludum-date-29-voting
+type: Article
 category: Gaming
 title: Ludum Dare 29 Voting
 summary: |
@@ -10,8 +12,7 @@ tags:
   - voting
   - ld29
 publish_date: 2014-04-25T12:00
----
+content: |
+  I've made my vote for the final round. Out of the ones I've picked I'm not sure which one I'd like the best. At the moment I haven't got any real ideas what I'm going to build so I guess any will do!
 
-I've made my vote for the final round. Out of the ones I've picked I'm not sure which one I'd like the best. At the moment I haven't got any real ideas what I'm going to build so I guess any will do!
-
-![Ludum Dare 29 Vote](/img/ludum-dare-29.jpg)
+  ![Ludum Dare 29 Vote](/img/ludum-dare-29.jpg)

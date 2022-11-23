@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:my-idea-maybe-too-complicated
+type: Article
 category: Gaming
 title: My Idea Maybe Too Complicated
 summary: |
@@ -8,20 +10,19 @@ tags:
   - ld32
   - theme
 publish_date: 2015-04-18T07:40
----
+content: |
+  Earth is being invaded by aliens and only you can stop them!
 
-Earth is being invaded by aliens and only you can stop them!
+  Your weapons are:
 
-Your weapons are:
+  **The Atom Bomb** Destroy everything in the blast radius! Be warned, distant enemies may become... strange.
 
-**The Atom Bomb** Destroy everything in the blast radius! Be warned, distant enemies may become... strange.
+  **The Biological Virus** Create viral bugs and set them set on the aliens. Be warned, some bugs may make the aliens stronger.
 
-**The Biological Virus** Create viral bugs and set them set on the aliens. Be warned, some bugs may make the aliens stronger.
+  **The Chemicals** Use your chemistry skills to create strange weapons of your own and fight off the aliens your self!
 
-**The Chemicals** Use your chemistry skills to create strange weapons of your own and fight off the aliens your self!
+  I'm thinking the biological and chemical weapons are something you make yourself with various pick ups on the map and the A bomb is something to buy you some time.
 
-I'm thinking the biological and chemical weapons are something you make yourself with various pick ups on the map and the A bomb is something to buy you some time.
+  This could make for a fun game but I may have also bitten off more than I can chew...
 
-This could make for a fun game but I may have also bitten off more than I can chew...
-
-<small><sup>1</sup> Pun based on the [ABC Warriors](https://en.wikipedia.org/wiki/ABC_Warriors) is intentional.</small>
+  <small><sup>1</sup> Pun based on the [ABC Warriors](https://en.wikipedia.org/wiki/ABC_Warriors) is intentional.</small>

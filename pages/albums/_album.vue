@@ -40,7 +40,6 @@
 	</div>
 </template>
 <script>
-import { CONTENT_ALBUMS } from '~/utils/config'
 import { markdown, stripTags } from '~/utils/string'
 import { title, meta, url } from '~/utils/meta'
 

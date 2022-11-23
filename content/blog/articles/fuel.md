@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:fuel
+type: Article
 category: Gaming
 title: Fuel
 summary: |
@@ -8,6 +10,5 @@ tags:
   - ld32
   - coffee
 publish_date: 2015-04-18T07:30
----
-
-![Coffee](/img/fuel.jpg)
+content: |
+  ![Coffee](/img/fuel.jpg)

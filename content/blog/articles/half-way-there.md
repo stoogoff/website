@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:half-way-there
+type: Article
 category: Gaming
 title: Half Way There
 summary: |
@@ -8,12 +10,11 @@ tags:
   - ld33
   - first day
 publish_date: 2015-08-23T02:15
----
+content: |
+  Tomorrow will be spent animating Troll and the Humans and working on some suitably sinister music.
 
-Tomorrow will be spent animating Troll and the Humans and working on some suitably sinister music.
+  Screen grab of the game so far:
 
-Screen grab of the game so far:
+  ![Trollhammer](/img/ld33-screengrab-day1.png)
 
-![Trollhammer](/img/ld33-screengrab-day1.png)
-
-The big green square is Troll. The small white rectangles are humans.
+  The big green square is Troll. The small white rectangles are humans.

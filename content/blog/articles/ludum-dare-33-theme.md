@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:ludum-dare-33-theme
+type: Article
 category: Gaming
 title: Ludum Dare 33 Theme
 summary: |
@@ -9,4 +11,4 @@ tags:
   - theme
   - you are the monster
 publish_date: 2015-08-22T02:00
----
+

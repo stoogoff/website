@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:the-drowning-man
+type: Article
 category: Gaming
 title: The Drowning Man
 summary: |
@@ -8,8 +10,7 @@ tags:
   - ld29
   - the drowning man
 publish_date: 2014-04-28T00:55
----
+content: |
+  [Click to play!][ld29]
 
-[Click to play!][ld29]
-
-[ld29]: http:///games.stoogoff.com/ld29/
+  [ld29]: http:///games.stoogoff.com/ld29/

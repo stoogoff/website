@@ -1,4 +1,6 @@
 ---
+_id: article:Writing:writing-stats-february-2015
+type: Article
 category: Writing
 title: Writing Stats February 2015
 summary: |
@@ -8,8 +10,7 @@ tags:
   - stats
   - 2015-02
 publish_date: 2015-03-04T12:00
----
+content: |
+  ![Writing Stats February 2015](/img/stats-2015-02.jpg)
 
-![Writing Stats February 2015](/img/stats-2015-02.jpg)
-
-As you can see it didn't quite turn out like that. Just like with homework when I was at school, just about everything got left until the end of the month.
+  As you can see it didn't quite turn out like that. Just like with homework when I was at school, just about everything got left until the end of the month.

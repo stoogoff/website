@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:ludum-dare-theme
+type: Article
 category: Gaming
 title: Ludum Dare Theme
 summary: |
@@ -9,4 +11,4 @@ tags:
   - beneath the surface
   - ld29
 publish_date: 2014-04-26T02:11
----
+

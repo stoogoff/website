@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:almost-there
+type: Article
 category: Gaming
 title: Almost there...
 summary: |
@@ -7,10 +9,9 @@ tags:
   - ludum dare
   - ld29
 publish_date: 2014-04-27T12:09
----
+content: |
+  I was going to call it [*The Drowning Man*][drowning] after a [Cure][cure] song and a scene from [Gormenghast][gorm] but *Icehole* has been suggested instead.
 
-I was going to call it [*The Drowning Man*][drowning] after a [Cure][cure] song and a scene from [Gormenghast][gorm] but *Icehole* has been suggested instead.
-
-[cure]: http://www.thecure.com/
-[gorm]: http://www.mervynpeake.org/gormenghast/
-[drowning]: http://www.youtube.com/watch?v=9j53D4o0CfQ
+  [cure]: http://www.thecure.com/
+  [gorm]: http://www.mervynpeake.org/gormenghast/
+  [drowning]: http://www.youtube.com/watch?v=9j53D4o0CfQ

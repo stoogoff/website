@@ -1,7 +1,7 @@
 <template>
 	<div class="prose" itemprop="text">
 		<div v-html="summary" class="text-xl" />
-		<nuxt-content :document="doc" />
+		<div v-html="content" />
 	</div>
 </template>
 <script>
@@ -17,6 +17,13 @@ export default Vue.component('ProseBlock', {
 	},
 
 	computed: {
+		content() {
+			if(!this.doc) return ''
+			if(!this.doc.content) return ''
+
+			return markdown(this.doc.content)
+		},
+
 		summary() {
 			if(!this.doc) return ''
 

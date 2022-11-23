@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:beware-the-fish
+type: Article
 category: Gaming
 title: Beware the Fish
 summary: |
@@ -8,6 +10,5 @@ tags:
   - ld29
   - artwork
 publish_date: 2014-04-27T21:00
----
-
-![The fish](/img/fish-large.png)
+content: |
+  ![The fish](/img/fish-large.png)

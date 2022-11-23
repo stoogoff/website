@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:dilemma
+type: Article
 category: Gaming
 title: Dilemma
 summary: |
@@ -9,4 +11,4 @@ tags:
   - ludum dare
   - ld29
 publish_date: 2014-04-26T17:20
----
+

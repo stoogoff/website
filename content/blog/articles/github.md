@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:github
+type: Article
 category: Gaming
 title: Github
 summary: |
@@ -8,4 +10,4 @@ tags:
   - ld32
   - github
 publish_date: 2015-04-18T10:50
----
+

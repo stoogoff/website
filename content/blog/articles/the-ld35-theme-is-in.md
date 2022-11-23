@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:the-ld35-theme-is-in
+type: Article
 category: Gaming
 title: The LD35 Theme is in!
 summary: |
@@ -9,4 +11,4 @@ tags:
   - theme
   - shapeshift
 publish_date: 2016-04-16T02:00
----
+

@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:ludum-dare-32-voting
+type: Article
 category: Gaming
 title: Ludum Dare 32 Voting
 summary: |
@@ -10,8 +12,7 @@ tags:
   - voting
   - ld32
 publish_date: 2015-04-16T01:30
----
+content: |
+  There are some interesting things in there, most of which I can work with. I've voted against *Companion*. I could work with that as a theme if I had to but I'm not overly keen on it as it immediately reminds me of the hours spent cajoling followers in Morrowind. I've got a few ideas ready in case it comes up as it was very popular on the forums.
 
-There are some interesting things in there, most of which I can work with. I've voted against *Companion*. I could work with that as a theme if I had to but I'm not overly keen on it as it immediately reminds me of the hours spent cajoling followers in Morrowind. I've got a few ideas ready in case it comes up as it was very popular on the forums.
-
-![Ludum Dare 32 Vote](/img/ludum-dare-32.png)
+  ![Ludum Dare 32 Vote](/img/ludum-dare-32.png)

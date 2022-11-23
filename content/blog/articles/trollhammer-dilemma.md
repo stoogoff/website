@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:trollhammer-dilemma
+type: Article
 category: Gaming
 title: Trollhammer Dilemma
 summary: |
@@ -8,6 +10,5 @@ tags:
   - ld33
   - dilemma
 publish_date: 2015-08-22T16:05
----
-
-The problem is the recovery period might become the player's downfall if they can't jump just before a chasm. Which seems a bit unfair.
+content: |
+  The problem is the recovery period might become the player's downfall if they can't jump just before a chasm. Which seems a bit unfair.

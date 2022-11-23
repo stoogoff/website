@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:ludum-dare-32-theme
+type: Article
 category: Gaming
 title: Ludum Dare 32 Theme
 summary: |
@@ -9,4 +11,4 @@ tags:
   - theme
   - an unconventional weapon
 publish_date: 2015-04-18T02:00
----
+

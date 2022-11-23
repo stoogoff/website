@@ -77,18 +77,7 @@ export default {
 	axios: {
 		// Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
 		baseURL: '/',
-		//baseURL: process.env.API_URL,
-		/*proxy: true,
-		headers: {
-			common: {
-				Authorization: 'Basic ' + Buffer.from(`${process.env.API_USER}:${process.env.API_PASSWORD}`, 'ascii').toString('base64'),
-			},
-		},*/
 	},
-
-	/*proxy: {
-		'/stoogoff/': process.env.API_URL,
-	},*/
 
 	googleFonts: {
 		families: {

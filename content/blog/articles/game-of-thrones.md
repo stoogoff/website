@@ -1,4 +1,6 @@
 ---
+_id: article:Music:game-of-thrones
+type: Article
 category: Music
 title: Game of Thrones
 summary: |
@@ -13,6 +15,5 @@ tags:
   - game of thrones
   - tv shows
 publish_date: 2014-03-15T12:00
----
-
-<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/139725624&auto_play=false&hide_related=false&visual=true"></iframe>
+content: |
+  <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/139725624&auto_play=false&hide_related=false&visual=true"></iframe>

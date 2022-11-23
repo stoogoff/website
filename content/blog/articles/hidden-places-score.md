@@ -1,4 +1,6 @@
 ---
+_id: article:Music:hidden-places-score
+type: Article
 category: Music
 title: Hidden Places Score
 summary: |
@@ -15,4 +17,4 @@ tags:
   - score
   - hidden places
 publish_date: 2014-05-03T18:40
----
+

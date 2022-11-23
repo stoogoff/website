@@ -1,4 +1,6 @@
 ---
+_id: article:Writing:the-great-self-published-fantasy-blog-off-review
+type: Article
 category: Writing
 title: The Great Self-published Fantasy Blog-off Review
 summary: |
@@ -12,6 +14,5 @@ tags:
   - review
   - knights of elevar
 publish_date: 2015-04-22T15:00
----
-
-> I thoroughly enjoyed this one. It helps that it's a rather short novella, at just 127 pages, but I was well into the latter half of it before I thought to check whether I'd passed the first 50 pages. The writing was solid, and the dialogue fit the characters as well as their world, which I've found is often a challenge in self-published fantasy. The pacing was just about perfect, which makes sense given that it was originally published as 5 short stories, although the format does make for some abrupt scene breaks that were a bit jarring in places. Overall, I thought the world building was exceptionally strong for the length of the tale, especially since Goff accomplishes it without info dumping on the reader.
+content: |
+  > I thoroughly enjoyed this one. It helps that it's a rather short novella, at just 127 pages, but I was well into the latter half of it before I thought to check whether I'd passed the first 50 pages. The writing was solid, and the dialogue fit the characters as well as their world, which I've found is often a challenge in self-published fantasy. The pacing was just about perfect, which makes sense given that it was originally published as 5 short stories, although the format does make for some abrupt scene breaks that were a bit jarring in places. Overall, I thought the world building was exceptionally strong for the length of the tale, especially since Goff accomplishes it without info dumping on the reader.

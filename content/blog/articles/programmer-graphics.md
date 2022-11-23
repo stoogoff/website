@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:programmer-graphics
+type: Article
 category: Gaming
 title: Programmer Graphics
 summary: |
@@ -8,8 +10,7 @@ tags:
   - ld29
   - graphics
 publish_date: 2014-04-26T10:50
----
+content: |
+  ![Ludum Dare 29 Early Graphics](/img/ld29-early-graphics.png)
 
-![Ludum Dare 29 Early Graphics](/img/ld29-early-graphics.png)
-
-The mole is quite cute but the player is shocking!
+  The mole is quite cute but the player is shocking!

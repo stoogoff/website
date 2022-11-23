@@ -33,8 +33,8 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.article = await this.$content(CONTENT_ARTICLES, params.article).fetch()
-			
+			this.article = await this.$axios.$get('/api/articles/' + params.article)
+
 			if(this.article.image) {
 				this.image = this.article.image.source
 			}

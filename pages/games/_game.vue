@@ -27,7 +27,6 @@
 	</div>
 </template>
 <script>
-import { CONTENT_GAMES } from '~/utils/config'
 import { markdown, stripTags } from '~/utils/string'
 import { title, meta, url } from '~/utils/meta'
 
@@ -38,7 +37,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.game = await this.$content(CONTENT_GAMES, params.game).fetch()
+			this.game = await this.$axios.$get('/api/games/' + params.game)
 		}
 		catch(ex) {
 			console.error(ex)

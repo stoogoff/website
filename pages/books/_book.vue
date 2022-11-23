@@ -28,7 +28,6 @@
 	</div>
 </template>
 <script>
-import { CONTENT_BOOKS } from '~/utils/config'
 import { markdown, stripTags } from '~/utils/string'
 import { title, meta, url } from '~/utils/meta'
 
@@ -39,7 +38,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.book = await this.$content(CONTENT_BOOKS, params.book).fetch()
+			this.book = await this.$axios.$get('/api/books/' + params.book)
 		}
 		catch(ex) {
 			console.error(ex)

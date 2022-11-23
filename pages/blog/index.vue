@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<loading-spinner v-if="blog == null" />
+		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
 			<nuxt-content class="prose text-xl" :document="blog" />
@@ -15,7 +15,6 @@
 	</div>
 </template>
 <script>
-import { SUMMARY_FIELDS, CONTENT_ARTICLES } from '~/utils/config'
 import { title, meta, url } from '~/utils/meta'
 
 export default {
@@ -24,12 +23,7 @@ export default {
 	async fetch() {
 		try {
 			this.blog = await this.$content('blog/index').fetch()
-			this.articles = await this
-				.$content(CONTENT_ARTICLES)
-				.only(SUMMARY_FIELDS)
-				.sortBy('publish_date', 'desc')
-				.limit(10)
-				.fetch()
+			this.articles = await this.$axios.$get('/api/articles?limit=5')
 		}
 		catch(ex) {
 			console.error(ex)

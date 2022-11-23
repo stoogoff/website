@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:first-day
+type: Article
 category: Gaming
 title: First Day
 summary: |
@@ -7,4 +9,4 @@ tags:
   - ludum dare
   - ld32
 publish_date: 2015-04-19T02:00
----
+

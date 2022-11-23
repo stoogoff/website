@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:no-ludum-idea
+type: Article
 category: Gaming
 title: No Ludum Idea
 summary: |
@@ -10,12 +12,11 @@ tags:
   - ld29
   - beneath the surface
 publish_date: 2014-04-26T08:50
----
-    
-After that I thought of [Spelunky][spelunk], which seems perfect for *beneath the surface*, but has been done (obviously). I think there will be plenty of games around digging or tunnelling so I'm trying to avoid that. This may change!
+content: |
+  After that I thought of [Spelunky][spelunk], which seems perfect for *beneath the surface*, but has been done (obviously). I think there will be plenty of games around digging or tunnelling so I'm trying to avoid that. This may change!
 
-I was trying to go a bit deeper with the theme (pun intended) by looking at mysteries which have a truth beneath the surface, or people, who can be completely different things beneath the surface.
+  I was trying to go a bit deeper with the theme (pun intended) by looking at mysteries which have a truth beneath the surface, or people, who can be completely different things beneath the surface.
 
-For now I'm going to get started on a Galaxian clone and see where I go from there.
+  For now I'm going to get started on a Galaxian clone and see where I go from there.
 
-[spelunk]: http://www.spelunkyworld.com/
+  [spelunk]: http://www.spelunkyworld.com/

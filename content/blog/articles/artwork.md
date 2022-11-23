@@ -1,4 +1,6 @@
 ---
+_id: article:Gaming:artwork
+type: Article
 category: Gaming
 title: Artwork
 summary: |
@@ -8,16 +10,15 @@ tags:
   - ld29
   - artwork
 publish_date: 2014-04-27T18:20
----
+content: |
+  ![The player](/img/swimmer.jpg)
 
-![The player](/img/swimmer.jpg)
+  The player. A ghost-like form because I can't draw people.
 
-The player. A ghost-like form because I can't draw people.
+  ![A scary looking fish](/img/fish-drawing.jpg)
 
-![A scary looking fish](/img/fish-drawing.jpg)
+  A scary looking fish!
 
-A scary looking fish!
+  ![Obstacle](/img/log.jpg)
 
-![Obstacle](/img/log.jpg)
-
-Random obstacle.
+  Random obstacle.

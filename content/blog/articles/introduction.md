@@ -1,4 +1,6 @@
 ---
+_id: article:General:introduction
+type: Article
 category: General
 title: Introduction
 summary: |
@@ -10,4 +12,4 @@ image:
   text: Lying in a Field
   width: 2000
   height: 1333
----
+
