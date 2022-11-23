@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<loading-spinner v-if="blog == null" />
+		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
 			<nuxt-content class="prose text-xl" :document="blog" />
@@ -27,15 +27,7 @@ export default {
 
 		try {
 			this.blog = await this.$content('blog/category', params.category).fetch()
-			
-			const articles = await this
-				.$content(CONTENT_ARTICLES)
-				.only(SUMMARY_FIELDS)
-				.sortBy('publish_date', 'desc')
-				.fetch()
-
-			this.articles = articles
-				.filter(({ category }) => (category || '').toLowerCase() === params.category)
+			this.articles = await this.$axios.$get('/api/articles/category/' + params.category)
 		}
 		catch(ex) {
 			console.error(ex)

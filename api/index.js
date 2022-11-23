@@ -12,12 +12,14 @@ const $axios = axios.create({
 })
 
 
+const ALLOWED_PREFIXES = ['albums', 'articles', 'books', 'games']
+const ALLOWED_CATEGORIES = ['general', 'gaming', 'music', 'writing']
+
 // ----------
 // MIDDLEWARE
 
 // check a the prefix is in the allowed range
 const verifyPrefix = (req, res, next) => {
-	const ALLOWED_PREFIXES = ['albums', 'articles', 'books', 'games']
 	const prefix = req.params.prefix
 
 	if(!ALLOWED_PREFIXES.includes(prefix)) {
@@ -27,7 +29,18 @@ const verifyPrefix = (req, res, next) => {
 	next()
 }
 
-const verifyLimit = (req, res, next) => {
+const verifyCategory = (req, res, next) => {
+	const category = req.params.category
+
+	if(!ALLOWED_CATEGORIES.includes(category)) {
+		return res.status(404).end(`Not Found: type '${category}' not found.`)
+	}
+
+	next()
+}
+
+// verify query string data matches expected and throw error otherwise
+const verifyQueryString = (req, res, next) => {
 	if(req.query.limit && isNaN(req.query.limit)) {
 		return res.status(400).end(`Bad Request: limit '${req.query.limit}' is not a number.`)
 	}
@@ -39,10 +52,16 @@ const verifyLimit = (req, res, next) => {
 // -------
 // HELPERS
 
-// convert CouchDB format and add a path
-const convertResponseToArray = (response, prefix) => response.data.rows.map(row => ({
+// convert CouchDB format and add a path for _all_docs responses
+const convertAllDocsToArray = (response, prefix) => response.data.rows.map(row => ({
 	...row.doc,
 	path: `${prefix}s/` + row.doc._id.substring(row.doc._id.lastIndexOf(':') + 1)
+}))
+
+// convert CouchDB format and add a path for view responses
+const convertViewToArray = response => response.data.rows.map(row => ({
+	...row.value,
+	path: `blog/articles/` + row.value._id.substring(row.value._id.lastIndexOf(':') + 1)
 }))
 
 
@@ -53,10 +72,9 @@ const convertResponseToArray = (response, prefix) => response.data.rows.map(row 
 app.get('/hello', (req, res) => res.send('Hello'))
 
 // article specific list route
-app.get('/articles', verifyLimit, async (req, res) => {
+app.get('/articles', verifyQueryString, async (req, res) => {
 	const params = {
 		descending: true,
-		include_docs: true,
 	}
 
 	if(req.query.limit) {
@@ -67,13 +85,36 @@ app.get('/articles', verifyLimit, async (req, res) => {
 		params
 	})
 
-	let items = convertResponseToArray(response, 'blog/article')
+	let items = convertViewToArray(response)
+
+	res.json(items)
+})
+
+app.get('/articles/category/:category', verifyQueryString, verifyCategory, async (req, res) => {
+	const category =
+		req.params.category.substring(0, 1).toUpperCase() +
+		req.params.category.substring(1)
+	const params = {
+		startkey: JSON.stringify([category, "\ufff0"]),
+		endkey: JSON.stringify([category]),
+		descending: true,
+	}
+
+	if(req.query.limit) {
+		params.limit = parseInt(req.query.limit)
+	}
+
+	const response = await $axios.get('/_design/articles/_view/by_category', {
+		params
+	})
+
+	let items = convertViewToArray(response)
 
 	res.json(items)
 })
 
 // generic list route for books, games, and albums
-app.get('/:prefix', verifyPrefix, verifyLimit, async (req, res) => {
+app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res) => {
 	const prefix = req.params.prefix.replace(/s$/, '')
 	const response = await $axios.get('_all_docs', {
 		params: {
@@ -83,7 +124,7 @@ app.get('/:prefix', verifyPrefix, verifyLimit, async (req, res) => {
 		},	
 	})
 
-	let items = convertResponseToArray(response, prefix)
+	let items = convertAllDocsToArray(response, prefix)
 
 	items = items.sort(sortByProperty('publish_date')).reverse()
 
