@@ -4,10 +4,12 @@
 		<section v-else>
 			<h1>Tagged: {{ tag }}</h1>
 			<p>Everything — article, book, album and game — tagged with <strong>{{ tag }}</strong>.</p>
-
+			<icon-text icon="bookmark">
+				{{ items.length }} Items
+			</icon-text>
 			<ul>
 				<li v-for="(item, idx) in items" :key="`item_${idx}`" class="flex mb-2 ">
-					<icon-view v-if="item.type" :icon="item.type" />
+					<icon-view v-if="item.icon" :icon="item.icon" />
 					<nuxt-link :to="item.path" class="link ml-2">{{ item.title }}</nuxt-link>
 				</li>
 			</ul>
@@ -15,14 +17,7 @@
 	</div>
 </template>
 <script>
-import sortBy from 'lodash/sortBy'
 import { unslug } from '~/utils/string'
-import {
-	CONTENT_ALBUMS,
-	CONTENT_ARTICLES,
-	CONTENT_BOOKS,
-	CONTENT_GAMES,
-} from '~/utils/config'
 import { title, meta, url } from '~/utils/meta'
 
 export default {
@@ -34,30 +29,15 @@ export default {
 		this.tag = unslug(params.tag)
 
 		try {
+			const items = await this.$axios.$get('/api/tags/' + params.tag)
 			const keyTypeMap = {
-				[CONTENT_ALBUMS]: 'music',
-				[CONTENT_ARTICLES]: 'document',
-				[CONTENT_BOOKS]: 'book',
-				[CONTENT_GAMES]: 'controller',
+				'Album': 'music',
+				'Article': 'document',
+				'Book': 'book',
+				'Game': 'controller',
 			}
 
-			const items = await Promise.all(Object.keys(keyTypeMap).map(key => 
-				this.$content(key)
-					.only(['title', 'tags'])
-					.fetch()
-			))
-
-			this.items = sortBy(items
-				.flat()
-				.filter(({ tags }) => (tags || []).includes(this.tag))
-				.map(item => {
-					const key = item.path.substring(0, item.path.lastIndexOf('/'))
-
-					return {
-						...item,
-						type: keyTypeMap[key] || false
-					}
-				}), ({ title }) => title)
+			this.items = items.map(item => ({ ...item, icon: keyTypeMap[item.type] }))
 		}
 		catch(ex) {
 			console.error(ex)

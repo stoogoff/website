@@ -47,16 +47,19 @@ const verifyQueryString = (req, res, next) => {
 // -------
 // HELPERS
 
+// get the public id of the item, without the type: prefix
+const id = input => input.substring(input.lastIndexOf(':') + 1)
+
 // convert CouchDB format and add a path for _all_docs responses
 const convertAllDocsToArray = (response, prefix) => response.data.rows.map(row => ({
 	...row.doc,
-	path: `${prefix}s/` + row.doc._id.substring(row.doc._id.lastIndexOf(':') + 1)
+	path: `/${prefix}s/` + id(row.doc._id)
 }))
 
 // convert CouchDB format and add a path for view responses
 const convertViewToArray = response => response.data.rows.map(row => ({
 	...row.value,
-	path: `blog/articles/` + row.value._id.substring(row.value._id.lastIndexOf(':') + 1)
+	path: '/blog/articles/' + id(row.value._id)
 }))
 
 
@@ -153,6 +156,33 @@ app.get('/articles/archive/:date', async (req, res) => {
 	try {
 		const response = await $axios.get('/_design/articles/_view/archive', { params })
 		const items = convertAllDocsToArray(response, 'blog/article')
+
+		res.json(items)		
+	}
+	catch(ex) {
+		res.status(500).send(ex.message)
+	}
+})
+
+// /_design/all/_view/tags?key="hidden%20places"
+// get all articles for a given tag
+app.get('/tags/:tag', async (req, res) => {
+	const params = {
+		key: JSON.stringify(req.params.tag.replace(/-/g, ' ')),
+	}
+
+	try {
+		const response = await $axios.get('/_design/all/_view/tags', { params })
+		const items = response.data.rows.map(row => (
+			{
+				...row.value,
+				path:
+					'/' +
+					(row.value.type === 'Article' ? 'blog/article' : row.value.type.toLowerCase()) +
+					's/' +
+					id(row.id)
+			}
+		))
 
 		res.json(items)		
 	}
