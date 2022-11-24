@@ -1,9 +1,9 @@
 
 const { url, description } = require('../../utils/meta')
-const { getFeedPosts } = require('../../utils/feed')
+const { getFeedPosts } = require('../feed')
 
 async function getOutbox(req, res) {
-	const articles = await getFeedPosts(20)
+	const articles = await getFeedPosts()
 	const converted = articles.map(article => ({
 		'@context': 'https://www.w3.org/ns/activitystreams',
 		type: 'Article',

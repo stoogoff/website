@@ -13,7 +13,11 @@ const author = {
 	link: BASE_URL,
 }
 
-const getFeedPosts = async limit => {
+const absoluteUrls = input => input
+	.replace(/ src="\//g, ` src="${BASE_URL}`)
+	.replace(/ href="\//g, ` href="${BASE_URL}`)
+
+const getFeedPosts = async () => {
 	const posts = await getArticles(20, true)
 
 	return posts.map(post => {
@@ -29,11 +33,6 @@ const getFeedPosts = async limit => {
 				length: stats.size,
 			}
 		}
-		
-		let content = markdown(post.content)
-
-		content = content.replace(/ src="\//g, ` src="${BASE_URL}`)
-		content = content.replace(/ href="\//g, ` href="${BASE_URL}`)
 
 		const date = new Date(Date.parse(post.publish_date))
 
@@ -41,10 +40,10 @@ const getFeedPosts = async limit => {
 			title: post.title,
 			id: postUrl,
 			link: postUrl,
-			description: markdown(post.summary),
+			description: absoluteUrls(markdown(post.summary)),
 			published: date,
 			category: [ { name: post.category } ],
-			content,
+			content: absoluteUrls(markdown(post.content)),
 			author,
 			image,
 			date,
