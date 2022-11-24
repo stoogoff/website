@@ -1,19 +1,20 @@
 
 const express = require('express')
-const axios = require('axios')
-const { sortByProperty } = require('../utils/list')
+const {
+	getArticles,
+	getArticlesByCategory,
+	getArchive,
+	getArchiveByDate,
+	getItemsForTag,
+	getAllDocsByType,
+	getDocByTypeId,
+} = require('./api')
 
 const app = express()
-const $axios = axios.create({
-	baseURL: process.env.DB_URL,
-	headers: {
-		Authorization: 'Basic ' + Buffer.from(`${process.env.DB_USER}:${process.env.DB_PASSWORD}`, 'ascii').toString('base64'),
-	},
-})
-
 
 const ALLOWED_PREFIXES = ['albums', 'articles', 'books', 'games']
 const ALLOWED_CATEGORIES = ['general', 'gaming', 'music', 'writing']
+
 
 // ----------
 // MIDDLEWARE
@@ -44,25 +45,6 @@ const verifyQueryString = (req, res, next) => {
 }
 
 
-// -------
-// HELPERS
-
-// get the public id of the item, without the type: prefix
-const id = input => input.substring(input.lastIndexOf(':') + 1)
-
-// convert CouchDB format and add a path for _all_docs responses
-const convertAllDocsToArray = (response, prefix) => response.data.rows.map(row => ({
-	...row.doc,
-	path: `/${prefix}s/` + id(row.doc._id)
-}))
-
-// convert CouchDB format and add a path for view responses
-const convertViewToArray = response => response.data.rows.map(row => ({
-	...row.value,
-	path: '/blog/articles/' + id(row.value._id)
-}))
-
-
 // ------
 // ROUTES
 
@@ -71,28 +53,11 @@ app.get('/hello', (req, res) => res.send('Hello'))
 
 // article specific list route
 app.get('/articles', verifyQueryString, async (req, res) => {
-	const params = {
-		descending: true,
-	}
-
-	if(req.query.limit) {
-		params.limit = parseInt(req.query.limit)
-	}
-
-	if(req.query.content && req.query.content === 'true') {
-		params.include_docs = true
-	}
+	const limit = req.query.limit ? parseInt(req.query.limit) : false
+	const content = req.query.content && req.query.content === 'true'
 
 	try {
-		const response = await $axios.get('/_design/articles/_view/by_date', { params })
-		let items = convertViewToArray(response)
-
-		if(params.include_docs) {
-			items = convertAllDocsToArray(response, '/blog/article')
-		}
-		else {
-			items = convertViewToArray(response)
-		}
+		const items = await getArticles(limit, content)
 
 		res.json(items)
 	}
@@ -101,23 +66,15 @@ app.get('/articles', verifyQueryString, async (req, res) => {
 	}
 })
 
+// get a category by name
 app.get('/articles/category/:category', verifyQueryString, verify('category', ALLOWED_CATEGORIES), async (req, res) => {
+	const limit = req.query.limit ? parseInt(req.query.limit) : false
 	const category =
 		req.params.category.substring(0, 1).toUpperCase() +
 		req.params.category.substring(1)
-	const params = {
-		startkey: JSON.stringify([category, "\ufff0"]),
-		endkey: JSON.stringify([category]),
-		descending: true,
-	}
-
-	if(req.query.limit) {
-		params.limit = parseInt(req.query.limit)
-	}
 
 	try {
-		const response = await $axios.get('/_design/articles/_view/by_category', { params })
-		const items = convertViewToArray(response)
+		const items = await getArticlesByCategory(category, limit)
 
 		res.json(items)
 	}
@@ -129,23 +86,9 @@ app.get('/articles/category/:category', verifyQueryString, verify('category', AL
 // count of articles by yyyy-month
 app.get('/articles/archive', async (req, res) => {
 	try {
-		const response = await $axios.get('/_design/articles/_view/archive', {
-			params: {
-				descending: true,
-			}
-		})
+		const items = await getArchive()
 
-		const items = response.data.rows.map(({ key }) => key).reduce((total, current) => {
-			if(!total[current]) {
-				total[current] = 0
-			}
-
-			++total[current]
-
-			return total
-		}, {})
-
-		res.json(Object.keys(items).map(key => ({ date: key, count: items[key] })))
+		res.json(items)
 	}
 	catch(ex) {
 		res.status(500).send(ex.message)
@@ -158,15 +101,8 @@ app.get('/articles/archive/:date', async (req, res) => {
 		return res.status(400).send('Bad Request')
 	}
 
-	const params = {
-		descending: true,
-		key: JSON.stringify(req.params.date),
-		include_docs: true,
-	}
-
 	try {
-		const response = await $axios.get('/_design/articles/_view/archive', { params })
-		const items = convertAllDocsToArray(response, 'blog/article')
+		const items = await getArchiveByDate(req.params.date)
 
 		res.json(items)		
 	}
@@ -178,22 +114,8 @@ app.get('/articles/archive/:date', async (req, res) => {
 // /_design/all/_view/tags?key="hidden%20places"
 // get all articles for a given tag
 app.get('/tags/:tag', async (req, res) => {
-	const params = {
-		key: JSON.stringify(req.params.tag.replace(/-/g, ' ')),
-	}
-
 	try {
-		const response = await $axios.get('/_design/all/_view/tags', { params })
-		const items = response.data.rows.map(row => (
-			{
-				...row.value,
-				path:
-					'/' +
-					(row.value.type === 'Article' ? 'blog/article' : row.value.type.toLowerCase()) +
-					's/' +
-					id(row.id)
-			}
-		))
+		const items = await getItemsForTag(req.params.tag)
 
 		res.json(items)		
 	}
@@ -206,23 +128,7 @@ app.get('/tags/:tag', async (req, res) => {
 app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res) => {
 	try {
 		const prefix = req.params.prefix.replace(/s$/, '')
-		const response = await $axios.get('_all_docs', {
-			params: {
-				startkey: `"${prefix}:"`,
-				endkey: `"${prefix}:\ufff0"`,
-				include_docs: true
-			},	
-		})
-
-		let items = convertAllDocsToArray(response, prefix)
-
-		items = items.sort(sortByProperty('publish_date')).reverse()
-
-		if(req.query.limit) {
-			const limit = parseInt(req.query.limit)
-
-			items = items.slice(0, limit)
-		}
+		const items = await getAllDocsByType(prefix)
 
 		res.json(items)
 	}
@@ -237,9 +143,9 @@ app.get('/:prefix/:id', verifyPrefix, async (req, res) => {
 	const id = req.params.id
 
 	try {
-		const response = await $axios.get(`/${prefix}:${id}`)
+		const item = await getDocByTypeId(prefix, id)
 
-		res.json(response.data)
+		res.json(item)
 	}
 	catch(ex) {
 		res.status(404).end(`Not Found: type with id '${id}' not found.`)

@@ -68,7 +68,8 @@ export default {
 
 	serverMiddleware: [
 		'~/server/activitypub/activitypub.js',
-		{ path: '/api', handler: '~/server/api.js' },
+		'~/server/feed.js',
+		{ path: '/api', handler: '~/server/api/index.js' },
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
