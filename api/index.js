@@ -78,10 +78,21 @@ app.get('/articles', verifyQueryString, async (req, res) => {
 	if(req.query.limit) {
 		params.limit = parseInt(req.query.limit)
 	}
+console.log(req.query.content)
+	if(req.query.content && req.query.content === 'true') {
+		params.include_docs = true
+	}
 
 	try {
 		const response = await $axios.get('/_design/articles/_view/by_date', { params })
-		const items = convertViewToArray(response)
+		let items = convertViewToArray(response)
+
+		if(params.include_docs) {
+			items = convertAllDocsToArray(response, '/blog/article')
+		}
+		else {
+			items = convertViewToArray(response)
+		}
 
 		res.json(items)
 	}

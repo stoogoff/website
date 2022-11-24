@@ -3,17 +3,33 @@
 		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
-			<nuxt-content class="text-xl" :document="blog" />
-			<ul>
-				<li
-					v-for="(row, idx) in dates"
-					:key="`date_${idx}`"
+			<nuxt-content class="prose text-xl mb-8" :document="blog" />
+			<div class="md:grid md:grid-cols-2 md:gap-4">
+				<div
+					v-for="(year, idx) in years"
+					:key="`year_${idx}`"
+					class="px-2 py-4 bg-gray-200 mb-4 md:mb-0 border-b-2 border-gray-300"
 				>
-					<nuxt-link :to="`/blog/archive/${row.date}`">
-						{{ row.date | archive }} ({{ row.count }} article{{ row.count === 1 ? '' : 's' }})
-					</nuxt-link>
-				</li>
-			</ul>
+					<div class="flex mb-4">
+						<icon-view icon="calendar" />
+						<h3 class="font-semibold ml-2 text-xl -mt-0.5">{{ year.year }}</h3>
+					</div>
+					<ul>
+						<li
+							v-for="(row, jdx) in year.items"
+							:key="`date_${jdx}`"
+							class="mb-3"
+						>
+							<nuxt-link :to="`/blog/archive/${row.date}`" class="inline-block ml-1 link">
+								{{ row.date | archive }} 
+							</nuxt-link>
+							<icon-text icon="bookmark">
+								{{ row.count }} article{{ row.count === 1 ? '' : 's' }}
+							</icon-text>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</section>
 	</div>
 </template>
@@ -26,8 +42,14 @@ export default {
 
 	async fetch() {
 		try {
+			const dates = await this.$axios.$get('/api/articles/archive')
+
 			this.blog = await this.$content('blog/archive').fetch()
-			this.dates = await this.$axios.$get('/api/articles/archive')
+			this.years = uniq(dates.map(({ date }) => date.substring(0, date.indexOf('-'))))
+				.map(year => ({
+					year,
+					items: dates.filter(({ date }) => date.startsWith(year))
+				}))
 		}
 		catch(ex) {
 			console.error(ex)
@@ -37,7 +59,7 @@ export default {
 	data() {
 		return {
 			blog: null,
-			dates: [],
+			years: [],
 		}
 	},
 

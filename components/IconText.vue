@@ -1,5 +1,5 @@
 <template>
-	<aside class="uppercase text-xs flex mb-8 text-gray-600">
+	<aside class="uppercase text-xs flex text-gray-600">
 		<icon-view :icon="icon" />
 		<p class="mb-0 mt-1 ml-2">
 			<slot />

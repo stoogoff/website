@@ -1,5 +1,5 @@
 <template>
-	<icon-text icon="calendar">
+	<icon-text icon="calendar" class="mb-8">
 		Published <time :datetime="item.publish_date" itemprop="datePublished">{{ item.publish_date | date }}</time>
 	</icon-text>
 </template>

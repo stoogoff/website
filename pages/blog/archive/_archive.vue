@@ -3,7 +3,7 @@
 		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
-			<nuxt-content :document="blog" />
+			<nuxt-content class="prose text-xl mb-8" :document="blog" />
 
 			<article-summary
 				v-for="(article, idx) in articles"

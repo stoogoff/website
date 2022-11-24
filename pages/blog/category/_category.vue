@@ -4,7 +4,7 @@
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
 			<nuxt-content class="prose text-xl" :document="blog" />
-			<icon-text icon="bookmark">
+			<icon-text icon="bookmark" class="mb-8">
 				{{ articles.length }} Articles
 			</icon-text>
 			<article-summary

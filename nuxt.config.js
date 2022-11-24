@@ -55,7 +55,7 @@ export default {
 			async create(feed) {
 				await createFeed(feed)
 			},
-			cacheTime: process.env.NODE_ENV !== 'production' ? 0 : 1000 * 60 * 24,
+			cacheTime: process.env.NODE_ENV === 'production' ? 1000 * 60 * 24 : 0,
 			type: 'rss2', // Can be: rss2, atom1, json1
 		},
 		{
@@ -63,7 +63,7 @@ export default {
 			async create(feed) {
 				await createFeed(feed)
 			},
-			cacheTime: process.env.NODE_ENV !== 'production' ? 0 : 1000 * 60 * 24,
+			cacheTime: process.env.NODE_ENV === 'production' ? 1000 * 60 * 24 : 0,
 			type: 'atom1',
 		},
 	],

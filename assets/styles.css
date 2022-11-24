@@ -53,3 +53,6 @@ p {
 .prose h2 {
 	@apply mt-8;
 }
+.prose blockquote, .prose pre {
+	@apply bg-gray-200 p-2 mb-4 rounded-sm;
+}
