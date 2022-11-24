@@ -1,5 +1,5 @@
 
-const { url, description } = require('../utils/meta')
+const { url, description } = require('../../utils/meta')
 
 module.exports = function me(req, res) {
 	const me = url({ url: '/me' })

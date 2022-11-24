@@ -29,7 +29,6 @@ export default {
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
 		'~/plugins/filters.js',
-		'~/plugins/api.js',
 	],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,10 +45,9 @@ export default {
 	modules: [
 		'@nuxtjs/axios',
 		'@nuxt/content',
-		'@nuxtjs/feed',
 	],
 
-	feed: [
+	/*feed: [
 		{
 			path: '/feed.rss',
 			async create(feed) {
@@ -66,17 +64,17 @@ export default {
 			cacheTime: process.env.NODE_ENV === 'production' ? 1000 * 60 * 24 : 0,
 			type: 'atom1',
 		},
-	],
+	],*/
 
 	serverMiddleware: [
-		'~/server/activitypub.js',
-		{ path: '/api', handler: '~/api/index' },
+		'~/server/activitypub/activitypub.js',
+		{ path: '/api', handler: '~/server/api.js' },
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
 	axios: {
 		// Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-		baseURL: '/',
+		baseURL: process.env.API_URL,
 	},
 
 	googleFonts: {

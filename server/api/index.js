@@ -78,7 +78,7 @@ app.get('/articles', verifyQueryString, async (req, res) => {
 	if(req.query.limit) {
 		params.limit = parseInt(req.query.limit)
 	}
-console.log(req.query.content)
+
 	if(req.query.content && req.query.content === 'true') {
 		params.include_docs = true
 	}

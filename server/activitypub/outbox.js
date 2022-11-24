@@ -1,6 +1,6 @@
 
-const { url, description } = require('../utils/meta')
-const { getFeedPosts } = require('../utils/feed')
+const { url, description } = require('../../utils/meta')
+const { getFeedPosts } = require('../../utils/feed')
 
 async function getOutbox(req, res) {
 	const articles = await getFeedPosts(20)

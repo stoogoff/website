@@ -1,5 +1,5 @@
 
-const { url } = require('../utils/meta')
+const { url } = require('../../utils/meta')
 
 module.exports = function webfinger(req, res) {
 	const resource = req.query.resource
