@@ -18,31 +18,26 @@ const ALLOWED_CATEGORIES = ['general', 'gaming', 'music', 'writing']
 // ----------
 // MIDDLEWARE
 
+// general purpose parameter verification
+const verify = (key, allowedValues) => {
+	return (req, res, next) => {
+		const param = req.params[key]
+
+		if(!param || !allowedValues.includes(param)) {
+			return res.status(404).end('Not Found')
+		}
+
+		next()
+	}
+}
+
 // check a the prefix is in the allowed range
-const verifyPrefix = (req, res, next) => {
-	const prefix = req.params.prefix
-
-	if(!ALLOWED_PREFIXES.includes(prefix)) {
-		return res.status(404).end(`Not Found: type '${prefix}' not found.`)
-	}
-
-	next()
-}
-
-const verifyCategory = (req, res, next) => {
-	const category = req.params.category
-
-	if(!ALLOWED_CATEGORIES.includes(category)) {
-		return res.status(404).end(`Not Found: type '${category}' not found.`)
-	}
-
-	next()
-}
+const verifyPrefix = verify('prefix', ALLOWED_PREFIXES)
 
 // verify query string data matches expected and throw error otherwise
 const verifyQueryString = (req, res, next) => {
 	if(req.query.limit && isNaN(req.query.limit)) {
-		return res.status(400).end(`Bad Request: limit '${req.query.limit}' is not a number.`)
+		return res.status(400).end('Bad Request')
 	}
 
 	next()
@@ -81,16 +76,18 @@ app.get('/articles', verifyQueryString, async (req, res) => {
 		params.limit = parseInt(req.query.limit)
 	}
 
-	const response = await $axios.get('/_design/articles/_view/by_date', {
-		params
-	})
+	try {
+		const response = await $axios.get('/_design/articles/_view/by_date', { params })
+		const items = convertViewToArray(response)
 
-	let items = convertViewToArray(response)
-
-	res.json(items)
+		res.json(items)
+	}
+	catch(ex) {
+		res.status(500).send(ex.message)
+	}
 })
 
-app.get('/articles/category/:category', verifyQueryString, verifyCategory, async (req, res) => {
+app.get('/articles/category/:category', verifyQueryString, verify('category', ALLOWED_CATEGORIES), async (req, res) => {
 	const category =
 		req.params.category.substring(0, 1).toUpperCase() +
 		req.params.category.substring(1)
@@ -104,37 +101,93 @@ app.get('/articles/category/:category', verifyQueryString, verifyCategory, async
 		params.limit = parseInt(req.query.limit)
 	}
 
-	const response = await $axios.get('/_design/articles/_view/by_category', {
-		params
-	})
+	try {
+		const response = await $axios.get('/_design/articles/_view/by_category', { params })
+		const items = convertViewToArray(response)
 
-	let items = convertViewToArray(response)
+		res.json(items)
+	}
+	catch(ex) {
+		res.status(500).send(ex.message)
+	}
+})
 
-	res.json(items)
+// count of articles by yyyy-month
+app.get('/articles/archive', async (req, res) => {
+	try {
+		const response = await $axios.get('/_design/articles/_view/archive', {
+			params: {
+				descending: true,
+			}
+		})
+
+		const items = response.data.rows.map(({ key }) => key).reduce((total, current) => {
+			if(!total[current]) {
+				total[current] = 0
+			}
+
+			++total[current]
+
+			return total
+		}, {})
+
+		res.json(Object.keys(items).map(key => ({ date: key, count: items[key] })))
+	}
+	catch(ex) {
+		res.status(500).send(ex.message)
+	}
+})
+
+// get all articles for a given date
+app.get('/articles/archive/:date', async (req, res) => {
+	if(!/^\d{4}-\d{2}$/.test(req.params.date)) {
+		return res.status(400).send('Bad Request')
+	}
+
+	const params = {
+		descending: true,
+		key: JSON.stringify(req.params.date),
+		include_docs: true,
+	}
+
+	try {
+		const response = await $axios.get('/_design/articles/_view/archive', { params })
+		const items = convertAllDocsToArray(response, 'blog/article')
+
+		res.json(items)		
+	}
+	catch(ex) {
+		res.status(500).send(ex.message)
+	}
 })
 
 // generic list route for books, games, and albums
 app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res) => {
-	const prefix = req.params.prefix.replace(/s$/, '')
-	const response = await $axios.get('_all_docs', {
-		params: {
-			startkey: `"${prefix}:"`,
-			endkey: `"${prefix}:\ufff0"`,
-			include_docs: true
-		},	
-	})
+	try {
+		const prefix = req.params.prefix.replace(/s$/, '')
+		const response = await $axios.get('_all_docs', {
+			params: {
+				startkey: `"${prefix}:"`,
+				endkey: `"${prefix}:\ufff0"`,
+				include_docs: true
+			},	
+		})
 
-	let items = convertAllDocsToArray(response, prefix)
+		let items = convertAllDocsToArray(response, prefix)
 
-	items = items.sort(sortByProperty('publish_date')).reverse()
+		items = items.sort(sortByProperty('publish_date')).reverse()
 
-	if(req.query.limit) {
-		const limit = parseInt(req.query.limit)
+		if(req.query.limit) {
+			const limit = parseInt(req.query.limit)
 
-		items = items.slice(0, limit)
+			items = items.slice(0, limit)
+		}
+
+		res.json(items)
 	}
-
-	res.json(items)
+	catch(ex) {
+		res.status(500).send(ex.message)
+	}
 })
 
 // generic fetch by id route

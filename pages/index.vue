@@ -18,12 +18,7 @@ export default {
 	name: 'IndexPage',
 
 	async fetch() {
-		this.articles = await this
-			.$content('blog/articles')
-			.only(SUMMARY_FIELDS)
-			.sortBy('publish_date', 'desc')
-			.limit(5)
-			.fetch()
+		this.articles = await this.$axios.$get('/api/articles?limit=5')
 	},
 
 	data() {

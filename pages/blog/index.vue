@@ -23,7 +23,7 @@ export default {
 	async fetch() {
 		try {
 			this.blog = await this.$content('blog/index').fetch()
-			this.articles = await this.$axios.$get('/api/articles?limit=5')
+			this.articles = await this.$axios.$get('/api/articles?limit=10')
 		}
 		catch(ex) {
 			console.error(ex)

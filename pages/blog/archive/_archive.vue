@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<loading-spinner v-if="blog == null" />
+		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
 			<nuxt-content :document="blog" />
@@ -25,15 +25,7 @@ export default {
 
 		try {
 			this.blog = await this.$content('blog/archive').fetch()
-			
-			const articles = await this
-				.$content('blog/articles')
-				.only(SUMMARY_FIELDS)
-				.sortBy('publish_date', 'desc')
-				.fetch()
-
-			this.articles = articles
-				.filter(article => article.publish_date.startsWith(params.archive))
+			this.articles = await this.$axios.$get('/api/articles/archive/' + params.archive)
 		}
 		catch(ex) {
 			console.error(ex)
