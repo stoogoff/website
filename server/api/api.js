@@ -75,7 +75,7 @@ const getArchive = async () => {
 			descending: true,
 		}
 	})
-	const items = response.data.rows.map(({ key }) => key).reduce((total, current) => {
+	const items = response.data.rows.map(({ key }) => key.substring(0, 7)).reduce((total, current) => {
 		if(!total[current]) {
 			total[current] = 0
 		}
@@ -91,7 +91,8 @@ const getArchive = async () => {
 const getArchiveByDate = async date => {
 	const params = {
 		descending: true,
-		key: JSON.stringify(date),
+		startkey: JSON.stringify(date + '\u0fff'),
+		endkey: JSON.stringify(date),
 		include_docs: true,
 	}
 	const response = await $axios.get('/_design/articles/_view/archive', { params })
@@ -128,8 +129,6 @@ const getAllDocsByType = async (prefix, limit = false) => {
 	items = items.sort(sortByProperty('publish_date')).reverse()
 
 	if(limit) {
-		const limit = parseInt(limit)
-
 		items = items.slice(0, limit)
 	}
 

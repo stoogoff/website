@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
+		<error-view v-else-if="blog === null">Category not found</error-view>
 		<section v-else>
 			<h1>{{ blog.title }}</h1>
 			<nuxt-content class="prose text-xl" :document="blog" />

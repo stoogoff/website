@@ -126,9 +126,11 @@ app.get('/tags/:tag', async (req, res) => {
 
 // generic list route for books, games, and albums
 app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res) => {
+	const limit = req.query.limit ? parseInt(req.query.limit) : false
+	const prefix = req.params.prefix.replace(/s$/, '')
+
 	try {
-		const prefix = req.params.prefix.replace(/s$/, '')
-		const items = await getAllDocsByType(prefix)
+		const items = await getAllDocsByType(prefix, limit)
 
 		res.json(items)
 	}

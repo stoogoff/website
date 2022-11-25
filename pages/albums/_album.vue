@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
+		<error-view v-else-if="album === null">Album not found</error-view>
 		<article v-else itemscope itemtype="https://schema.org/MusicAlbum">
 			<tag-list :tags="album.tags" />
 			<header>

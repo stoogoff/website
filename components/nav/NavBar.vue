@@ -5,7 +5,7 @@
 	>
 		<div class="container pl-4 pr-0 md:px-10 mx-auto flex flex-wrap items-center justify-between max-w-screen-lg">
 			<div class="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start">
-				<span class="text-gray-700 text-sm tracking-wider leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase font-semibold">
+				<span class="text-gray-500 hover:text-white text-sm tracking-wider leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase font-semibold">
 					<slot name="title" />
 				</span>
 				<slot name="buttons" />
@@ -37,9 +37,9 @@ export default Vue.component('NavBar', {
 </script>
 <style scoped>
 .transparent {
-	@apply bg-white bg-opacity-75;
+	@apply bg-gray-800 bg-opacity-75;
 }
 .opaque {
-	@apply bg-gray-200 border-gray-300 border-b-2;
+	@apply bg-gray-800 border-gray-200 border-b-2;
 }
 </style>

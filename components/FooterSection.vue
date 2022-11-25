@@ -2,7 +2,7 @@
 	<footer class="bg-gray-200 py-4 border-gray-300 border-t-2 mt-20">
 		<section class="max-w-2xl mx-auto md:flex md:space-x-4 px-4 md:px-0 mb-6">
 			<div class="hidden md:block md:w-1/4 md:flex-none">
-				<img src="/img/stoo-goff.jpg" alt="Stoo Goff" class="border-white border-2 w-full" />
+				<img src="https://www.gravatar.com/avatar/ce581df7e2ee80c2f75def7ccfba91d5?s=200" alt="Stoo Goff" class="border-white border-2 w-full" />
 			</div>
 			<div class="md:flex-1 text-sm">
 				<p>Stoo Goff is a writer, musician and programmer hailing from Norwich and now living in Glasgow. When not buried beneath a mountain of programming code or torturing guitars he can be found creating strange new lands and conjuring dreams from nothing. He regularly promises himself that he will finish the next novel and album.</p>

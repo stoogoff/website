@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
+		<error-view v-else-if="book === null">Book not found</error-view>
 		<article v-else itemscope itemtype="https://schema.org/Book">
 			<tag-list :tags="book.tags" />
 			<header>

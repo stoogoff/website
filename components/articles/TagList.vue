@@ -31,7 +31,7 @@ export default Vue.component('TagList', {
 <style scoped>
 
 a {
-	@apply px-3 py-1 rounded-lg bg-gray-100 uppercase text-xs tracking-widest font-semibold hover:bg-blue-700 hover:text-white no-underline transition-colors duration-500 m-0;
+	@apply px-3 py-1 rounded-lg bg-gray-100 uppercase text-xs tracking-widest font-semibold hover:bg-gray-700 hover:text-white no-underline transition-colors duration-500 m-0;
 }
 
 </style>

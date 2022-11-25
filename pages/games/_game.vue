@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
+		<error-view v-else-if="game === null">Game not found</error-view>
 		<article v-else itemscope itemtype="https://schema.org/VideoGame">
 			<tag-list :tags="game.tags" />
 			<header>

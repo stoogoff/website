@@ -5,7 +5,7 @@
 		:disabled="disabled"
 		@click="$emit('click')"
 	>
-		<span class="text-700" :class="{ 'disabled': disabled }"><icon-view :icon="icon" /></span>
+		<span class="text-gray-400" :class="{ 'disabled': disabled }"><icon-view :icon="icon" /></span>
 	</button>
 </template>
 <script>

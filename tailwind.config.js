@@ -2,7 +2,8 @@ module.exports = {
 	variants: {
 		extend: {
 			display: ['group-hover'],
-			borderWidth: ['last']
+			borderWidth: ['last'],
+			translate: ['group-hover'],
 		},
 	},
 }

@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
+		<error-view v-else-if="article === null">Article not found</error-view>
 		<article v-else itemscope itemtype="https://schema.org/Article">
 			<header
 				class="pt-32 mb-10"

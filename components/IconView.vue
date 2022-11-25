@@ -56,6 +56,9 @@ export default Vue.component('IconView', {
 
 				case 'bandcamp':
 					return '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" xmlns:v="https://vecta.io/nano"><defs><clipPath id="A"><path d="M0 0h23.988v23.988H0zm0 0"/></clipPath><clipPath id="B"><path d="M11.992 23.988a12 12 0 0 0 11.996-11.992A12 12 0 0 0 11.992 0 12 12 0 0 0 0 11.996c0 6.621 5.371 11.992 11.992 11.992zm0 0"/></clipPath><clipPath id="C"><path d="M5 8h14v8H5zm0 0"/></clipPath><clipPath id="D"><path d="M14.328 15.766H5.574L9.66 8.223h8.754l-4.086 7.543"/></clipPath></defs><g clip-path="url(#A)"><g clip-path="url(#B)"><path d="M11.992 23.988a12 12 0 0 0 11.996-11.992A12 12 0 0 0 11.992.001 12 12 0 0 0 0 11.997c0 6.621 5.371 11.992 11.992 11.992zm0 0" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.499"/></g></g><g clip-path="url(#C)"><g clip-path="url(#D)"><path d="M5.34 16h13.309V7.988H5.34zm0 0" fill="currentColor"/></g></g></svg>'
+
+				case 'sad':
+					return '<svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5M14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23M15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11Z" /></svg>'
 			}
 
 			throw `Icon '${this.icon}' not found.`
