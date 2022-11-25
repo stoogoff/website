@@ -4,13 +4,13 @@
 		<error-view v-else-if="article === null">Article not found</error-view>
 		<article v-else itemscope itemtype="https://schema.org/Article">
 			<header
-				class="pt-32 mb-10"
+				class="pt-20 mb-10"
 				:class="{ image }"
 				:style="{ backgroundImage: `url(${image})` }"
 			>
 				<div class="main">
 					<tag-list :tags="article.tags" v-if="image === null" />
-					<h1 itemprop="name">{{ article.title }}</h1>
+					<h1 class="my-8 text-6xl leading-normal text-left pl-8 border-l-8 border-gray-500" itemprop="name">{{ article.title }}</h1>
 				</div>
 			</header>
 			<div class="main">
@@ -23,7 +23,6 @@
 </template>
 <script>
 import { markdown, stripTags } from '~/utils/string'
-import { CONTENT_ARTICLES } from '~/utils/config'
 import { title, meta, url } from '~/utils/meta'
 
 export default {
@@ -101,7 +100,7 @@ export default {
 	@apply bg-cover bg-center h-96 relative z-0;
 }
 .image h1 {
-	@apply text-center text-white relative z-20;
+	@apply text-white relative z-20 border-white;
 }
 .image:after {
 	content: " ";

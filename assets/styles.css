@@ -12,7 +12,7 @@ h1 {
 	@apply tracking-wider font-bold mb-5 text-4xl sm:text-5xl lg:text-4xl xl:text-5xl;
 }
 h2 {
-	@apply text-3xl font-semibold tracking-wide my-4 text-gray-900;
+	@apply text-3xl font-semibold tracking-wide my-4 text-gray-800;
 }
 h2 a {
 	@apply text-gray-900 no-underline;

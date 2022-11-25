@@ -12,8 +12,8 @@
 				<article-more :path="article.path" />
 			</article>
 			<product-view
-				v-if="book"
-				:product="book"
+				v-if="album"
+				:product="album"
 			/>
 		</div>
 
@@ -31,10 +31,10 @@
 				</ul>
 			</div>
 			<div>
-				<h3>Latest Album</h3>
+				<h3>Latest Book</h3>
 				<product-view
-					v-if="album"
-					:product="album"
+					v-if="book"
+					:product="book"
 				/>
 			</div>
 		</div>
