@@ -1,8 +1,9 @@
 <template>
-	<product-list :article="article" :products="products" />
+	<product-list title="Games" :products="products">
+		<p>Occasionally I build video games, mostly for <a href="http://ludumdare.com/compo/">Ludum Dare</a> as I like the challenge of having a restricted deadline. It forces you to focus on building the game to the exclusion of all else. There's no time to worry about how to do anything, you just <em>do</em>.</p>
+	</product-list>
 </template>
 <script>
-import { CONTENT_GAMES } from '~/utils/config'
 import { title, meta, url } from '~/utils/meta'
 
 export default {
@@ -10,7 +11,6 @@ export default {
 
 	async fetch() {
 		try {
-			this.article = await this.$content(CONTENT_GAMES, 'index').fetch()
 			this.products = await this.$axios.$get('/api/games')
 		}
 		catch(ex) {
@@ -20,16 +20,13 @@ export default {
 
 	data() {
 		return {
-			article: null,
 			products: [],
 		}
 	},
 
 	head() {
-		if(!this.article) return {}
-
 		const metadata = {
-			title: this.article.title,
+			title: 'Games',
 			url: '/games',
 		}
 

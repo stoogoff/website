@@ -1,10 +1,12 @@
 <template>
 	<div>
-		<loading-spinner v-if="$fetchState.pending" />
-		<section v-else>
-			<h1>{{ blog.title }}</h1>
-			<nuxt-content class="prose text-xl mb-8" :document="blog" />
-			<div class="md:grid md:grid-cols-2 md:gap-4">
+		<section>
+			<h1>Archive</h1>
+			<div class="prose text-xl mb-8">
+				<p>Everything I’ve written by month and year.</p>
+			</div>
+			<loading-spinner v-if="$fetchState.pending" />
+			<div v-else class="md:grid md:grid-cols-2 md:gap-4">
 				<div
 					v-for="(year, idx) in years"
 					:key="`year_${idx}`"
@@ -44,7 +46,6 @@ export default {
 		try {
 			const dates = await this.$axios.$get('/api/articles/archive')
 
-			this.blog = await this.$content('blog/archive').fetch()
 			this.years = uniq(dates.map(({ date }) => date.substring(0, date.indexOf('-'))))
 				.map(year => ({
 					year,
@@ -58,7 +59,6 @@ export default {
 
 	data() {
 		return {
-			blog: null,
 			years: [],
 		}
 	},

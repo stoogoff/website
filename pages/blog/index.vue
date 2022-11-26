@@ -2,8 +2,10 @@
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
-			<h1>{{ blog.title }}</h1>
-			<nuxt-content class="prose text-xl" :document="blog" />
+			<h1>Blog posts</h1>
+			<div class="prose text-xl">
+				<p>Where I write about various things which take my interest.</p>
+			</div>
 			<article-summary
 				v-for="(article, idx) in articles"
 				:key="`article_${idx}`"
@@ -22,7 +24,6 @@ export default {
 
 	async fetch() {
 		try {
-			this.blog = await this.$content('blog/index').fetch()
 			this.articles = await this.$axios.$get('/api/articles?limit=10')
 		}
 		catch(ex) {
@@ -32,16 +33,13 @@ export default {
 
 	data() {
 		return {
-			blog: null,
 			articles: [],
 		}
 	},
 
 	head() {
-		if(!this.blog) return {}
-
 		const metadata = {
-			title: this.blog.title,
+			title: 'Blog posts',
 			url: '/blog',
 		}
 

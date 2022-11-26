@@ -2,7 +2,7 @@ import { meta, title, url, description } from './utils/meta'
 
 export default {
 	// Target: https://go.nuxtjs.dev/config-target
-	target: 'static',
+	target: 'server',
 
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
@@ -31,19 +31,23 @@ export default {
 	],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
-	components: true,
+	components: [
+		{
+			path: '~/components', // will get any components nested in let's say /components/test too
+			pathPrefix: false,
+		},
+	],
 
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
 		// https://go.nuxtjs.dev/tailwindcss
 		'@nuxtjs/tailwindcss',
-		'@nuxtjs/google-fonts'
+		'@nuxtjs/google-fonts',
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
 		'@nuxtjs/axios',
-		'@nuxt/content',
 	],
 
 	serverMiddleware: [

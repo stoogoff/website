@@ -1,5 +1,7 @@
 <template>
-	<product-list :article="article" :products="products" />
+	<product-list title="Books" :products="products">
+		<p>I’ve written a number of short stories and novellas which I’ve self-published. All are available from my <a href="http://author.to/stoo-goff">Amazon</a> page.</p>
+	</product-list>
 </template>
 <script>
 import { CONTENT_BOOKS } from '~/utils/config'
@@ -10,7 +12,6 @@ export default {
 
 	async fetch() {
 		try {
-			this.article = await this.$content(CONTENT_BOOKS, 'index').fetch()
 			this.products = await this.$axios.$get('/api/books')
 		}
 		catch(ex) {
@@ -20,16 +21,13 @@ export default {
 
 	data() {
 		return {
-			article: null,
 			products: [],
 		}
 	},
 
 	head() {
-		if(!this.article) return {}
-
 		const metadata = {
-			title: this.article.title,
+			title: 'Books',
 			url: '/books',
 		}
 

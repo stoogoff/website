@@ -1,5 +1,7 @@
 <template>
-	<product-list :article="article" :products="products" />
+	<product-list title="Albums" :products="products">
+		<p>I’ve released two albums as part of <a href="https://nasoalmo.org/">Nasoalmo</a>, which you can find on my [Bandcamp](http://stoogoff.bandcamp.com/) page. I also have a few songs and demos available on <a href="https://soundcloud.com/stoogoff">SoundCloud</a>.</p>
+	</product-list>
 </template>
 <script>
 import { CONTENT_ALBUMS } from '~/utils/config'
@@ -10,7 +12,6 @@ export default {
 
 	async fetch() {
 		try {
-			this.article = await this.$content(CONTENT_ALBUMS, 'index').fetch()
 			this.products = await this.$axios.$get('/api/albums')
 		}
 		catch(ex) {
@@ -20,16 +21,13 @@ export default {
 
 	data() {
 		return {
-			article: null,
 			products: [],
 		}
 	},
 
 	head() {
-		if(!this.article) return {}
-
 		const metadata = {
-			title: this.article.title,
+			title: 'Albums',
 			url: '/albums',
 		}
 

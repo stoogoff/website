@@ -3,8 +3,10 @@
 		<loading-spinner v-if="$fetchState.pending" />
 		<error-view v-else-if="error">Date not found</error-view>
 		<section v-else>
-			<h1>{{ blog.title }}</h1>
-			<nuxt-content class="prose text-xl mb-8" :document="blog" />
+			<h1>Archive</h1>
+			<div class="prose text-xl mb-8">
+				<p>Everything I’ve written by month and year.</p>
+			</div>
 
 			<article-summary
 				v-for="(article, idx) in articles"
@@ -15,7 +17,6 @@
 	</div>
 </template>
 <script>
-import { SUMMARY_FIELDS } from '~/utils/config'
 import { title, meta, url } from '~/utils/meta'
 
 export default {
@@ -25,9 +26,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.blog = await this.$content('blog/archive').fetch()
 			this.articles = await this.$axios.$get('/api/articles/archive/' + params.archive)
-			console.log(this.articles)
 		}
 		catch(ex) {
 			this.error = true
@@ -38,7 +37,6 @@ export default {
 	data() {
 		return {
 			error: false,
-			blog: null,
 			articles: [],
 		}
 	},
