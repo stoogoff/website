@@ -10,10 +10,10 @@ RUN yarn install
 
 COPY . .
 
-ARG db_url
+ARG db_url=https://db.stoogoff.com/stoogoff
 ARG db_user
 ARG db_password
-ARG api_url
+ARG api_url=https://www.stoogoff.com
 
 ENV DB_URL=$db_url
 ENV DB_USER=$db_user
@@ -23,8 +23,6 @@ ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 
 RUN yarn build
-
-#COPY ./server ./.nuxt/server
 
 EXPOSE 3000
 
