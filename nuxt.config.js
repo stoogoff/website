@@ -53,7 +53,7 @@ export default {
 	serverMiddleware: [
 		'~/server/activitypub/activitypub.js',
 		'~/server/feed.js',
-		{ path: '/api', handler: '~/server/api/index.js' },
+		'~/server/api/index.js',
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -82,5 +82,5 @@ export default {
 		cache: process.env.NODE_ENV !== 'production',
 		extractCSS: process.env.NODE_ENV === 'production' ? { ignoreOrder: true } : false,
 		optimizeCSS: process.env.NODE_ENV === 'production',
-	}
+	},
 }

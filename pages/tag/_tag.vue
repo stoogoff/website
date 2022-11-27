@@ -59,8 +59,6 @@ export default {
 					icon: keyTypeMap[type],
 					items: items.filter(item => item.type === type )
 				}))
-
-			console.log(this.groups)
 		}
 		catch(ex) {
 			console.error(ex)

@@ -11,10 +11,10 @@
 				<render-markdown class="flex-grow" :content="article.summary" />
 				<article-more :path="article.path" />
 			</article>
-			<product-view
-				v-if="album"
-				:product="album"
-			/>
+			<loading-spinner v-if="$fetchState.pending" />
+			<div v-else-if="album !== null">
+				<product-view :product="album" />
+			</div>
 		</div>
 
 		<div class="px-4 md:max-w-2xl md:mx-auto md:grid md:grid-cols-2 md:gap-4">
@@ -30,12 +30,10 @@
 					</li>
 				</ul>
 			</div>
-			<div>
+			<loading-spinner v-if="$fetchState.pending" />
+			<div v-else-if="book !== null">
 				<h3>Latest Book</h3>
-				<product-view
-					v-if="book"
-					:product="book"
-				/>
+				<product-view :product="book" />
 			</div>
 		</div>
 	</section>
