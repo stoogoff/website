@@ -1,6 +1,6 @@
 <template>
 	<product-list title="Albums" :products="products">
-		<p>I’ve released two albums as part of <a href="https://nasoalmo.org/">Nasoalmo</a>, which you can find on my [Bandcamp](http://stoogoff.bandcamp.com/) page. I also have a few songs and demos available on <a href="https://soundcloud.com/stoogoff">SoundCloud</a>.</p>
+		<p>I’ve released two albums as part of <a href="https://nasoalmo.org/">Nasoalmo</a>, which you can find on my <a href="http://stoogoff.bandcamp.com/">Bandcamp</a> page. I also have a few songs and demos available on <a href="https://soundcloud.com/stoogoff">SoundCloud</a>.</p>
 	</product-list>
 </template>
 <script>
