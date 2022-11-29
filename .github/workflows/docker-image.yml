@@ -39,8 +39,8 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
     - name: Deploy ECS
-    	id: deploy-image
-    	env:
-    		ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
-    		ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
-    	run: aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+      id: deploy-image
+      env:
+        ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
+        ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
+      run: aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
