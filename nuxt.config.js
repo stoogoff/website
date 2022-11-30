@@ -52,7 +52,7 @@ export default {
 
 	serverMiddleware: [
 		'~/server/activitypub/activitypub.js',
-		'~/server/feed.js',
+		'~/server/feed/index.js',
 		'~/server/api/index.js',
 	],
 
