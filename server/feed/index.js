@@ -1,10 +1,11 @@
 
 const express = require('express')
+const { serverError, jsonErrorHandler } = require('../errors')
 const { getFeedPosts, createFeed } = require('./feed')
 
 const app = express()
 
-app.get('/feed.rss', async (req, res) => {
+app.get('/feed.rss', async (req, res, next) => {
 	try {
 		const feed = await createFeed()
 
@@ -12,11 +13,11 @@ app.get('/feed.rss', async (req, res) => {
 		res.send(feed.rss2())
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
-app.get('/feed.atom', async (req, res) => {
+app.get('/feed.atom', async (req, res, next) => {
 	try {
 		const feed = await createFeed()
 
@@ -24,11 +25,11 @@ app.get('/feed.atom', async (req, res) => {
 		res.send(feed.atom1())
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
-app.get('/feed.json', async (req, res) => {
+app.get('/feed.json', async (req, res, next) => {
 	try {
 		const feed = await createFeed()
 
@@ -36,9 +37,12 @@ app.get('/feed.json', async (req, res) => {
 		res.send(feed.json1())
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
+
+// error handler
+app.use(jsonErrorHandler)
 
 module.exports = {
 	path: '/', handler: app

@@ -1,5 +1,6 @@
 
 const express = require('express')
+const { badRequest, notFound, serverError, jsonErrorHandler } = require('../errors')
 const {
 	getArticles,
 	getArticlesByCategory,
@@ -25,7 +26,7 @@ const verify = (key, allowedValues) => {
 		const param = req.params[key]
 
 		if(!param || !allowedValues.includes(param)) {
-			return res.status(404).end('Not Found')
+			return next(notFound())
 		}
 
 		next()
@@ -38,7 +39,7 @@ const verifyPrefix = verify('prefix', ALLOWED_PREFIXES)
 // verify query string data matches expected and throw error otherwise
 const verifyQueryString = (req, res, next) => {
 	if(req.query.limit && isNaN(req.query.limit)) {
-		return res.status(400).end('Bad Request')
+		return next(badRequest())
 	}
 
 	next()
@@ -52,7 +53,7 @@ const verifyQueryString = (req, res, next) => {
 app.get('/hello', (req, res) => res.send('Hello'))
 
 // article specific list route
-app.get('/articles', verifyQueryString, async (req, res) => {
+app.get('/articles', verifyQueryString, async (req, res, next) => {
 	const limit = req.query.limit ? parseInt(req.query.limit) : false
 	const content = req.query.content && req.query.content === 'true'
 
@@ -62,12 +63,12 @@ app.get('/articles', verifyQueryString, async (req, res) => {
 		res.json(items)
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
 // get a category by name
-app.get('/articles/category/:category', verifyQueryString, verify('category', ALLOWED_CATEGORIES), async (req, res) => {
+app.get('/articles/category/:category', verifyQueryString, verify('category', ALLOWED_CATEGORIES), async (req, res, next) => {
 	const limit = req.query.limit ? parseInt(req.query.limit) : false
 	const category =
 		req.params.category.substring(0, 1).toUpperCase() +
@@ -79,24 +80,24 @@ app.get('/articles/category/:category', verifyQueryString, verify('category', AL
 		res.json(items)
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
 // count of articles by yyyy-month
-app.get('/articles/archive', async (req, res) => {
+app.get('/articles/archive', async (req, res, next) => {
 	try {
 		const items = await getArchive()
 
 		res.json(items)
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
 // get all articles for a given date
-app.get('/articles/archive/:date', async (req, res) => {
+app.get('/articles/archive/:date', async (req, res, next) => {
 	if(!/^\d{4}-\d{2}$/.test(req.params.date)) {
 		return res.status(400).send('Bad Request')
 	}
@@ -107,25 +108,25 @@ app.get('/articles/archive/:date', async (req, res) => {
 		res.json(items)		
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
 // /_design/all/_view/tags?key="hidden%20places"
 // get all articles for a given tag
-app.get('/tags/:tag', async (req, res) => {
+app.get('/tags/:tag', async (req, res, next) => {
 	try {
 		const items = await getItemsForTag(req.params.tag)
 
 		res.json(items)		
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
 // generic list route for books, games, and albums
-app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res) => {
+app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res, next) => {
 	const limit = req.query.limit ? parseInt(req.query.limit) : false
 	const prefix = req.params.prefix.replace(/s$/, '')
 
@@ -135,12 +136,12 @@ app.get('/:prefix', verifyPrefix, verifyQueryString, async (req, res) => {
 		res.json(items)
 	}
 	catch(ex) {
-		res.status(500).send(ex.message)
+		next(serverError(ex.message))
 	}
 })
 
 // generic fetch by id route
-app.get('/:prefix/:id', verifyPrefix, async (req, res) => {
+app.get('/:prefix/:id', verifyPrefix, async (req, res, next) => {
 	const prefix = req.params.prefix.replace(/s$/, '')
 	const id = req.params.id
 
@@ -150,9 +151,12 @@ app.get('/:prefix/:id', verifyPrefix, async (req, res) => {
 		res.json(item)
 	}
 	catch(ex) {
-		res.status(404).end(`Not Found: type with id '${id}' not found.`)
+		next(notFound(`Not Found: type with id '${id}' not found.`))
 	}
 })
+
+// error handler
+app.use(jsonErrorHandler)
 
 module.exports = {
 	path: '/api', handler: app

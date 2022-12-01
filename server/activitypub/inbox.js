@@ -14,7 +14,10 @@ const postInbox = (req, res) => {
 		signature[key] = value.replace(/"/g, '')
 	})
 
-	signature.signature = Buffer.from(signature.signature, 'base64').toString('ascii')
+	signature.signature =  Buffer.from(signature.signature, 'base64').toString('ascii')
+
+	// TODO get actor key
+	//const actor = await 
 }
 
 
