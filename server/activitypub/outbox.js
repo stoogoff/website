@@ -2,7 +2,7 @@
 const { url, description } = require('../../utils/meta')
 const { getFeedPosts } = require('../feed/feed')
 
-async function getOutbox(req, res) {
+const getOutbox = async () => {
 	const articles = await getFeedPosts()
 	const converted = articles.map(article => ({
 		'@context': 'https://www.w3.org/ns/activitystreams',
@@ -34,7 +34,7 @@ async function getOutbox(req, res) {
 			image,
 			date,
 		}*/
-	res.json(collection)
+	return collection
 }
 
 module.exports = {
