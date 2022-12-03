@@ -1,40 +1,32 @@
 
-const { url, description } = require('../../utils/meta')
+const { description } = require('../../utils/meta')
 const { getFeedPosts } = require('../feed/feed')
+const { article, note, image, url, collection } = require('./types')
 
 const getOutbox = async () => {
 	const articles = await getFeedPosts()
-	const converted = articles.map(article => ({
-		'@context': 'https://www.w3.org/ns/activitystreams',
-		type: 'Article',
-		name: article.title,
-		summary: article.summary,
-		content: article.content,
-		attributedTo: url({ url: '/me' }),
-		published: article.published.toISOString().substring(0, 19) + 'Z',
-	}))
 
-	const collection = {
-		'@context': 'https://www.w3.org/ns/activitystreams',
-		summary: description(),
-		type: "OrderedCollection",
-		totalItems: converted.length,
-		orderedItems: converted,
-	}
-/*
-{
-			title: post.title,
-			id: postUrl,
-			link: postUrl,
-			description: markdown(post.summary),
-			published: date,
-			category: [ { name: post.category } ],
-			content,
-			author,
-			image,
-			date,
-		}*/
-	return collection
+	return collection(articles.map(a => {
+		const published = a.published.toISOString().substring(0, 19) + 'Z'
+		const object = a.content ?
+			article(
+				a.title,
+				a.summary,
+				a.content,
+				published
+			) :
+			note(
+				a.title,
+				a.summary,
+				published
+			)
+
+		if(a.image) {
+			object.image = image(a.title, url(a.image.url, a.image.type))
+		}
+
+		return object
+	}), description())
 }
 
 module.exports = {
