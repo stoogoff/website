@@ -3,7 +3,7 @@ const { url } = require('../../utils/meta')
 const { notFound } = require('../errors')
 
 export const webfinger = resource => {
-	const me = 'acct:stoo@stoogoff.com'
+	const me = 'acct:stoo@www.stoogoff.com'
 
 	if(resource !== me) {
 		throw notFound(`Cannot find '${resource}'.`)
