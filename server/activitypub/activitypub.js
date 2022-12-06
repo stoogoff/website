@@ -37,7 +37,7 @@ app.post('/me/inbox', (req, res, next) => {
 	}
 
 	try {
-		const response = postInbox(req.headers.signature, req.body)
+		const response = postInbox(req.headers, req.body)
 
 		res.status(201).json(response)
 	}
