@@ -2,7 +2,7 @@
 const { url } = require('../../utils/meta')
 const { notFound } = require('../errors')
 
-const webfinger = resource => {
+export const webfinger = resource => {
 	const me = 'acct:stoo@stoogoff.com'
 
 	if(resource !== me) {
@@ -21,8 +21,4 @@ const webfinger = resource => {
 			}
 		]
 	}
-}
-
-module.exports = {
-	webfinger,
 }

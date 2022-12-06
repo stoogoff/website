@@ -4,8 +4,8 @@ const bodyParser = require('body-parser')
 const { badRequest, serverError, jsonErrorHandler } = require('../errors')
 const { me } = require('./me')
 const { webfinger } = require('./webfinger')
-const outbox = require('./outbox')
-const inbox = require('./inbox')
+const { getOutbox } = require('./outbox')
+const { postInbox } = require('./inbox')
 
 const app = express()
 
@@ -22,7 +22,7 @@ app.get('/me', (req, res) => {
 // get all outbox items
 app.get('/me/outbox', async (req, res, next) => {
 	try {
-		const response = await outbox.get()
+		const response = await getOutbox()
 
 		res.json(response)
 	}
@@ -37,12 +37,12 @@ app.post('/me/inbox', (req, res, next) => {
 	}
 
 	try {
-		const response = inbox.post(req.headers.signature)
+		const response = postInbox(req.headers.signature, req.body)
 
-		res.json(response)
+		res.status(201).json(response)
 	}
 	catch(ex) {
-
+		next(serverError(ex.message))
 	}
 })
 
@@ -59,7 +59,6 @@ app.get('/.well-known/webfinger', (req, res, next) => {
 		res.json(response)
 	}
 	catch(ex) {
-		console.log(ex)
 		next(ex)
 	}
 })

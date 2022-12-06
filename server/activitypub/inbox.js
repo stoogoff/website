@@ -1,7 +1,12 @@
 
+const { db } = require('../db')
+
 // Signature: keyId="https://my-example.com/actor#main-key",headers="(request-target) host date",signature="Y2FiYW...IxNGRiZDk4ZA=="
 
-const postInbox = (signature) => {
+const $axios = db(process.env.DB_INBOX)
+
+// signature parsing should be middleware
+export const postInbox = async (signature, body) => {
 	const parsed = {}
 
 	signature.split(',').map(part => {
@@ -12,13 +17,10 @@ const postInbox = (signature) => {
 
 	parsed.signature =  Buffer.from(parsed.signature, 'base64').toString('ascii')
 
-	return parsed
+	body.signature = parsed
+
+	return await $axios.post('/', body)
 
 	// TODO get actor key
 	//const actor = await 
-}
-
-
-module.exports = {
-	post: postInbox,
 }

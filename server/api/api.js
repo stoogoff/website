@@ -1,36 +1,32 @@
 
-const axios = require('axios')
+//const axios = require('axios')
+const { db } = require('../db')
 const { sortByProperty } = require('../../utils/list')
 
-const $axios = axios.create({
-	baseURL: process.env.DB_URL,
-	headers: {
-		Authorization: 'Basic ' + Buffer.from(`${process.env.DB_USER}:${process.env.DB_PASSWORD}`, 'ascii').toString('base64'),
-	},
-})
+const $axios = db(process.env.DB_WEBSITE)
 
 
 // -------
 // HELPERS
 
 // get the public id of the item, without the type: prefix
-const id = input => input.substring(input.lastIndexOf(':') + 1)
+export const id = input => input.substring(input.lastIndexOf(':') + 1)
 
 // convert CouchDB format and add a path for _all_docs responses
-const convertAllDocsToArray = (response, prefix) => response.data.rows.map(row => ({
+export const convertAllDocsToArray = (response, prefix) => response.data.rows.map(row => ({
 	...row.doc,
 	path: `/${prefix}s/` + id(row.doc._id)
 }))
 
 // convert CouchDB format and add a path for view responses
-const convertViewToArray = response => response.data.rows.map(row => ({
+export const convertViewToArray = response => response.data.rows.map(row => ({
 	...row.value,
 	path: '/blog/articles/' + id(row.value._id)
 }))
 
 
 // return all articles ordered by date descending
-const getArticles = async (limit = false, content = false) => {
+export const getArticles = async (limit = false, content = false) => {
 	const params = {
 		descending: true,
 	}
@@ -53,7 +49,7 @@ const getArticles = async (limit = false, content = false) => {
 	}
 }
 
-const getArticlesByCategory = async (category, limit = false) => {
+export const getArticlesByCategory = async (category, limit = false) => {
 	const params = {
 		startkey: JSON.stringify([category, "\ufff0"]),
 		endkey: JSON.stringify([category]),
@@ -69,7 +65,7 @@ const getArticlesByCategory = async (category, limit = false) => {
 	return convertViewToArray(response)
 }
 
-const getArchive = async () => {
+export const getArchive = async () => {
 	const response = await $axios.get('/_design/articles/_view/archive', {
 		params: {
 			descending: true,
@@ -88,7 +84,7 @@ const getArchive = async () => {
 	return Object.keys(items).map(key => ({ date: key, count: items[key] }))
 }
 
-const getArchiveByDate = async date => {
+export const getArchiveByDate = async date => {
 	const params = {
 		descending: true,
 		startkey: JSON.stringify(date + '\u0fff'),
@@ -100,7 +96,7 @@ const getArchiveByDate = async date => {
 	return convertAllDocsToArray(response, 'blog/article')
 }
 
-const getItemsForTag = async tag => {
+export const getItemsForTag = async tag => {
 	const params = {
 		key: JSON.stringify(tag.replace(/-/g, ' ')),
 	}
@@ -116,7 +112,7 @@ const getItemsForTag = async tag => {
 	}))
 }
 
-const getAllDocsByType = async (prefix, limit = false) => {
+export const getAllDocsByType = async (prefix, limit = false) => {
 	const params = {
 		startkey: `"${prefix}:"`,
 		endkey: `"${prefix}:\ufff0"`,
@@ -135,18 +131,8 @@ const getAllDocsByType = async (prefix, limit = false) => {
 	return items
 }
 
-const getDocByTypeId = async (prefix, id) => {
+export const getDocByTypeId = async (prefix, id) => {
 	const response = await $axios.get(`/${prefix}:${id}`)
 
 	return response.data
-}
-
-module.exports = {
-	getArticles,
-	getArticlesByCategory,
-	getArchive,
-	getArchiveByDate,
-	getItemsForTag,
-	getAllDocsByType,
-	getDocByTypeId,
 }

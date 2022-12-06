@@ -1,7 +1,7 @@
 
 const { url, description } = require('../../utils/meta')
 
-const me = () => {
+export const me = () => {
 	const href = url({ url: '/me' })
 
 	return {
@@ -30,8 +30,4 @@ const me = () => {
 			url: 'https://www.gravatar.com/avatar/ce581df7e2ee80c2f75def7ccfba91d5',
 		},
 	}
-}
-
-module.exports = {
-	me,
 }

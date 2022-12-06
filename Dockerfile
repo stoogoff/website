@@ -10,12 +10,14 @@ RUN yarn install
 
 COPY . .
 
-ARG db_url=https://db.stoogoff.com/stoogoff
+ARG db_inbox=https://db.stoogoff.com/inbox
+ARG db_website=https://db.stoogoff.com/stoogoff
 ARG db_user
 ARG db_password
 ARG api_url=https://www.stoogoff.com
 
-ENV DB_URL=$db_url
+ENV DB_INBOX=$db_inbox
+ENV DB_WEBSITE=$db_website
 ENV DB_USER=$db_user
 ENV DB_PASSWORD=$db_password
 ENV API_URL=$api_url
