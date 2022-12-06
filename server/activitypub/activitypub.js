@@ -9,7 +9,12 @@ const { postInbox } = require('./inbox')
 
 const app = express()
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({
+	type: [
+		'application/json',
+		'application/activity+json',
+	]
+}))
 
 
 // get my profile
@@ -31,15 +36,15 @@ app.get('/me/outbox', async (req, res, next) => {
 	}
 })
 
-app.post('/me/inbox', (req, res, next) => {
+app.post('/me/inbox', async (req, res, next) => {
 	if(!('signature' in req.headers)) {
 		return next(badRequest('Please provide a \'signature\' header.'))
 	}
 
 	try {
-		const response = postInbox(req.headers, req.body)
+		await postInbox(req.headers, req.body)
 
-		res.status(201).json(response)
+		res.status(201).send()
 	}
 	catch(ex) {
 		next(serverError(ex.message))

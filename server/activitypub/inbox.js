@@ -19,12 +19,12 @@ export const postInbox = async (headers, body) => {
 
 	body.signature = parsed*/
 
-	console.log(body)
-
-	return await $axios.post('/', {
+	const response = await $axios.post('/', {
 		headers,
 		body,
 	})
+
+	return response.data
 
 	// TODO get actor key
 	//const actor = await 
