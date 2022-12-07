@@ -5,27 +5,8 @@ const { db } = require('../db')
 
 const $axios = db(process.env.DB_INBOX)
 
-// signature parsing should be middleware
-export const postInbox = async (headers, body) => {
-	/*const parsed = {}
-
-	signature.split(',').map(part => {
-		const [key, value] = part.split('=')
-
-		parsed[key] = value.replace(/"/g, '')
-	})
-
-	parsed.signature =  Buffer.from(parsed.signature, 'base64').toString('ascii')
-
-	body.signature = parsed*/
-
-	const response = await $axios.post('/', {
-		headers,
-		body,
-	})
+export const postInbox = async body => {
+	const response = await $axios.post('/', body)
 
 	return response.data
-
-	// TODO get actor key
-	//const actor = await 
 }
