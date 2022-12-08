@@ -48,6 +48,7 @@ export default {
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
 		'@nuxtjs/axios',
+		'@nuxtjs/cloudinary',
 	],
 
 	serverMiddleware: [
@@ -74,8 +75,10 @@ export default {
 		useStylesheet: true,
 	},
 
-	// Content module configuration: https://go.nuxtjs.dev/config-content
-	content: {},
+	cloudinary: {
+		cloudName: process.env.CLOUDINARY_CLOUDNAME,
+		useComponent: true,
+	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {

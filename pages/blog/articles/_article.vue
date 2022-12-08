@@ -36,7 +36,7 @@ export default {
 			this.article = await this.$axios.$get('/api/articles/' + params.article)
 
 			if(this.article.image) {
-				this.image = this.article.image.source
+				this.image = `https://res.cloudinary.com/dnileluie/image/upload/v1670456364/${this.article.image}`
 			}
 		}
 		catch(ex) {

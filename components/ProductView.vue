@@ -5,7 +5,7 @@
 		@mouseout="active = false"
 	>
 		<nuxt-link :to="product.path">
-			<img :src="product.image.source" :alt="product.image.text" class="w-full" />
+			<cld-image :public-id="product.image" />
 		</nuxt-link>
 		<figcaption
 			class="block bg-gray-900 p-2 text-gray-300 bg-opacity-80 uppercase absolute bottom-0 left-0 right-0 transform transition-transform text-center"
