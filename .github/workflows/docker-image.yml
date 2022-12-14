@@ -32,7 +32,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR 
-        docker build -t stoogoff --build-arg db_user=${{ secrets.DB_USER }} --build-arg db_password=${{ secrets.DB_PASSWORD }} --build-arg cloudinary_api=${{ secrets.CLOUDINARY_CLOUDNAME }} .
+        docker build -t stoogoff --build-arg db_user=${{ secrets.DB_USER }} --build-arg db_password=${{ secrets.DB_PASSWORD }} --build-arg cloudinary_cloudname=${{ secrets.CLOUDINARY_CLOUDNAME }} .
         docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
