@@ -3,7 +3,7 @@
 		<nuxt-link :to="url" v-if="url">
 			<cld-image itemprop="image" :public-id="image" />
 		</nuxt-link>
-		<cld-image itemprop="image" :public-id="image" />
+		<cld-image v-else itemprop="image" :public-id="image" />
 	</picture>
 </template>
 <script>
