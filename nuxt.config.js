@@ -1,4 +1,4 @@
-import { meta, title, url, description } from './utils/meta'
+	import { meta, title, url, description } from './utils/meta'
 
 export default {
 	// Target: https://go.nuxtjs.dev/config-target
@@ -48,7 +48,7 @@ export default {
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
 		'@nuxtjs/axios',
-		'@nuxtjs/cloudinary',
+		'@nuxt/image',
 	],
 
 	serverMiddleware: [
@@ -75,9 +75,10 @@ export default {
 		useStylesheet: true,
 	},
 
-	cloudinary: {
-		cloudName: process.env.CLOUDINARY_CLOUDNAME,
-		useComponent: true,
+	image: {
+		cloudinary: {
+			baseURL: `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUDNAME}/image/upload/`
+		}
 	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
