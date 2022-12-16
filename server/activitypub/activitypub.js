@@ -84,14 +84,14 @@ app.get('/me/outbox', async (req, res, next) => {
 	}
 })
 
-app.post('/me/inbox', verifySignature, async (req, res, next) => {
+app.post('/me/inbox', /*verifySignature,*/ async (req, res, next) => {
 	try {
 		await postInbox(req.body)
 
 		res.status(201).send()
 	}
 	catch(ex) {
-		next(serverError(ex.message))
+		next(ex)
 	}
 })
 

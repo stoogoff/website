@@ -16,7 +16,9 @@
     "feed": "^4.2.2",
     "lodash": "^4.17.21",
     "marked": "^4.2.2",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "winston": "^3.8.2",
+    "winston-papertrail": "^1.0.5"
   },
   "devDependencies": {
     "@nuxt/image": "^0.7.1",

@@ -16,6 +16,9 @@ ARG db_user
 ARG db_password
 ARG api_url=https://www.stoogoff.com
 ARG cloudinary_cloudname
+ARG logging_url
+ARG logging_port
+ARG logging_hostname=production
 
 ENV DB_INBOX=$db_inbox
 ENV DB_WEBSITE=$db_website
@@ -25,6 +28,9 @@ ENV API_URL=$api_url
 ENV CLOUDINARY_CLOUDNAME=$cloudinary_cloudname
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
+ENV LOGGING_URL=logging_url
+ENV LOGGING_PORT=logging_port
+ENV LOGGING_HOSTNAME=logging_hostname
 
 RUN yarn build
 

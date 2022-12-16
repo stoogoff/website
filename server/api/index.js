@@ -99,7 +99,7 @@ app.get('/articles/archive', async (req, res, next) => {
 // get all articles for a given date
 app.get('/articles/archive/:date', async (req, res, next) => {
 	if(!/^\d{4}-\d{2}$/.test(req.params.date)) {
-		return res.status(400).send('Bad Request')
+		return next(badRequest('Invalid date format.'))
 	}
 
 	try {
@@ -151,7 +151,7 @@ app.get('/:prefix/:id', verifyPrefix, async (req, res, next) => {
 		res.json(item)
 	}
 	catch(ex) {
-		next(notFound(`Not Found: type with id '${id}' not found.`))
+		next(notFound(`Type with id '${id}' not found.`))
 	}
 })
 
