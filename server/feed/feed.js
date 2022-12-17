@@ -24,12 +24,9 @@ const getFeedPosts = async () => {
 		let image = null
 
 		if(post.image) {
-			const stats = fs.statSync(`./static/${post.image.source}`)
-
 			image = {
-				url: url({ url: post.image.source }),
-				type: post.image.type,
-				length: stats.size,
+				url: `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/f_auto,q_auto/${post.image}`,
+				type: 'image/jpeg',
 			}
 		}
 
@@ -41,7 +38,7 @@ const getFeedPosts = async () => {
 			link: postUrl,
 			description: absoluteUrls(markdown(post.summary)),
 			published: date,
-			category: [ { name: post.category } ],
+			category: [ { name: post.category, term: post.category } ],
 			content: absoluteUrls(markdown(post.content)),
 			author,
 			image,
