@@ -1,6 +1,7 @@
 
-const { badRequest, notFound } = require('../errors')
+const { badRequest, notFound, serverError } = require('../errors')
 const { db, createId } = require('../db')
+const { logger } = require('../logger')
 
 const $axios = db(process.env.DB_INBOX)
 
@@ -19,7 +20,7 @@ const actions = {
 			})
 		}
 		catch(ex) {
-			throw notFound(`Document with id '${id} doesn't exist.`)
+			throw notFound(`Document with id '${id}' doesn't exist.`)
 		}
 	},
 
@@ -37,7 +38,29 @@ const actions = {
 		delete activity.object.cc
 
 		await $axios.post('/', activity)
-	}
+	},
+
+	async follow(body) {
+		const activity = {
+			_id: createId(body.actor),
+			...body,
+		}
+
+		await $axios.post('/', activity)
+
+		try {
+			// get the actor's inbox and post an Accept
+			const response = await $axios.get(body.actor)
+
+			if(response.data.inbox) {
+				//const accept = 
+			}
+		}
+		catch(ex) {
+			throw serverError(ex.message)
+		}
+
+	},
 }
 
 export const postInbox = async body => {
@@ -57,5 +80,8 @@ export const postInbox = async body => {
 
 	if(action in actions) {
 		await actions[action](body)
+	}
+	else {
+		logger.info(`Action type ${action} not available.`)
 	}
 }

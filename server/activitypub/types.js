@@ -4,7 +4,7 @@ const NAMESPACE = 'https://www.w3.org/ns/activitystreams'
 export const actor = name => ({
 	'@context': NAMESPACE,
 	type: 'Person',
-	name: name || 'Stoo',
+	name: name || 'Stoo Goff',
 })
 
 export const activity = (type, object, summary) => ({

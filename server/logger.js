@@ -6,7 +6,6 @@ var winstonPapertrail = new winston.transports.Papertrail({
 	host: process.env.LOGGING_URL,
 	port: process.env.LOGGING_PORT,
 	hostname: process.env.LOGGING_HOSTNAME,
-	colorize: true,
 })
 
 winstonPapertrail.on('error', function(err) {
