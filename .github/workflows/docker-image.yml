@@ -38,6 +38,7 @@ jobs:
           --build-arg cloudinary_cloudname=${{ secrets.CLOUDINARY_CLOUDNAME }} \
           --build-arg logging_url=${{ secrets.LOGGING_URL }} \
           --build-arg logging_port=${{ secrets.LOGGING_PORT }} \
+          --build-arg private_key="${{ secrets.PRIVATE_KEY }}" \
           .
         docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
