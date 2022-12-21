@@ -111,6 +111,7 @@ export const postInbox = async body => {
 		await actions[action](body)
 	}
 	else {
-		logger.info(`Action type ${action} not available.`)
+		logger.info(`Action type '${action}' not available.`)
+		logger.info(body)
 	}
 }
