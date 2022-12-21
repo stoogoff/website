@@ -107,11 +107,12 @@ export const postInbox = async body => {
 
 	const action = body.type.toLowerCase()
 
+	logger.info(body)
+
 	if(action in actions) {
 		await actions[action](body)
 	}
 	else {
 		logger.info(`Action type '${action}' not available.`)
-		logger.info(body)
 	}
 }
