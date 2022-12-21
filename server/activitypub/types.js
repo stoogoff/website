@@ -1,5 +1,11 @@
 
+const { url } = require('../../utils/meta')
+
+export const ME = url({ url: '/me' })
+export const MAIN_KEY = ME + '#main-key'
 const NAMESPACE = 'https://www.w3.org/ns/activitystreams'
+
+// object types
 
 export const actor = name => ({
 	'@context': NAMESPACE,
@@ -49,7 +55,7 @@ export const note = (name, content) => ({
 	attributeTo: actor(),
 })
 
-export const url = (url, mediaType) => ({
+export const link = (url, mediaType) => ({
 	'@context': NAMESPACE,
 	type: 'Link',
 	href: url,
@@ -68,4 +74,13 @@ export const image = (name, ...urls) => ({
 	type: 'Image',
 	name,
 	url: urls.length === 1 ? urls[0] : urls,
+})
+
+// activity types
+
+export const accept = object => ({
+	'@context': NAMESPACE,
+	type: 'Accept',	
+	actor: ME,
+	object,
 })

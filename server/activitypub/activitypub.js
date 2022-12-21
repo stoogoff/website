@@ -6,7 +6,7 @@ const { me } = require('./me')
 const { webfinger } = require('./webfinger')
 const { getOutbox } = require('./outbox')
 const { postInbox } = require('./inbox')
-const { verifySignature } = require('./signature')
+const { verifySignatureMiddleware } = require('./signature')
 
 const app = express()
 
@@ -37,7 +37,7 @@ app.get('/me/outbox', async (req, res, next) => {
 	}
 })
 
-app.post('/me/inbox', /*verifySignature,*/ async (req, res, next) => {
+app.post('/me/inbox', verifySignatureMiddleware, async (req, res, next) => {
 	try {
 		await postInbox(req.body)
 

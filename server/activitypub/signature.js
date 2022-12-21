@@ -2,21 +2,16 @@
 const axios = require('axios')
 const crypto = require('crypto')
 const { badRequest } = require('../errors')
-const { url } = require('../../utils/meta')
 
 const ALGORITHM = 'SHA256'
+const ENCODING = 'base64'
 const REQUEST_TARGET = '(request-target)'
-const href = url({ url: '/me' })
+const KEY = process.env.PRIVATE_KEY
 
-// verify signature middleware for inbox
-export const verifySignature = async (req, res, next) => {
-	if(!('signature' in req.headers)) {
-		return next(badRequest('No signature found.'))
-	}
-
+export const verifySignature = async (signature, headers) => {
 	const parsed = {}
 
-	req.headers.signature.split(',').map(part => {
+	signature.split(',').map(part => {
 		const delimiter = part.indexOf('=')
 		const key = part.substring(0, delimiter)
 		const value = part.substring(delimiter + 1)
@@ -29,7 +24,7 @@ export const verifySignature = async (req, res, next) => {
 			return `${REQUEST_TARGET}: post /me/inbox`
 		}
 		else {
-			return `${header}: ${req.headers[header]}`
+			return `${header}: ${headers[header]}`
 		}
 	}).join('\n')
 
@@ -42,7 +37,25 @@ export const verifySignature = async (req, res, next) => {
 
 		const publicKey = profile.data.publicKey.publicKeyPem
 
-		if(crypto.verify(ALGORITHM, parsed.comparison, publicKey, Buffer.from(parsed.signature, 'base64'))) {
+		return crypto.verify(ALGORITHM, parsed.comparison, publicKey, Buffer.from(parsed.signature, ENCODING))
+	}
+	catch(ex) {
+		throw badRequest(ex.message)
+	}
+
+	return false
+}
+
+// verify signature middleware for inbox
+export const verifySignatureMiddleware = async (req, res, next) => {
+	if(!('signature' in req.headers)) {
+		return next(badRequest('No signature found.'))
+	}
+
+	try {
+		const result = await verifySignature(req.headers.signature, req.headers)
+
+		if(result) {
 			next()
 		}
 		else {
@@ -50,34 +63,28 @@ export const verifySignature = async (req, res, next) => {
 		}
 	}
 	catch(ex) {
-		next(badRequest())
+		next(ex)
 	}
 }
 
-export const createSignature = (url, headers) => {
-	const parsedUrl = new URL(url)
-
-	if(!('Host' in headers)) {
-		headers['Host'] = parsedUrl.hostname
+// sign a request
+export const createSignature = (keyId, path, headers) => {
+	if(!('host' in headers)) {
+		throw badRequest('Invalid headers. Must contain \'Host\'.')
 	}
 
-	if(!('Date' in headers)) {
-		headers['Date'] = (new Date()).toUTCString()
+	if(!('date' in headers)) {
+		throw badRequest('Invalid headers. Must contain \'Date\'.')
 	}
 
 	const headerKeys = Object.keys(headers)
 	const signingString =
-		`${REQUEST_TARGET}: post ${parsedUrl.pathname}\n\n` +
-		headerKeys.map(header => `${header.toLowerCase()}:${headers[header]}`).join('\n\n')
+		`${REQUEST_TARGET}: post ${path}\n` +
+		headerKeys.map(header => `${header.toLowerCase()}: ${headers[header]}`).join('\n')
 	const headerString = REQUEST_TARGET + ' ' + headerKeys.map(header => header.toLowerCase()).join(' ')
+	const signature = Buffer.from(crypto.sign(ALGORITHM, signingString, KEY)).toString(ENCODING)
 
-	console.log('signingString=', signingString)
-	console.log('headerString=', headerString)
-
-	const signature = crypto.sign(ALGORITHM, signingString, KEY)
-
-	return {
-		headers,
-		signature: `keyId="${href}#main-key",algorithm="rsa-sha256",headers="${headerString}",signature="${signature}"`,
-	}
+	return `keyId="${keyId}",algorithm="rsa-sha256",headers="${headerString}",signature="${signature}"`
 }
+
+export const createDigest = body => 'SHA-256=' + crypto.createHash(ALGORITHM).update(body).digest('hex')
