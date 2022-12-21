@@ -32,14 +32,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR 
-        docker build -t stoogoff \
-          --build-arg db_user=${{ secrets.DB_USER }} \
-          --build-arg db_password=${{ secrets.DB_PASSWORD }} \
-          --build-arg cloudinary_cloudname=${{ secrets.CLOUDINARY_CLOUDNAME }} \
-          --build-arg logging_url=${{ secrets.LOGGING_URL }} \
-          --build-arg logging_port=${{ secrets.LOGGING_PORT }} \
-          --build-arg private_key=${{ secrets.PRIVATE_KEY }} \
-          .
+        docker build -t stoogoff --build-arg db_user=${{ secrets.DB_USER }} --build-arg db_password=${{ secrets.DB_PASSWORD }} --build-arg cloudinary_cloudname=${{ secrets.CLOUDINARY_CLOUDNAME }} --build-arg logging_url=${{ secrets.LOGGING_URL }} --build-arg logging_port=${{ secrets.LOGGING_PORT }} --build-arg private_key=${{ secrets.PRIVATE_KEY }} .
         docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
