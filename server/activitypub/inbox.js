@@ -1,8 +1,9 @@
 
+const { description } = require('../../utils/meta')
 const { badRequest, notFound, serverError } = require('../errors')
 const { db, createId } = require('../db')
 const { logger } = require('../logger')
-const { MAIN_KEY, accept } = require('./types')
+const { MAIN_KEY, accept, link, collection } = require('./types')
 const { createDigest, createSignature } = require('./signature')
 
 const $axios = db(process.env.DB_INBOX)
@@ -93,6 +94,8 @@ const actions = {
 }
 
 export const postInbox = async body => {
+	logger.info(body)
+
 	if(!body.type) {
 		throw badRequest('ActivityType \'type\' not specified.')
 	}
@@ -107,12 +110,22 @@ export const postInbox = async body => {
 
 	const action = body.type.toLowerCase()
 
-	logger.info(body)
-
 	if(action in actions) {
 		await actions[action](body)
 	}
 	else {
 		logger.info(`Action type '${action}' not available.`)
 	}
+}
+
+// TODO permissions, not everything should be publicly accessible
+export const getInbox = async () => {
+	const response = await $axios.get('/_design/stream/_view/by_date', {
+		params: {
+			descending: true,
+			limit: 20,
+		}
+	})
+
+	return collection(response.data.rows.map(row => row.value), undefined, response.data.total_rows)
 }

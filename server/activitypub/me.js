@@ -16,8 +16,8 @@ export const me = () => {
 		summary: description(),
 		inbox: href + '/inbox', // things posted to me
 		outbox: href + '/outbox', // things I've posted
+		followers: href + '/followers',
 		//'following': href + '/following',
-		//'followers': href + '/followers',
 		//'liked': href + '/liked',
 		publicKey: {
 			id: href + '#main-key',

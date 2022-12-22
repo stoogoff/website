@@ -5,7 +5,8 @@ const { badRequest, serverError, jsonErrorHandler } = require('../errors')
 const { me } = require('./me')
 const { webfinger } = require('./webfinger')
 const { getOutbox } = require('./outbox')
-const { postInbox } = require('./inbox')
+const { postInbox, getInbox } = require('./inbox')
+const { getFollowers } = require('./follow')
 const { verifySignatureMiddleware } = require('./signature')
 
 const app = express()
@@ -25,7 +26,7 @@ app.get('/me', (req, res) => {
 	res.json(response)
 })
 
-// get all outbox items
+// handle outbox
 app.get('/me/outbox', async (req, res, next) => {
 	try {
 		const response = await getOutbox()
@@ -37,6 +38,7 @@ app.get('/me/outbox', async (req, res, next) => {
 	}
 })
 
+// handle inbox
 app.post('/me/inbox', verifySignatureMiddleware, async (req, res, next) => {
 	try {
 		await postInbox(req.body)
@@ -48,6 +50,30 @@ app.post('/me/inbox', verifySignatureMiddleware, async (req, res, next) => {
 	}
 })
 
+app.get('/me/inbox', async (req, res, next) => {
+	try {
+		const response = await getInbox()
+
+		res.json(response)
+	}
+	catch(ex) {
+		next(serverError(ex.message))
+	}
+})
+
+// followers and following
+app.get('/me/followers', async (req, res, next) => {
+	try {
+		const response = await getFollowers()
+
+		res.json(response)
+	}
+	catch(ex) {
+		next(serverError(ex.message))
+	}
+})
+
+// webfinger
 app.get('/.well-known/webfinger', (req, res, next) => {
 	const resource = req.query.resource
 

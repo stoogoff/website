@@ -1,7 +1,28 @@
 
 const { description } = require('../../utils/meta')
 const { getFeedPosts } = require('../feed/feed')
-const { article, note, image, url, collection } = require('./types')
+const { article, note, image, link, collection } = require('./types')
+const { logger } = require('../logger')
+
+
+const actions = {
+	async create(body) {
+		// TODO convert note / article AP to standard article
+	}
+}
+
+export const postOutbox = async body => {
+	logger.info(body)
+
+	const action = body.type.toLowerCase()
+
+	if(action in actions) {
+		await actions[action](body)
+	}
+	else {
+		logger.info(`Action type '${action}' not available.`)
+	}
+}
 
 export const getOutbox = async () => {
 	const articles = await getFeedPosts()
@@ -13,7 +34,7 @@ export const getOutbox = async () => {
 			note(a.title, a.summary, published)
 
 		if(a.image) {
-			object.image = image(a.title, url(a.image.url, a.image.type))
+			object.image = image(a.title, link(a.image.url, a.image.type))
 		}
 
 		return object

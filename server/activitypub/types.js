@@ -21,19 +21,11 @@ export const activity = (type, object, summary) => ({
 	object,
 })
 
-export const collection = (items, summary) => ({
-	'@context': NAMESPACE,
-	summary,
-	type: 'Collection',
-	totalItems: items.length,
-	items,
-})
-
-export const orderedCollection = (items, summary) => ({
+export const collection = (items, summary, length = false) => ({
 	'@context': NAMESPACE,
 	summary,
 	type: 'OrderedCollection',
-	totalItems: items.length,
+	totalItems: length || items.length,
 	orderedItems: items,
 })
 
