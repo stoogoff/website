@@ -12,7 +12,7 @@ const actions = {
 }
 
 export const postOutbox = async body => {
-	logger.info(body)
+	logger.info(JSON.stringify(body))
 
 	const action = body.type.toLowerCase()
 

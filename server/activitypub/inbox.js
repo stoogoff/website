@@ -94,7 +94,7 @@ const actions = {
 }
 
 export const postInbox = async body => {
-	logger.info(body)
+	logger.info(JSON.stringify(body))
 
 	if(!body.type) {
 		throw badRequest('ActivityType \'type\' not specified.')
