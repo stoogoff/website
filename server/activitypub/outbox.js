@@ -1,5 +1,6 @@
 
 const { description } = require('../../utils/meta')
+const { zulu } = require('../../utils/date')
 const { getFeedPosts } = require('../feed/feed')
 const { article, note, image, link, collection } = require('./types')
 const { logger } = require('../logger')
@@ -12,15 +13,12 @@ const actions = {
 }
 
 export const postOutbox = async body => {
-	logger.info(JSON.stringify(body))
+	logger.info('postOutbox', body)
 
 	const action = body.type.toLowerCase()
 
 	if(action in actions) {
 		await actions[action](body)
-	}
-	else {
-		logger.info(`Action type '${action}' not available.`)
 	}
 }
 
@@ -28,7 +26,7 @@ export const getOutbox = async () => {
 	const articles = await getFeedPosts()
 
 	return collection(articles.map(a => {
-		const published = a.published.toISOString().substring(0, 19) + 'Z'
+		const published = zulu(a.published)
 		const object = a.content ?
 			article(a.title, a.summary, a.content, published) :
 			note(a.title, a.summary, published)
