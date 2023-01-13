@@ -4,8 +4,9 @@
 @tailwind utilities;
 
 body {
-	@apply bg-white leading-normal text-gray-700;
+	@apply leading-normal text-gray-700;
 	font-family: 'Montserrat', sans-serif;
+	background-color: #fffef8;
 }
 
 h1 {

@@ -4,7 +4,6 @@
 		<error-view v-else-if="category === null">Category not found</error-view>
 		<section v-else>
 			<h1>{{ category.title }}</h1>
-			<div class="prose text-xl" v-html="content" />
 			<icon-text icon="bookmark" class="mb-8">
 				{{ articles.length }} Articles
 			</icon-text>

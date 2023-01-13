@@ -2,10 +2,7 @@
 	<div>
 		<loading-spinner v-if="$fetchState.pending" />
 		<section v-else>
-			<h1>Blog posts</h1>
-			<div class="prose text-xl">
-				<p>Where I write about various things which take my interest.</p>
-			</div>
+			<h1>Writing</h1>
 			<article-summary
 				v-for="(article, idx) in articles"
 				:key="`article_${idx}`"

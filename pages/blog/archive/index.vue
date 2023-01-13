@@ -2,9 +2,6 @@
 	<div>
 		<section>
 			<h1>Archive</h1>
-			<div class="prose text-xl mb-8">
-				<p>Everything I’ve written by month and year.</p>
-			</div>
 			<loading-spinner v-if="$fetchState.pending" />
 			<div v-else class="md:grid md:grid-cols-2 md:gap-4">
 				<div

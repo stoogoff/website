@@ -45,9 +45,19 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
-    - name: Deploy ECS
-      id: deploy-image
-      env:
-        ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
-        ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
-      run: aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment
+#    - name: Pull and redeploy docker container
+#      id: deploy-image
+#      uses: appleboy/ssh-action@v0.1.6
+#      with:
+#        host: ${{ secrets.HOST }} -- TODO
+#        username: ubuntu
+#        key: ${{ secrets.ACTION_PRIVATE_KEY }} -- TODO
+#        env:
+#          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+#          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+#        script: |
+#          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
+#          docker stop webserver
+#          docker rm webserver
+#          docker run --name webserver -p 3000:3000 -d $ECR_REGISTRY/$ECR_REPOSITORY:latest
+#          docker ps
