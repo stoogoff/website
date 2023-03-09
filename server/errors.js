@@ -8,7 +8,12 @@ const error = (status, message) => ({
 
 export const badRequest = (message = '') => {
 	if(message) {
-		logger.info(message)
+		try {
+			logger.info(message)
+		}
+		catch(ex) {
+			console.info(message)
+		}
 	}
 
 	return error(400, `Bad Request. ${message}`)
@@ -16,7 +21,12 @@ export const badRequest = (message = '') => {
 
 export const notFound = (message = '') => {
 	if(message) {
-		logger.info(message)
+		try {
+			logger.info(message)
+		}
+		catch(ex) {
+			console.info(message)
+		}
 	}
 
 	return error(404, `Not found. ${message}`)
@@ -24,7 +34,12 @@ export const notFound = (message = '') => {
 
 export const serverError = (message = '') => {
 	if(message) {
-		logger.error(message)
+		try {
+			logger.error(message)
+		}
+		catch(ex) {
+			console.error(message)
+		}
 	}
 
 	return error(500, `Internal Server Error. ${message}`)

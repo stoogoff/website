@@ -10,7 +10,7 @@ var winstonPapertrail = new winston.transports.Papertrail({
 
 winstonPapertrail.on('error', function(err) {
 	// silently handle connection issues
-	console.log(err)	
+	console.log(err)
 });
 
 export const logger = new winston.createLogger({

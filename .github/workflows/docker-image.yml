@@ -49,7 +49,7 @@ jobs:
 #      id: deploy-image
 #      uses: appleboy/ssh-action@v0.1.6
 #      with:
-#        host: ${{ secrets.HOST }} -- TODO
+#        host: ${{ secrets.HOST }}
 #        username: ubuntu
 #        key: ${{ secrets.ACTION_PRIVATE_KEY }} -- TODO
 #        env:
