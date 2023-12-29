@@ -33,7 +33,6 @@ export default Vue.component('FooterSection', {
 				{ icon: 'github', text: 'Github', href: 'https://github.com/stoogoff' },
 				{ icon: 'soundcloud', text: 'SoundCloud', href: 'https://soundcloud.com/stoogoff' },
 				{ icon: 'bandcamp', text: 'Bandcamp', href: 'https://stoogoff.bandcamp.com/' },
-				{ icon: 'twitter', text: 'Twitter', href: 'https://twitter.com/stoogoff' },
 				{ icon: 'rss', text: 'RSS', href: url({ url: '/feed.rss' }) },
 				{ icon: 'atom', text: 'Atom', href: url({ url: '/feed.atom' }) },
 			],

@@ -1,4 +1,4 @@
-	import { meta, title, url, description } from './utils/meta'
+import { meta, title, url, description } from './utils/meta'
 
 export default {
 	// Target: https://go.nuxtjs.dev/config-target
