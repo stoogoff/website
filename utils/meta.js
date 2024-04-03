@@ -2,7 +2,7 @@
 const OG_TYPE = 'website'
 const BASE_URL = 'https://www.stoogoff.com'
 const BASE_TITLE = 'Stoo Goff'
-const BASE_DESCRIPTION = 'Stoo Goff: The bastard love child of Brian Blessed and Patrick Stewart. Programmer, RPG writer and audio drama producer. (he/him)'
+const BASE_DESCRIPTION = 'Stoo Goff: programmer, game designer, and audio drama producer.'
 const BASE_IMAGE = `${BASE_URL}/img/kickstarter-banner.png`
 
 export const title = meta => meta && meta.title ? `${meta.title} | ${BASE_TITLE}` : BASE_TITLE
