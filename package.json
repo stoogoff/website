@@ -25,5 +25,8 @@
     "@nuxtjs/google-fonts": "^2.0.0",
     "@nuxtjs/tailwindcss": "^4.2.0",
     "postcss": "^8.3.5"
+  },
+  "engines": {
+    "node": "=>16.0.0 <17.0.0"
   }
 }
