@@ -23,14 +23,14 @@ resource "bunnynet_pullzone_hostname" "bunnynet_web" {
 	force_ssl   = true
 }
 
-/*resource "bunnynet_pullzone_hostname" "www" {
+resource "bunnynet_pullzone_hostname" "www" {
 	pullzone    = bunnynet_pullzone.www.id
 	name        = "www.${data.bunnynet_dns_zone.dns.domain}"
 	tls_enabled = true
 	force_ssl   = true
-}*/
+}
 
-/*resource "bunnynet_pullzone_edgerule" "redirect_bare_domain" {
+resource "bunnynet_pullzone_edgerule" "redirect_bare_domain" {
 	enabled     = true
 	pullzone    = bunnynet_pullzone.www.id
 	description = "Redirect pullzone domain to www domain."
@@ -57,4 +57,4 @@ resource "bunnynet_pullzone_hostname" "bunnynet_web" {
 			parameter2 = null
 		}
 	]
-}*/
+}
