@@ -10,8 +10,8 @@ RUN yarn install
 
 COPY . .
 
-ARG db_inbox=https://db.stoogoff.com/inbox
-ARG db_website=https://db.stoogoff.com/stoogoff
+ARG db_inbox=https://db.we-evolve.co.uk/inbox
+ARG db_website=https://db.we-evolve.co.uk/stoogoff
 ARG db_user
 ARG db_password
 ARG api_url=https://www.stoogoff.com
