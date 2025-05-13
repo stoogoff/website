@@ -3,12 +3,12 @@ FROM node:16.18-alpine
 
 WORKDIR /app
 
-COPY ./package.json .
-COPY ./yarn.lock .
+COPY ./src/package.json .
+COPY ./src/yarn.lock .
 
 RUN yarn install
 
-COPY . .
+COPY ./src .
 
 ARG db_inbox=https://db.we-evolve.co.uk/inbox
 ARG db_website=https://db.we-evolve.co.uk/stoogoff
