@@ -30,6 +30,13 @@ resource "bunnynet_pullzone_hostname" "www" {
 	force_ssl   = true
 }
 
+resource "bunnynet_pullzone_hostname" "bare" {
+	pullzone    = bunnynet_pullzone.www.id
+	name        = "${data.bunnynet_dns_zone.dns.domain}"
+	tls_enabled = true
+	force_ssl   = true
+}
+
 resource "bunnynet_pullzone_edgerule" "redirect_bare_domain" {
 	enabled     = true
 	pullzone    = bunnynet_pullzone.www.id
