@@ -33,7 +33,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.article = await this.$axios.$get('/api/articles/' + params.article)
+			this.article = await this.$axios.$get('/articles/' + params.article)
 
 			if(this.article.image) {
 				this.image = `https://res.cloudinary.com/dnileluie/image/upload/v1670456364/${this.article.image}`

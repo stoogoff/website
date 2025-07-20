@@ -51,7 +51,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.album = await this.$axios.$get('/api/albums/' + params.album)
+			this.album = await this.$axios.$get('/albums/' + params.album)
 		}
 		catch(ex) {
 			console.error(ex)

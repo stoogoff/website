@@ -47,13 +47,13 @@ export default {
 	name: 'IndexPage',
 
 	async fetch() {
-		const articles = await this.$axios.$get('/api/articles?limit=13')
+		const articles = await this.$axios.$get('/articles?limit=13')
 
 		this.cards = articles.slice(0, 3)
 		this.articles = articles.slice(3)
 
-		this.book = (await this.$axios.$get('/api/books?limit=1'))[0]
-		this.album = (await this.$axios.$get('/api/albums?limit=1'))[0]
+		this.book = (await this.$axios.$get('/books?limit=1'))[0]
+		this.album = (await this.$axios.$get('/albums?limit=1'))[0]
 	},
 
 	data() {

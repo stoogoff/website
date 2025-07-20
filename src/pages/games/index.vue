@@ -11,7 +11,7 @@ export default {
 
 	async fetch() {
 		try {
-			this.products = await this.$axios.$get('/api/games')
+			this.products = await this.$axios.$get('/games?sort=publishDate')
 		}
 		catch(ex) {
 			console.error(ex)

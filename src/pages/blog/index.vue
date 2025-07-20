@@ -21,7 +21,7 @@ export default {
 
 	async fetch() {
 		try {
-			this.articles = await this.$axios.$get('/api/articles?limit=10')
+			this.articles = await this.$axios.$get('/articles?limit=10&sort=publish_date&dir=desc')
 		}
 		catch(ex) {
 			console.error(ex)

@@ -65,3 +65,31 @@ resource "bunnynet_pullzone_edgerule" "redirect_bare_domain" {
 		}
 	]
 }
+
+resource "bunnynet_pullzone_edgerule" "nocache_api" {
+	enabled     = true
+	pullzone    = bunnynet_pullzone.www.id
+	description = "Don't cache requests to the API."
+
+	actions = [
+		{
+			type       = "BypassPermaCache"
+			parameter1 = null
+			parameter2 = null
+			parameter3 = null
+		}
+	]
+
+	match_type = "MatchAny"
+	triggers = [
+		{
+			type       = "Url"
+			match_type = "MatchAny"
+			patterns   = [
+				"https://${bunnynet_pullzone_hostname.www.name}/api/*"
+			]
+			parameter1 = null
+			parameter2 = null
+		}
+	]
+}

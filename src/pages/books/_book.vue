@@ -39,7 +39,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.book = await this.$axios.$get('/api/books/' + params.book)
+			this.book = await this.$axios.$get('/books/' + params.book)
 		}
 		catch(ex) {
 			console.error(ex)

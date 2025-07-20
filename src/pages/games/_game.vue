@@ -38,7 +38,7 @@ export default {
 		const { params } = this.$nuxt.context
 
 		try {
-			this.game = await this.$axios.$get('/api/games/' + params.game)
+			this.game = await this.$axios.$get('/games/' + params.game)
 		}
 		catch(ex) {
 			console.error(ex)

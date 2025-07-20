@@ -45,7 +45,7 @@ export default {
 
 		try {
 			this.category = CATEGORIES[params.category]
-			this.articles = await this.$axios.$get('/api/articles/category/' + params.category)
+			this.articles = await this.$axios.$get('/articles?sort=publish_date&dir=desc&filter=category:' + params.category)
 		}
 		catch(ex) {
 			console.error(ex)

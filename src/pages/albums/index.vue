@@ -12,7 +12,7 @@ export default {
 
 	async fetch() {
 		try {
-			this.products = await this.$axios.$get('/api/albums')
+			this.products = await this.$axios.$get('/albums?sort=publishDate')
 		}
 		catch(ex) {
 			console.error(ex)
