@@ -30,6 +30,7 @@ export default Vue.component('FooterSection', {
 	data() {
 		return {
 			links: [
+				{ icon: 'bluesky', href: 'https://bsky.app/profile/stoogoff.com', text: 'Bluesky' },
 				{ icon: 'github', text: 'Github', href: 'https://github.com/stoogoff' },
 				{ icon: 'soundcloud', text: 'SoundCloud', href: 'https://soundcloud.com/stoogoff' },
 				{ icon: 'bandcamp', text: 'Bandcamp', href: 'https://stoogoff.bandcamp.com/' },
