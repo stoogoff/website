@@ -50,7 +50,7 @@ jobs:
       uses: appleboy/ssh-action@v1.2.2
       env:
         CONTAINER_NAME: ${{ github.event.repository.name }}
-        CONTAINER_REPOSITORY: ${{ vars.CONTAINER_REPOSITORY }}
+        CONTAINER_REPOSITORY: ${{ secrets.CONTAINER_REPOSITORY }}
         CONTAINER_LOGIN: ${{ secrets.CONTAINER_LOGIN }}
         API_KEY: ${{ secrets.API_KEY }}
       with:
@@ -63,4 +63,4 @@ jobs:
           docker pull $CONTAINER_REPOSITORY:latest
           docker stop $CONTAINER_NAME
           docker rm $CONTAINER_NAME
-          docker run --name $CONTAINER_NAME -p 3001:3000 --restart unless-stopped -d $CONTAINER_REPOSITORY:latest
+          docker run --name $CONTAINER_NAME -p 3000:3000 --restart unless-stopped -d $CONTAINER_REPOSITORY:latest
