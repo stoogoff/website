@@ -23,7 +23,7 @@ jobs:
     - name: Docker Build and Push
       env:
         CONTAINER_NAME: stoogoff-website
-        CONTAINER_REPOSITORY: ${{ vars.CONTAINER_REPOSITORY }}
+        CONTAINER_REPOSITORY: ${{ secrets.CONTAINER_REPOSITORY }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR 
