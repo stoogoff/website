@@ -10,25 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    - name: Docker Login
+      uses: docker/login-action@v3
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: eu-west-2
+        registry: kcr.io
+        username: ${{ secrets.CONTAINER_LOGIN }}
+        password: ${{ secrets.API_KEY }}
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
-
-    - name: Build, tag, and push the image to Amazon ECR
-      id: build-image
+    - name: Docker Build and Push
       env:
-        ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-        ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+        CONTAINER_NAME: ${{ github.event.repository.name }}
+        CONTAINER_REPOSITORY: ${{ vars.CONTAINER_REPOSITORY }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR 
@@ -40,24 +36,32 @@ jobs:
           --build-arg logging_port=${{ secrets.LOGGING_PORT }} \
           --build-arg private_key="${{ secrets.PRIVATE_KEY }}" \
           .
-        docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        docker tag stoogoff:latest $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker tag $CONTAINER_NAME:latest $CONTAINER_REPOSITORY:latest
+        docker tag $CONTAINER_NAME:latest $CONTAINER_REPOSITORY:$IMAGE_TAG
+        docker push $CONTAINER_REPOSITORY:latest
+        docker push $CONTAINER_REPOSITORY:$IMAGE_TAG
 
-#    - name: Pull and redeploy docker container
-#      id: deploy-image
-#      uses: appleboy/ssh-action@v0.1.6
-#      with:
-#        host: ${{ secrets.HOST }}
-#        username: ubuntu
-#        key: ${{ secrets.ACTION_PRIVATE_KEY }} -- TODO
-#        env:
-#          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-#          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-#        script: |
-#          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
-#          docker stop webserver
-#          docker rm webserver
-#          docker run --name webserver -p 3000:3000 -d $ECR_REGISTRY/$ECR_REPOSITORY:latest
-#          docker ps
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Pull and redeploy docker container
+      id: deploy-image
+      uses: appleboy/ssh-action@v1.2.2
+      env:
+        CONTAINER_NAME: ${{ github.event.repository.name }}
+        CONTAINER_REPOSITORY: ${{ vars.CONTAINER_REPOSITORY }}
+        CONTAINER_LOGIN: ${{ secrets.CONTAINER_LOGIN }}
+        API_KEY: ${{ secrets.API_KEY }}
+      with:
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.HOST_PRIVATE_KEY }}
+        username: ${{ secrets.HOST_LOGIN }}
+        envs: CONTAINER_NAME,CONTAINER_REPOSITORY,CONTAINER_LOGIN,API_KEY
+        script: |
+          docker login kcr.io --username $CONTAINER_LOGIN --password $API_KEY
+          docker pull $CONTAINER_REPOSITORY:latest
+          docker stop $CONTAINER_NAME
+          docker rm $CONTAINER_NAME
+          docker run --name $CONTAINER_NAME -p 3001:3000 --restart unless-stopped -d $CONTAINER_REPOSITORY:latest

@@ -50,26 +50,6 @@ export const meta = (meta, additional = null) => {
 			property: 'og:image',
 			content: newImage,
 		},
-		{
-			hid: 'twitter:url',
-			name: 'twitter:url',
-			content: combinedUrl,
-		},
-		{
-			hid: 'twitter:title',
-			name: 'twitter:title',
-			content: newTitle,
-		},
-		{
-			hid: 'twitter:description',
-			name: 'twitter:description',
-			content: newDescription,
-		},
-		{
-			hid: 'twitter:image',
-			name: 'twitter:image',
-			content: newImage,
-		},
 	]
 
 	if(additional) {
